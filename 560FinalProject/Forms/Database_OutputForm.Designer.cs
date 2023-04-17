@@ -30,6 +30,7 @@
         {
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.back_button = new System.Windows.Forms.Button();
+            this.label26 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // textBox1
@@ -43,7 +44,6 @@
             // 
             // back_button
             // 
-            this.back_button.Enabled = false;
             this.back_button.Font = new System.Drawing.Font("Segoe UI Symbol", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.back_button.Location = new System.Drawing.Point(423, 1218);
             this.back_button.Name = "back_button";
@@ -53,11 +53,22 @@
             this.back_button.UseVisualStyleBackColor = true;
             this.back_button.Click += new System.EventHandler(this.back_button_Click);
             // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(650, 1358);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(70, 32);
+            this.label26.TabIndex = 46;
+            this.label26.Text = "        ";
+            // 
             // Database_OutputForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1427, 1366);
+            this.AutoSize = true;
+            this.ClientSize = new System.Drawing.Size(1427, 1434);
+            this.Controls.Add(this.label26);
             this.Controls.Add(this.back_button);
             this.Controls.Add(this.textBox1);
             this.Name = "Database_OutputForm";
@@ -71,5 +82,6 @@
 
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button back_button;
+        private System.Windows.Forms.Label label26;
     }
 }

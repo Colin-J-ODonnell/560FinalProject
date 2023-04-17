@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using _560FinalProject.Forms;
 
 namespace _560FinalProject
 {
@@ -34,6 +35,13 @@ namespace _560FinalProject
             ScheduledScreeningsForm ssf = new ScheduledScreeningsForm(this);
             this.Hide();
             ssf.Show();
+        }
+
+        private void edit_button_Click(object sender, EventArgs e)
+        {
+            EditDatabaseForm edf = new EditDatabaseForm(this);
+            this.Hide();
+            edf.Show();
         }
     }
 }
