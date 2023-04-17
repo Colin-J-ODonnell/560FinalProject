@@ -10,16 +10,20 @@ using System.Windows.Forms;
 
 namespace _560FinalProject
 {
-    public partial class Form1 : Form
+    public partial class Screenings_OutputForm : Form
     {
-        public Form1()
+        ScheduledScreeningsForm SSF { get; set; }
+
+        public Screenings_OutputForm(ScheduledScreeningsForm ssf)
         {
             InitializeComponent();
+            SSF = ssf;
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void back_button_Click(object sender, EventArgs e)
         {
-
+            this.Close();
+            SSF.Show();
         }
     }
 }
