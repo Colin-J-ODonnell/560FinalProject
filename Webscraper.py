@@ -1,35 +1,42 @@
-
-import csv
 import requests
 from bs4 import BeautifulSoup
+import csv
 
-# Make a GET request to the IMDB website for movies released in 2021
-url = "https://www.imdb.com/search/title/?release_date=2021&sort=num_votes,desc&page=1"
+#url = "https://www.imdb.com/search/title/?year=2021&title_type=feature&"
+url = "https://www.imdb.com/search/title/?title_type=feature&year=2021-01-01,2021-12-31&ref_=adv_prv"
+
 response = requests.get(url)
+soup = BeautifulSoup(response.text, 'html.parser')
 
-# Parse the HTML content using BeautifulSoup
-soup = BeautifulSoup(response.content, "html.parser")
+# Find all the movie containers on the page
+movies = soup.find_all('div', {'class': 'lister-item mode-advanced'})
 
-# Find all the movie titles, release dates, starring cast, rating, duration, and budget on the page
-movies = soup.find_all("div", class_="lister-item-content")
-movies_list = []
+# Open a CSV file to write the data
+with open('movies.csv', mode='w', newline='') as csv_file:
+    fieldnames = ['Title', 'Release Date', 'Director', 'Starring Cast', 'Rating', 'Duration', 'Genre', 'Gross']
+    writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
 
-# Extract the movie data and store them in a list
-for movie in movies:
-    title = movie.find("a").text
-    release_date = movie.find("span", class_="lister-item-year").text.strip("()")  # strip parentheses from release year
-    #stars = [star.text for star in movie.select('span.title', class_="lister-item-index")]
-    rating = movie.find("strong").text
-    duration = movie.find("span", class_="runtime").text.strip(" min")
-    budget = movie.select(".text-muted")[1].text.strip("$") if len(movie.select(".text-muted")) > 1 else "N/A"
+    writer.writeheader()  # Write the header row
 
-    # Append the movie data to the list
-    movies_list.append([title, release_date, ", ".join(stars), rating, duration, budget])
+    # Loop through each movie container and extract the desired data
+    for movie in movies:
+        title = movie.h3.a.text.strip()
+        release_date = movie.find('span', {'class': 'lister-item-year'}).text.strip('()')
+        director = movie.find('p', {'class': ''}).a.text
+        try:
+            cast_list = movie.find('p', class_='').find_all('a')[1:]
+            cast = [actor.text.strip() for actor in cast_list]
+        except AttributeError:
+            cast = None
+        rating = movie.find('div', {'class': 'inline-block ratings-imdb-rating'})['data-value']
+        duration = movie.find('span', {'class': 'runtime'}).text.strip(' min')
+        genre = movie.find('span', {'class': 'genre'}).text.strip()
+        try:
+            gross = movie.find('span', {'name': 'nv'}).find_next().find_next().find_next().string
+        except AttributeError:
+            gross = 'N/A'
 
-# Export the movie list to a CSV file
-with open("movies_2021.csv", "w", newline="", encoding="utf-8") as file:
-    writer = csv.writer(file)
-    writer.writerow(["Title", "Release Date", "Starring Cast", "Rating", "Duration", "Budget"])
-    writer.writerows(movies_list)
-
-print("CSV file successfully created!")
+        # Write the data to the CSV file
+        writer.writerow({'Title': title, 'Release Date': release_date, 'Director': director,
+                         'Starring Cast': ', '.join(cast), 'Rating': rating, 'Duration': duration,
+                         'Genre': genre, 'Gross': gross})
