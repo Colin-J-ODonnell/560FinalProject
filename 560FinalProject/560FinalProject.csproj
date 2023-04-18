@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\EditDatabaseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\EditDatabaseForm.Designer.cs">
+      <DependentUpon>EditDatabaseForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\MovieDatabaseForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -78,6 +84,9 @@
     <Compile Include="Forms\Screenings_OutputForm.Designer.cs">
       <DependentUpon>Screenings_OutputForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Forms\EditDatabaseForm.resx">
+      <DependentUpon>EditDatabaseForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\MovieDatabaseForm.resx">
       <DependentUpon>MovieDatabaseForm.cs</DependentUpon>
     </EmbeddedResource>

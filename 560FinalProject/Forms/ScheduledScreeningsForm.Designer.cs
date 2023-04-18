@@ -51,6 +51,9 @@
             this.label8 = new System.Windows.Forms.Label();
             this.search_button = new System.Windows.Forms.Button();
             this.back_button = new System.Windows.Forms.Button();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // movieGenre_textbox
@@ -187,14 +190,14 @@
             // 
             // theaterName_textbox
             // 
-            this.theaterName_textbox.Location = new System.Drawing.Point(165, 662);
+            this.theaterName_textbox.Location = new System.Drawing.Point(165, 721);
             this.theaterName_textbox.Name = "theaterName_textbox";
             this.theaterName_textbox.Size = new System.Drawing.Size(448, 38);
             this.theaterName_textbox.TabIndex = 48;
             // 
             // theaterAddress_textbox
             // 
-            this.theaterAddress_textbox.Location = new System.Drawing.Point(197, 726);
+            this.theaterAddress_textbox.Location = new System.Drawing.Point(197, 785);
             this.theaterAddress_textbox.Name = "theaterAddress_textbox";
             this.theaterAddress_textbox.Size = new System.Drawing.Size(416, 38);
             this.theaterAddress_textbox.TabIndex = 47;
@@ -202,7 +205,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(65, 729);
+            this.label10.Location = new System.Drawing.Point(65, 788);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(126, 32);
             this.label10.TabIndex = 46;
@@ -211,7 +214,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(62, 665);
+            this.label9.Location = new System.Drawing.Point(62, 724);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(97, 32);
             this.label9.TabIndex = 45;
@@ -221,7 +224,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Segoe UI Symbol", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(40, 597);
+            this.label8.Location = new System.Drawing.Point(40, 656);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(257, 46);
             this.label8.TabIndex = 44;
@@ -229,9 +232,8 @@
             // 
             // search_button
             // 
-            this.search_button.Enabled = false;
             this.search_button.Font = new System.Drawing.Font("Segoe UI Symbol", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.search_button.Location = new System.Drawing.Point(48, 806);
+            this.search_button.Location = new System.Drawing.Point(48, 856);
             this.search_button.Name = "search_button";
             this.search_button.Size = new System.Drawing.Size(565, 125);
             this.search_button.TabIndex = 49;
@@ -241,9 +243,8 @@
             // 
             // back_button
             // 
-            this.back_button.Enabled = false;
             this.back_button.Font = new System.Drawing.Font("Segoe UI Symbol", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.back_button.Location = new System.Drawing.Point(48, 937);
+            this.back_button.Location = new System.Drawing.Point(48, 987);
             this.back_button.Name = "back_button";
             this.back_button.Size = new System.Drawing.Size(565, 125);
             this.back_button.TabIndex = 50;
@@ -251,11 +252,40 @@
             this.back_button.UseVisualStyleBackColor = true;
             this.back_button.Click += new System.EventHandler(this.back_button_Click);
             // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(227, 603);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(385, 38);
+            this.textBox2.TabIndex = 54;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(61, 606);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(163, 32);
+            this.label12.TabIndex = 53;
+            this.label12.Text = "Show Time:";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(266, 1128);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(70, 32);
+            this.label11.TabIndex = 56;
+            this.label11.Text = "        ";
+            // 
             // ScheduledScreeningsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(662, 1090);
+            this.AutoSize = true;
+            this.ClientSize = new System.Drawing.Size(662, 1199);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.label12);
             this.Controls.Add(this.back_button);
             this.Controls.Add(this.search_button);
             this.Controls.Add(this.theaterName_textbox);
@@ -311,5 +341,8 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button search_button;
         private System.Windows.Forms.Button back_button;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label11;
     }
 }
