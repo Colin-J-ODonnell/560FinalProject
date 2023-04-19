@@ -140,3 +140,14 @@ DROP TABLE IF EXISTS MovieOperations.Movie
          ReservationID ASC
       )
 	);
+
+    CREATE TABLE MovieOperations.Genre
+	(
+		GenreID INT NOT NULL IDENTITY(1,1),
+		GenreType NVARCHAR(128) NOT NULL
+
+		CONSTRAINT [PK_MovieOperations_Genre_GenreID] PRIMARY KEY CLUSTERED
+      (
+         GenreID ASC
+      )
+	);
