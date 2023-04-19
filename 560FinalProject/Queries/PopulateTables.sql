@@ -1,8 +1,8 @@
 ﻿TRUNCATE TABLE MovieOperations.Movie
 
 BULK
-INSERT MovieOpperations.Movie
-FROM 'E:\CIS 560\560FinalProject\movies.csv'
+INSERT MovieOperations.Movie
+FROM 'E:\CIS 560\560FinalProject\Excel Files\movies.csv'
 WITH
 (
 FIRSTROW = 2,
@@ -11,7 +11,7 @@ ROWTERMINATOR = '\n'
 )
 GO
 SELECT *
-FROM MovieOpperations.Movie
+FROM MovieOperations.Movie
 
 TRUNCATE TABLE MovieOperations.Genre
 
