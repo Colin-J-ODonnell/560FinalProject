@@ -4,150 +4,152 @@ GO
 
 DROP TABLE IF EXISTS MovieOperations.Movie
 
-   CREATE TABLE MovieOperations.Movie
-   (
-      MovieId INT NOT NULL IDENTITY(1, 1),
-      Title NVARCHAR(128) NOT NULL,
-      DirectorID INT NOT NULL,
-      ReleaseYear INT NOT NULL,
-	  Duration INT NOT NULL,
-      Revenue NVARCHAR(128) NULL,
-      Rating FLOAT NOT NULL
+CREATE TABLE MovieOperations.Movie
+(
+    MovieId INT NOT NULL IDENTITY(1, 1),
+    Title NVARCHAR(128) NOT NULL,
+    DirectorID INT NOT NULL,
+    ReleaseYear INT NOT NULL,
+	Duration INT NOT NULL,
+    Revenue NVARCHAR(128) NULL,
+    Rating FLOAT NOT NULL
 
-      CONSTRAINT [PK_MovieOperations_Movie_MovieId] PRIMARY KEY CLUSTERED
-      (
-         MovieId ASC
-      )
-   );
-
-	CREATE TABLE MovieOperations.MovieCast
-	(
-		CastID INT NOT NULL IDENTITY(1,1),
-		MovieID INT NOT NULL,
-		ActorID INT NOT NULL,
-
-		CONSTRAINT [PK_MovieOperations_MovieCast_CastId] PRIMARY KEY CLUSTERED
-      (
-         CastID ASC
-      )
-	);
-
-    CREATE TABLE MovieOperations.Actor
+    CONSTRAINT [PK_MovieOperations_Movie_MovieId] PRIMARY KEY CLUSTERED
     (
-        ActorID INT NOT NULL,
-        FirstName NVARCHAR(128) NOT NULL,
-        LastName NVARCHAR(128) NOT NULL
+        MovieId ASC
+    )
+);
 
-         CONSTRAINT [PK_MovieOperations_Actor_ActorID] PRIMARY KEY CLUSTERED ( ActorID ASC )
-    );
+CREATE TABLE MovieOperations.MovieCast
+(
+	CastID INT NOT NULL IDENTITY(1,1),
+	MovieID INT NOT NULL,
+	ActorID INT NOT NULL,
 
-    CREATE TABLE MovieOperations.Theater
+	CONSTRAINT [PK_MovieOperations_MovieCast_CastId] PRIMARY KEY CLUSTERED
     (
-        TheaterID INT NOT NULL IDENTITY(1,1),
-        [Name] NVARCHAR(128) NOT NULL,
-        [Address] NVARCHAR(128) NOT NULL,
+        CastID ASC
+    )
+);
 
-        CONSTRAINT [PK_MovieOperations_Theater_TheaterID] PRIMARY KEY CLUSTERED ( TheaterID ASC )
-    );
+DROP TABLE IF EXISTS MovieOperations.Actor
 
-    CREATE TABLE MovieOperations.Room
-    (
-        RoomID INT NOT NULL,
-        TheaterID INT NOT NULL,
-        RoomNumber INT NOT NULL,
-        RoomCapacity INT NOT NULL
+CREATE TABLE MovieOperations.Actor
+(
+    ActorID INT NOT NULL,
+    FirstName NVARCHAR(128) NOT NULL,
+    LastName NVARCHAR(128)
 
-         CONSTRAINT [PK_MovieOperations_Room_RoomID] PRIMARY KEY CLUSTERED ( RoomID ASC )
-    );
+        CONSTRAINT [PK_MovieOperations_Actor_ActorID] PRIMARY KEY CLUSTERED ( ActorID ASC )
+);
 
-    CREATE TABLE MovieOperations.MovieShowtime
-    (
-        ShowtimeID INT NOT NULL,
-        RoomID INT NOT NULL,
-        MovieID INT NOT NULL,
-        Showtime DateTime NOT NULL
+CREATE TABLE MovieOperations.Theater
+(
+    TheaterID INT NOT NULL IDENTITY(1,1),
+    [Name] NVARCHAR(128) NOT NULL,
+    [Address] NVARCHAR(128) NOT NULL,
 
-         CONSTRAINT [PK_MovieOperations_MovieShowtime_ShowtimeID] PRIMARY KEY CLUSTERED ( ShowtimeID ASC )
-    );
+    CONSTRAINT [PK_MovieOperations_Theater_TheaterID] PRIMARY KEY CLUSTERED ( TheaterID ASC )
+);
 
-    CREATE TABLE MovieOperations.Seat
-    (
-        SeatID INT NOT NULL,
-        RoomID INT NOT NULL,
-        -- SeatResID INT NOT NULL,
-        SeatNumber INT NOT NULL
+CREATE TABLE MovieOperations.Room
+(
+    RoomID INT NOT NULL,
+    TheaterID INT NOT NULL,
+    RoomNumber INT NOT NULL,
+    RoomCapacity INT NOT NULL
 
-         CONSTRAINT [PK_MovieOperations_Seat_SeatID] PRIMARY KEY CLUSTERED ( SeatID ASC )
-    );
+        CONSTRAINT [PK_MovieOperations_Room_RoomID] PRIMARY KEY CLUSTERED ( RoomID ASC )
+);
 
-    CREATE TABLE MovieOperations.Director
-    (
-        DirectorID INT NOT NULL,
-        FirstName NVARCHAR(128) NOT NULL,
-        LastName NVARCHAR(128) NOT NULL
+CREATE TABLE MovieOperations.MovieShowtime
+(
+    ShowtimeID INT NOT NULL,
+    RoomID INT NOT NULL,
+    MovieID INT NOT NULL,
+    Showtime DateTime NOT NULL
 
-         CONSTRAINT [PK_MovieOperations_Director_DirectorID] PRIMARY KEY CLUSTERED ( DirectorID ASC )
-    );
+        CONSTRAINT [PK_MovieOperations_MovieShowtime_ShowtimeID] PRIMARY KEY CLUSTERED ( ShowtimeID ASC )
+);
 
-    CREATE TABLE MovieOperations.Director
-    (
-        DirectorID INT NOT NULL,
-        FirstName NVARCHAR(128) NOT NULL,
-        LastName NVARCHAR(128) NOT NULL
+CREATE TABLE MovieOperations.Seat
+(
+    SeatID INT NOT NULL,
+    RoomID INT NOT NULL,
+    -- SeatResID INT NOT NULL,
+    SeatNumber INT NOT NULL
 
-         CONSTRAINT [PK_MovieOperations_Director_DirectorID] PRIMARY KEY CLUSTERED ( DirectorID ASC )
-    );
+        CONSTRAINT [PK_MovieOperations_Seat_SeatID] PRIMARY KEY CLUSTERED ( SeatID ASC )
+);
 
-    CREATE TABLE MovieOperations.Genre
-    (
-        GenreID INT NOT NULL,
-        GenreType NVARCHAR(128) NOT NULL
+CREATE TABLE MovieOperations.Director
+(
+    DirectorID INT NOT NULL,
+    FirstName NVARCHAR(128) NOT NULL,
+    LastName NVARCHAR(128) NOT NULL
 
-         CONSTRAINT [PK_MovieOperations_Genre_GenreID] PRIMARY KEY CLUSTERED ( GenreID ASC )
-    );
+        CONSTRAINT [PK_MovieOperations_Director_DirectorID] PRIMARY KEY CLUSTERED ( DirectorID ASC )
+);
 
-    CREATE TABLE MovieOperations.MovieGenres
-    (
-        MovieGenreID INT NOT NULL,
-        MovieID INT NOT NULL,
-        GenreID INT NOT NULL
+CREATE TABLE MovieOperations.Director
+(
+    DirectorID INT NOT NULL,
+    FirstName NVARCHAR(128) NOT NULL,
+    LastName NVARCHAR(128) NOT NULL
 
-         CONSTRAINT [PK_MovieOperations_MovieGenres_MovieGenreID] PRIMARY KEY CLUSTERED ( MovieGenreID ASC )
-    );
+        CONSTRAINT [PK_MovieOperations_Director_DirectorID] PRIMARY KEY CLUSTERED ( DirectorID ASC )
+);
+
+CREATE TABLE MovieOperations.Genre
+(
+    GenreID INT NOT NULL,
+    GenreType NVARCHAR(128) NOT NULL
+
+        CONSTRAINT [PK_MovieOperations_Genre_GenreID] PRIMARY KEY CLUSTERED ( GenreID ASC )
+);
+
+CREATE TABLE MovieOperations.MovieGenres
+(
+    MovieGenreID INT NOT NULL,
+    MovieID INT NOT NULL,
+    GenreID INT NOT NULL
+
+        CONSTRAINT [PK_MovieOperations_MovieGenres_MovieGenreID] PRIMARY KEY CLUSTERED ( MovieGenreID ASC )
+);
 
 	
-	CREATE TABLE MovieOperations.SeatReseravtion
-	(
-		SeatResID INT NOT NULL IDENTITY(1,1),
-		ReservationID INT NOT NULL,
-		SeatID INT NOT NULL,
+CREATE TABLE MovieOperations.SeatReseravtion
+(
+	SeatResID INT NOT NULL IDENTITY(1,1),
+	ReservationID INT NOT NULL,
+	SeatID INT NOT NULL,
 
-		CONSTRAINT [PK_MovieOperations_SeatReservation_SeatResID] PRIMARY KEY CLUSTERED
-      (
-         SeatResID ASC
-      )
-	);
+	CONSTRAINT [PK_MovieOperations_SeatReservation_SeatResID] PRIMARY KEY CLUSTERED
+    (
+        SeatResID ASC
+    )
+);
 
     
-	CREATE TABLE MovieOperations.Reservation
-	(
-		ReservationID INT NOT NULL IDENTITY(1,1),
-		[Time] Time NOT NULL,
-		ReservationName NVARCHAR(128) NOT NULL
+CREATE TABLE MovieOperations.Reservation
+(
+	ReservationID INT NOT NULL IDENTITY(1,1),
+	[Time] Time NOT NULL,
+	ReservationName NVARCHAR(128) NOT NULL
 
-		CONSTRAINT [PK_MovieOperations_Reservation_ReservationID] PRIMARY KEY CLUSTERED
-      (
-         ReservationID ASC
-      )
-	);
+	CONSTRAINT [PK_MovieOperations_Reservation_ReservationID] PRIMARY KEY CLUSTERED
+    (
+        ReservationID ASC
+    )
+);
 
-    CREATE TABLE MovieOperations.Genre
-	(
-		GenreID INT NOT NULL IDENTITY(1,1),
-		GenreType NVARCHAR(128) NOT NULL
+CREATE TABLE MovieOperations.Genre
+(
+	GenreID INT NOT NULL IDENTITY(1,1),
+	GenreType NVARCHAR(128) NOT NULL
 
-		CONSTRAINT [PK_MovieOperations_Genre_GenreID] PRIMARY KEY CLUSTERED
-      (
-         GenreID ASC
-      )
-	);
+	CONSTRAINT [PK_MovieOperations_Genre_GenreID] PRIMARY KEY CLUSTERED
+    (
+        GenreID ASC
+    )
+);
