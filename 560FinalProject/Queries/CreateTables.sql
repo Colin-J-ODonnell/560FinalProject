@@ -116,3 +116,27 @@ DROP TABLE IF EXISTS MovieOperations.Movie
     );
 
 	
+	CREATE TABLE MovieOperations.SeatReseravtion
+	(
+		SeatResID INT NOT NULL IDENTITY(1,1),
+		ReservationID INT NOT NULL,
+		SeatID INT NOT NULL,
+
+		CONSTRAINT [PK_MovieOperations_SeatReservation_SeatResID] PRIMARY KEY CLUSTERED
+      (
+         SeatResID ASC
+      )
+	);
+
+    
+	CREATE TABLE MovieOperations.Reservation
+	(
+		ReservationID INT NOT NULL IDENTITY(1,1),
+		[Time] Time NOT NULL,
+		ReservationName NVARCHAR(128) NOT NULL
+
+		CONSTRAINT [PK_MovieOperations_Reservation_ReservationID] PRIMARY KEY CLUSTERED
+      (
+         ReservationID ASC
+      )
+	);
