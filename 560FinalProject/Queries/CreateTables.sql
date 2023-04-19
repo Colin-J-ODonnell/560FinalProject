@@ -8,7 +8,7 @@ DROP TABLE IF EXISTS MovieOperations.Movie
    (
       MovieId INT NOT NULL IDENTITY(1, 1),
       Title NVARCHAR(128) NOT NULL,
-      Director NVARCHAR(128) NOT NULL,
+      DirectorID INT NOT NULL,
       ReleaseYear INT NOT NULL,
 	  Duration INT NOT NULL,
       Revenue NVARCHAR(128) NULL,
@@ -31,6 +31,15 @@ DROP TABLE IF EXISTS MovieOperations.Movie
          CastID ASC
       )
 	);
+
+    CREATE TABLE MovieOperations.Actor
+    (
+        ActorID INT NOT NULL,
+        FirstName NVARCHAR(128) NOT NULL,
+        LastName NVARCHAR(128) NOT NULL
+
+         CONSTRAINT [PK_MovieOperations_Actor_ActorID] PRIMARY KEY CLUSTERED ( ActorID ASC )
+    );
 
     CREATE TABLE MovieOperations.Theater
     (
@@ -71,6 +80,39 @@ DROP TABLE IF EXISTS MovieOperations.Movie
          CONSTRAINT [PK_MovieOperations_Seat_SeatID] PRIMARY KEY CLUSTERED ( SeatID ASC )
     );
 
+    CREATE TABLE MovieOperations.Director
+    (
+        DirectorID INT NOT NULL,
+        FirstName NVARCHAR(128) NOT NULL,
+        LastName NVARCHAR(128) NOT NULL
 
+         CONSTRAINT [PK_MovieOperations_Director_DirectorID] PRIMARY KEY CLUSTERED ( DirectorID ASC )
+    );
+
+    CREATE TABLE MovieOperations.Director
+    (
+        DirectorID INT NOT NULL,
+        FirstName NVARCHAR(128) NOT NULL,
+        LastName NVARCHAR(128) NOT NULL
+
+         CONSTRAINT [PK_MovieOperations_Director_DirectorID] PRIMARY KEY CLUSTERED ( DirectorID ASC )
+    );
+
+    CREATE TABLE MovieOperations.Genre
+    (
+        GenreID INT NOT NULL,
+        GenreType NVARCHAR(128) NOT NULL
+
+         CONSTRAINT [PK_MovieOperations_Genre_GenreID] PRIMARY KEY CLUSTERED ( GenreID ASC )
+    );
+
+    CREATE TABLE MovieOperations.MovieGenres
+    (
+        MovieGenreID INT NOT NULL,
+        MovieID INT NOT NULL,
+        GenreID INT NOT NULL
+
+         CONSTRAINT [PK_MovieOperations_MovieGenres_MovieGenreID] PRIMARY KEY CLUSTERED ( MovieGenreID ASC )
+    );
 
 	
