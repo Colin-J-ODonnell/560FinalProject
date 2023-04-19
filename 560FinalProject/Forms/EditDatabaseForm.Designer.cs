@@ -355,14 +355,14 @@
             // 
             // actorFirstName_textbox
             // 
-            this.actorFirstName_textbox.Location = new System.Drawing.Point(208, 737);
+            this.actorFirstName_textbox.Location = new System.Drawing.Point(226, 737);
             this.actorFirstName_textbox.Name = "actorFirstName_textbox";
             this.actorFirstName_textbox.Size = new System.Drawing.Size(385, 38);
             this.actorFirstName_textbox.TabIndex = 83;
             // 
             // actorLastName_textbox
             // 
-            this.actorLastName_textbox.Location = new System.Drawing.Point(206, 798);
+            this.actorLastName_textbox.Location = new System.Drawing.Point(224, 798);
             this.actorLastName_textbox.Name = "actorLastName_textbox";
             this.actorLastName_textbox.Size = new System.Drawing.Size(387, 38);
             this.actorLastName_textbox.TabIndex = 82;
@@ -370,7 +370,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(42, 801);
+            this.label12.Location = new System.Drawing.Point(60, 801);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(158, 32);
             this.label12.TabIndex = 81;
@@ -379,7 +379,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(42, 740);
+            this.label13.Location = new System.Drawing.Point(60, 740);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(159, 32);
             this.label13.TabIndex = 80;
@@ -389,7 +389,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Segoe UI Symbol", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(21, 678);
+            this.label11.Location = new System.Drawing.Point(39, 678);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(223, 46);
             this.label11.TabIndex = 79;
