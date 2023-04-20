@@ -14,9 +14,11 @@ namespace _560FinalProject
         [STAThread]
         static void Main()
         {
+            string connectionString = @"Server=(localdb)\MSSQLLocalDb;Database=rosen;Integrated Security=SSPI;";
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            GenerateMovieTables.GenerateTables(@"Server=(localdb)\MSSQLLocalDb;Database=rosen;Integrated Security=SSPI;");
+            GenerateOrDropTables.TableQuery(connectionString);
+            GenerateMovieTables.GenerateTables(connectionString);
             Application.Run(new OpeningForm());
         }
     }

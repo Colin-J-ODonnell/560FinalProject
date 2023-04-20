@@ -8,9 +8,6 @@ BEGIN
    EXEC(N'CREATE SCHEMA [MovieOperations] AUTHORIZATION [dbo]');
 END;
 
-USE rosen;
-EXEC sp_help CreateTheater;
-
 DROP TABLE IF EXISTS MovieOperations.SeatReservation
 DROP TABLE IF EXISTS MovieOperations.Reservation
 DROP TABLE IF EXISTS MovieOperations.MovieGenres
