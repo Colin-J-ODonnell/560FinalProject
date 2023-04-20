@@ -35,6 +35,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -70,6 +71,7 @@
     <Compile Include="Forms\Database_OutputForm.Designer.cs">
       <DependentUpon>Database_OutputForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="GenerateMovieTables.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Forms\ScheduledScreeningsForm.cs">
@@ -128,6 +130,7 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Queries\MovieOperations.CreateTheater.sql" />
     <Content Include="Queries\PopulateTables.sql" />
     <Content Include="Queries\Tables.sql" />
   </ItemGroup>

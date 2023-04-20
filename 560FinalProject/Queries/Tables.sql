@@ -1,6 +1,15 @@
-﻿IF SCHEMA_ID(N'MovieOperations') IS NULL
-	EXEC(N'CREATE SCHEMA [MovieOperations];');
-GO
+﻿IF NOT EXISTS
+   (
+      SELECT *
+      FROM sys.schemas s
+      WHERE s.[name] = N'MovieOperations'
+   )
+BEGIN
+   EXEC(N'CREATE SCHEMA [MovieOperations] AUTHORIZATION [dbo]');
+END;
+
+USE rosen;
+EXEC sp_help CreateTheater;
 
 DROP TABLE IF EXISTS MovieOperations.SeatReservation
 DROP TABLE IF EXISTS MovieOperations.Reservation
