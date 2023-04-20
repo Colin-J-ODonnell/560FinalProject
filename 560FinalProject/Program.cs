@@ -16,7 +16,7 @@ namespace _560FinalProject
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //GenerateMovieTables.GenerateTables(@"Server=(localdb)\MSSQLLocalDb;Database=rosen;Integrated Security=SSPI;");
+            GenerateMovieTables.GenerateTables(@"Server=(localdb)\MSSQLLocalDb;Database=rosen;Integrated Security=SSPI;");
             Application.Run(new OpeningForm());
         }
     }

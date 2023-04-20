@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE MovieOperations.CreateTheater
+﻿CREATE OR ALTER PROCEDURE MovieOperations.CreateTheater
    @Name NVARCHAR(128),
    @Address NVARCHAR(128),
    @TheaterID INT OUTPUT
