@@ -9,17 +9,15 @@ namespace _560FinalProject
     public class Movie
     {
         public int MovieID;
-        public int DirectorID;
         public string Title;
         public int Duration;
         public int ReleaseYear;
         public string Gross;
         public double Rating;
 
-        public Movie(int movieID, int directorID, string title, int duration, int releaseYear, string gross, double rating)
+        public Movie(int movieID, string title, int duration, int releaseYear, string gross, double rating)
         {
             MovieID = movieID;
-            DirectorID = directorID;
             Title = title;
             Duration = duration;
             ReleaseYear = releaseYear;
@@ -33,7 +31,6 @@ namespace _560FinalProject
         public Movie()
         {
             MovieID = 696969;
-            DirectorID = 6969;
             Title = "Placeholder Movie";
             Duration = 420;
             ReleaseYear = 3000;

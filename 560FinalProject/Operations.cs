@@ -44,9 +44,6 @@ namespace _560FinalProject
                         var p = command.Parameters.Add("MovieID", SqlDbType.Int);
                         p.Direction = ParameterDirection.Output;
 
-                        var pp = command.Parameters.Add("DirectorID", SqlDbType.Int);
-                        pp.Direction = ParameterDirection.Output;
-
                         connection.Open();
 
                         command.ExecuteNonQuery();
@@ -54,9 +51,8 @@ namespace _560FinalProject
                         transaction.Complete();
 
                         var movieid = (int)command.Parameters["MovieID"].Value;
-                        var directorid = (int)command.Parameters["DirectorID"].Value;
 
-                        return new Movie(movieid, directorid, title, duration, releaseYear, gross, rating);
+                        return new Movie(movieid, title, duration, releaseYear, gross, rating);
                     }
                 }
             }
