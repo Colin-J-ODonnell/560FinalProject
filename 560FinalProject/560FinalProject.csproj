@@ -47,6 +47,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\Actor.cs" />
+    <Compile Include="Models\Director.cs" />
+    <Compile Include="Models\Genre.cs" />
+    <Compile Include="Models\Movie.cs" />
+    <Compile Include="Models\Room.cs" />
     <Compile Include="Forms\EditDatabaseForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -87,6 +92,8 @@
     <Compile Include="Forms\Screenings_OutputForm.Designer.cs">
       <DependentUpon>Screenings_OutputForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\Seat.cs" />
+    <Compile Include="Models\Theater.cs" />
     <EmbeddedResource Include="Forms\EditDatabaseForm.resx">
       <DependentUpon>EditDatabaseForm.cs</DependentUpon>
     </EmbeddedResource>
