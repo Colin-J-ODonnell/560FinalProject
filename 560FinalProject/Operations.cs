@@ -20,11 +20,14 @@ namespace _560FinalProject
             cs = connectionString;
         }
 
+        /// <summary>
+        /// Creates a Movie with the given parameters.
+        /// </summary>
         public Movie CreateMovie(string title, int duration, int releaseYear, string gross, double rating)
         {
             // Verify parameters.
-            if (title == " ")
-                throw new ArgumentException("The parameter cannot be null or empty.");
+            if (string.IsNullOrWhiteSpace(title)) throw new ArgumentException("The parameter cannot be null or empty.");
+            if (string.IsNullOrWhiteSpace(gross)) throw new ArgumentException("The parameter cannot be null or empty.");
 
             // Save to database.
             using (var transaction = new TransactionScope())
@@ -35,11 +38,11 @@ namespace _560FinalProject
                     {
                         command.CommandType = CommandType.StoredProcedure;
 
-                        if (title != " ") command.Parameters.AddWithValue("Title", title);
-                        if (duration != 0) command.Parameters.AddWithValue("Duration", duration);
-                        if (releaseYear != 0) command.Parameters.AddWithValue("ReleaseYear", releaseYear);
-                        if (gross != " ") command.Parameters.AddWithValue("Gross", gross);
-                        if (rating != 0) command.Parameters.AddWithValue("Rating", rating);
+                        command.Parameters.AddWithValue("Title", title);
+                        command.Parameters.AddWithValue("Duration", duration);
+                        command.Parameters.AddWithValue("ReleaseYear", releaseYear);
+                        command.Parameters.AddWithValue("Gross", gross);
+                        command.Parameters.AddWithValue("Rating", rating);
 
                         var p = command.Parameters.Add("MovieID", SqlDbType.Int);
                         p.Direction = ParameterDirection.Output;
