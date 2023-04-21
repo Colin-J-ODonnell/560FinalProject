@@ -11,7 +11,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace _560FinalProject
 {
-    public static class GenerateMovieTables
+    public static class GenerateMovies
     {
         public static void GenerateTables(string connectionString)
         {

@@ -18,7 +18,7 @@ namespace _560FinalProject
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             GenerateOrDropTables.TableQuery(connectionString);
-            GenerateMovieTables.GenerateTables(connectionString);
+            GenerateMovies.GenerateTables(connectionString);
             Application.Run(new OpeningForm());
         }
     }
