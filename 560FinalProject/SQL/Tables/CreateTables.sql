@@ -1,23 +1,4 @@
-﻿IF NOT EXISTS
-   (
-      SELECT *
-      FROM sys.schemas s
-      WHERE s.[name] = N'MovieOperations'
-   )
-BEGIN
-   EXEC(N'CREATE SCHEMA [MovieOperations] AUTHORIZATION [dbo]');
-END;
-
-DROP TABLE IF EXISTS MovieOperations.MovieGenres
-DROP TABLE IF EXISTS MovieOperations.Genre
-DROP TABLE IF EXISTS MovieOperations.MovieShowtime
-DROP TABLE IF EXISTS MovieOperations.Room
-DROP TABLE IF EXISTS MovieOperations.Theater
-DROP TABLE IF EXISTS MovieOperations.MovieCast
-DROP TABLE IF EXISTS MovieOperations.Actor
-DROP TABLE IF EXISTS MovieOperations.Movie
-
-CREATE TABLE MovieOperations.Movie
+﻿CREATE TABLE MovieOperations.Movie
 (
     MovieId INT NOT NULL IDENTITY(1, 1),
     Title NVARCHAR(128) NOT NULL,

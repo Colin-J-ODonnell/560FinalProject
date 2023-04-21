@@ -20,6 +20,7 @@ namespace _560FinalProject
 
             string theaterName = "AMC Empire";
             string address = "420 Block";
+
             using (var transaction = new TransactionScope())
             {
                 using (var connection = new SqlConnection(connectionString))

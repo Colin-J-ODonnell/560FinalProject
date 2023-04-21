@@ -71,7 +71,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IMovieOperations.cs" />
+    <Compile Include="Models\MovieShowtime.cs" />
     <Compile Include="Operations.cs" />
     <Compile Include="Models\Actor.cs" />
     <Compile Include="Models\Genre.cs" />
@@ -101,8 +101,8 @@
     <Compile Include="Forms\Database_OutputForm.Designer.cs">
       <DependentUpon>Database_OutputForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="GenerateMovies.cs" />
-    <Compile Include="GenerateOrDropTables.cs" />
+    <Compile Include="Stuff2Delete\GenerateMovies.cs" />
+    <Compile Include="Stuff2Delete\GenerateOrDropTables.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Forms\ScheduledScreeningsForm.cs">
@@ -162,10 +162,14 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Queries\MovieOperations.CreateMovie.sql" />
-    <Content Include="Queries\MovieOperations.CreateTheater.sql" />
-    <Content Include="Queries\PopulateTables.sql" />
-    <Content Include="Queries\MovieOperations.Tables.sql" />
+    <Content Include="SQL\Operations\MovieOperations.CreateActor.sql" />
+    <Content Include="SQL\Operations\MovieOperations.CreateMovieShowtime.sql" />
+    <Content Include="SQL\Operations\MovieOperations.CreateRoom.sql" />
+    <Content Include="SQL\Operations\MovieOperations.CreateTheater.sql" />
+    <Content Include="SQL\Data\PopulateTables.sql" />
+    <Content Include="SQL\Tables\DropTables.sql" />
+    <Content Include="SQL\Tables\CreateTables.sql" />
+    <Content Include="SQL\Schemas\MovieOperations.sql" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
