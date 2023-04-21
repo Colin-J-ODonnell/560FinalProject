@@ -20,7 +20,7 @@ namespace _560FinalProject
             cs = connectionString;
         }
 
-        public Movie CreateMovie(string title, int duration, int releaseYear, double gross, double rating)
+        public Movie CreateMovie(string title, int duration, int releaseYear, string gross, double rating)
         {
             // Verify parameters.
             if (title == " ")
@@ -31,20 +31,15 @@ namespace _560FinalProject
             {
                 using (var connection = new SqlConnection(cs))
                 {
-                    using (var command = new SqlCommand("Movie.CreateMovie", connection))
+                    using (var command = new SqlCommand("MovieOperations.CreateMovie", connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
 
                         if (title != " ") command.Parameters.AddWithValue("Title", title);
-                        else title = null;
                         if (duration != 0) command.Parameters.AddWithValue("Duration", duration);
-                        else duration = 0;
                         if (releaseYear != 0) command.Parameters.AddWithValue("ReleaseYear", releaseYear);
-                        else releaseYear = 0;
-                        if (gross != 0) command.Parameters.AddWithValue("Gross", gross);
-                        else gross = 0;
+                        if (gross != " ") command.Parameters.AddWithValue("Gross", gross);
                         if (rating != 0) command.Parameters.AddWithValue("Rating", rating);
-                        else rating = 0;
 
                         var p = command.Parameters.Add("MovieID", SqlDbType.Int);
                         p.Direction = ParameterDirection.Output;

@@ -164,6 +164,7 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Queries\MovieOperations.CreateMovie.sql" />
     <Content Include="Queries\MovieOperations.CreateTheater.sql" />
     <Content Include="Queries\PopulateTables.sql" />
     <Content Include="Queries\MovieOperations.Tables.sql" />

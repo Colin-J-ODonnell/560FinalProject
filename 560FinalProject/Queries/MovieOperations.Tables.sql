@@ -38,7 +38,7 @@ CREATE TABLE MovieOperations.Movie
         REFERENCES MovieOperations.Director(DirectorID),
     ReleaseYear INT NOT NULL,
 	Duration INT NOT NULL,
-    Revenue NVARCHAR(128) NULL,
+    Gross NVARCHAR(128) NULL,
     Rating FLOAT NOT NULL
 
     CONSTRAINT [PK_MovieOperations_Movie_MovieId] PRIMARY KEY CLUSTERED

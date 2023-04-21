@@ -13,10 +13,10 @@ namespace _560FinalProject
         public string Title;
         public int Duration;
         public int ReleaseYear;
-        public double Gross;
+        public string Gross;
         public double Rating;
 
-        public Movie(int movieID, int directorID, string title, int duration, int releaseYear, double gross, double rating)
+        public Movie(int movieID, int directorID, string title, int duration, int releaseYear, string gross, double rating)
         {
             MovieID = movieID;
             DirectorID = directorID;
@@ -37,7 +37,7 @@ namespace _560FinalProject
             Title = "Placeholder Movie";
             Duration = 420;
             ReleaseYear = 3000;
-            Gross = 1000000000;
+            Gross = "N/A";
             Rating = 10;
         }
     }
