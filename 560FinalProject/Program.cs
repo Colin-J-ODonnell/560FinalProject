@@ -14,14 +14,17 @@ namespace _560FinalProject
         [STAThread]
         static void Main()
         {
+            // MAKE SURE THIS STRING IS SET TO YOUR LOCAL DATABASE!
             string connectionString = @"Server=(localdb)\MSSQLLocalDb;Database=DatabaseProject;Integrated Security=SSPI;";
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+
             // GenerateOrDropTables.TableQuery(connectionString);
             // GenerateMovies.GenerateTables(connectionString);
 
             Operations OP = new Operations(connectionString);
-            OP.CreateMovie("Billy Boi", 180, 1492, "$1,000", 0.5);
+            OP.CreateActor("Billy", "Boi");
 
             Application.Run(new OpeningForm());
         }

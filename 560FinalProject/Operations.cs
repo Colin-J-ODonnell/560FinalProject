@@ -13,12 +13,12 @@ namespace _560FinalProject
 {
     public class Operations
     {
+        /// <summary>
+        /// This is the connection string to the local database (may be different per user).
+        /// </summary>
         private readonly string cs;
 
-        public Operations(string connectionString)
-        {
-            cs = connectionString;
-        }
+        public Operations(string connectionString) { cs = connectionString; }
 
         /// <summary>
         /// Creates an Actor with the given parameters.
