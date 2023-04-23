@@ -5,6 +5,19 @@ VisualStudioVersion = 17.3.32929.385
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "560FinalProject", "560FinalProject\560FinalProject.csproj", "{A1EFAEAF-85CD-4276-B802-4EA3CAFA53C4}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B14192DF-2BBB-4991-95B3-90AD71D8EAB3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{289DE5A0-87CF-47F5-A378-21C9910CC29F}"
+	ProjectSection(SolutionItems) = preProject
+		CreateDatabase.sql = CreateDatabase.sql
+	EndProjectSection
+EndProject
+Project("{F5034706-568F-408A-B7B3-4D38C6DB8A32}") = "CreateDatabase", "CreateDatabase.ps1\CreateDatabase.pssproj", "{6CAFC0C6-A428-4D30-A9F9-700E829FEA51}"
+EndProject
+Project("{F5034706-568F-408A-B7B3-4D38C6DB8A32}") = "DropDatabases", "DropDatabases\DropDatabases.pssproj", "{564B71AB-0299-47BD-9F69-F77AA5DD64BC}"
+EndProject
+Project("{F5034706-568F-408A-B7B3-4D38C6DB8A32}") = "RebuildDatabase", "RebuildDatabase\RebuildDatabase.pssproj", "{CBC52CAD-58A6-463D-824D-A536F97FEB81}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,9 +28,27 @@ Global
 		{A1EFAEAF-85CD-4276-B802-4EA3CAFA53C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A1EFAEAF-85CD-4276-B802-4EA3CAFA53C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A1EFAEAF-85CD-4276-B802-4EA3CAFA53C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6CAFC0C6-A428-4D30-A9F9-700E829FEA51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6CAFC0C6-A428-4D30-A9F9-700E829FEA51}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6CAFC0C6-A428-4D30-A9F9-700E829FEA51}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6CAFC0C6-A428-4D30-A9F9-700E829FEA51}.Release|Any CPU.Build.0 = Release|Any CPU
+		{564B71AB-0299-47BD-9F69-F77AA5DD64BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{564B71AB-0299-47BD-9F69-F77AA5DD64BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{564B71AB-0299-47BD-9F69-F77AA5DD64BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{564B71AB-0299-47BD-9F69-F77AA5DD64BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CBC52CAD-58A6-463D-824D-A536F97FEB81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CBC52CAD-58A6-463D-824D-A536F97FEB81}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CBC52CAD-58A6-463D-824D-A536F97FEB81}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CBC52CAD-58A6-463D-824D-A536F97FEB81}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{289DE5A0-87CF-47F5-A378-21C9910CC29F} = {B14192DF-2BBB-4991-95B3-90AD71D8EAB3}
+		{6CAFC0C6-A428-4D30-A9F9-700E829FEA51} = {289DE5A0-87CF-47F5-A378-21C9910CC29F}
+		{564B71AB-0299-47BD-9F69-F77AA5DD64BC} = {289DE5A0-87CF-47F5-A378-21C9910CC29F}
+		{CBC52CAD-58A6-463D-824D-A536F97FEB81} = {B14192DF-2BBB-4991-95B3-90AD71D8EAB3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3E633B0A-A268-46A3-A311-06C5B484A0E7}
