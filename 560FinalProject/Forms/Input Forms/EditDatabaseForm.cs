@@ -8,23 +8,19 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace _560FinalProject
+namespace _560FinalProject.Forms
 {
-    public partial class MovieDatabaseForm : Form
+    public partial class EditDatabaseForm : Form
     {
         OpeningForm OF { get; set; }
 
-        public MovieDatabaseForm(OpeningForm of)
+        Operations O { get; set; }
+
+        public EditDatabaseForm(OpeningForm of, Operations o)
         {
             InitializeComponent();
             OF = of;
-        }
-
-        private void search_button_Click(object sender, EventArgs e)
-        {
-            Database_OutputForm of = new Database_OutputForm(this);
-            this.Hide();
-            of.Show();
+            O = o;
         }
 
         private void back_button_Click(object sender, EventArgs e)
@@ -33,9 +29,14 @@ namespace _560FinalProject
             OF.Show();
         }
 
-        private void MovieDatabaseForm_Load(object sender, EventArgs e)
+        private void delete_button_Click(object sender, EventArgs e)
         {
             
+        }
+
+        private void truncate_button_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

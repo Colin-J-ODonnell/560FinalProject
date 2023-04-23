@@ -8,10 +8,10 @@ namespace _560FinalProject
 {
     public class Room
     {
-        public int RoomID;
-        public int TheaterID;
-        public int RoomNumber;
-        public int Capacity;
+        public int RoomID { get; set; }
+        public int TheaterID { get; set; }
+        public int RoomNumber { get; set; }
+        public int Capacity { get; set; }
 
         public Room(int roodid, int theaterid, int roomnumber, int capacity)
         {

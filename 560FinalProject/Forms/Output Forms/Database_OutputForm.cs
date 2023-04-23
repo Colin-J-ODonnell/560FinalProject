@@ -8,32 +8,25 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace _560FinalProject.Forms
+namespace _560FinalProject
 {
-    public partial class EditDatabaseForm : Form
+    public partial class Database_OutputForm : Form
     {
-        OpeningForm OF { get; set; }
+        MovieDatabaseForm MDF { get; set; }
 
-        public EditDatabaseForm(OpeningForm of)
+        Operations O { get; set; }
+
+        public Database_OutputForm(MovieDatabaseForm mdf, Operations o)
         {
             InitializeComponent();
-            OF = of;
+            MDF = mdf;
+            O = o;
         }
 
         private void back_button_Click(object sender, EventArgs e)
         {
             this.Close();
-            OF.Show();
-        }
-
-        private void delete_button_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void truncate_button_Click(object sender, EventArgs e)
-        {
-
+            MDF.Show();
         }
     }
 }

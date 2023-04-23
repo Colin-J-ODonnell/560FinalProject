@@ -8,9 +8,9 @@ namespace _560FinalProject
 {
     public class Theater
     {
-        public int TheaterID;
-        public string Name;
-        public string Address;
+        public int TheaterID { get; set; }
+        public string Name { get; set; }
+        public string Address { get; set; }
 
         public Theater(int theaterID, string name, string address)
         {

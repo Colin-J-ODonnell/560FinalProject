@@ -8,8 +8,8 @@ namespace _560FinalProject
 {
     public class Genre
     {
-        public int GenreID;
-        public string Type;
+        public int GenreID { get; set; }
+        public string Type { get; set; }
 
         public Genre(int genreID, string type)
         {

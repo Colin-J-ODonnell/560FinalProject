@@ -8,9 +8,9 @@ namespace _560FinalProject
 {
     public class Actor
     {
-        public int ActorID;
-        public string FirstName;
-        public string LastName;
+        public int ActorID { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
 
         public Actor(int actorID, string firstName, string lastName)
         {

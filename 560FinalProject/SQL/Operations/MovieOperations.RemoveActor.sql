@@ -1,0 +1,7 @@
+﻿CREATE OR ALTER PROCEDURE MovieOperations.RemoveActor
+    @FirstName NVARCHAR(128), 
+    @LastName NVARCHAR(128),
+    @ActorID INT OUTPUT
+AS
+
+-- ADD CODE HERE FOR REMOVING ACTOR --

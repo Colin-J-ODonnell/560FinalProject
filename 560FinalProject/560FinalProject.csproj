@@ -72,22 +72,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\MovieCast.cs" />
+    <Compile Include="Models\MovieGenres.cs" />
     <Compile Include="Models\MovieShowtime.cs" />
     <Compile Include="Operations.cs" />
     <Compile Include="Models\Actor.cs" />
     <Compile Include="Models\Genre.cs" />
     <Compile Include="Models\Movie.cs" />
     <Compile Include="Models\Room.cs" />
-    <Compile Include="Forms\EditDatabaseForm.cs">
+    <Compile Include="Forms\Input Forms\EditDatabaseForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\EditDatabaseForm.Designer.cs">
+    <Compile Include="Forms\Input Forms\EditDatabaseForm.Designer.cs">
       <DependentUpon>EditDatabaseForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\MovieDatabaseForm.cs">
+    <Compile Include="Forms\Input Forms\MovieDatabaseForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\MovieDatabaseForm.Designer.cs">
+    <Compile Include="Forms\Input Forms\MovieDatabaseForm.Designer.cs">
       <DependentUpon>MovieDatabaseForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\OpeningForm.cs">
@@ -96,39 +98,39 @@
     <Compile Include="Forms\OpeningForm.Designer.cs">
       <DependentUpon>OpeningForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Database_OutputForm.cs">
+    <Compile Include="Forms\Output Forms\Database_OutputForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Database_OutputForm.Designer.cs">
+    <Compile Include="Forms\Output Forms\Database_OutputForm.Designer.cs">
       <DependentUpon>Database_OutputForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Stuff2Delete\GenerateMovies.cs" />
     <Compile Include="Stuff2Delete\GenerateOrDropTables.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Forms\ScheduledScreeningsForm.cs">
+    <Compile Include="Forms\Input Forms\ScheduledScreeningsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\ScheduledScreeningsForm.Designer.cs">
+    <Compile Include="Forms\Input Forms\ScheduledScreeningsForm.Designer.cs">
       <DependentUpon>ScheduledScreeningsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Screenings_OutputForm.cs">
+    <Compile Include="Forms\Output Forms\Screenings_OutputForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Screenings_OutputForm.Designer.cs">
+    <Compile Include="Forms\Output Forms\Screenings_OutputForm.Designer.cs">
       <DependentUpon>Screenings_OutputForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\Theater.cs" />
-    <EmbeddedResource Include="Forms\EditDatabaseForm.resx">
+    <EmbeddedResource Include="Forms\Input Forms\EditDatabaseForm.resx">
       <DependentUpon>EditDatabaseForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\MovieDatabaseForm.resx">
+    <EmbeddedResource Include="Forms\Input Forms\MovieDatabaseForm.resx">
       <DependentUpon>MovieDatabaseForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\OpeningForm.resx">
       <DependentUpon>OpeningForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Database_OutputForm.resx">
+    <EmbeddedResource Include="Forms\Output Forms\Database_OutputForm.resx">
       <DependentUpon>Database_OutputForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -141,10 +143,10 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Forms\ScheduledScreeningsForm.resx">
+    <EmbeddedResource Include="Forms\Input Forms\ScheduledScreeningsForm.resx">
       <DependentUpon>ScheduledScreeningsForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Screenings_OutputForm.resx">
+    <EmbeddedResource Include="Forms\Output Forms\Screenings_OutputForm.resx">
       <DependentUpon>Screenings_OutputForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
@@ -169,6 +171,10 @@
     <Content Include="SQL\Operations\MovieOperations.CreateRoom.sql" />
     <Content Include="SQL\Operations\MovieOperations.CreateTheater.sql" />
     <Content Include="SQL\Data\PopulateTables.sql" />
+    <Content Include="SQL\Operations\MovieOperations.RemoveActor.sql" />
+    <Content Include="SQL\Operations\MovieOperations.RemoveMovieShowtime.sql" />
+    <Content Include="SQL\Operations\MovieOperations.RemoveRoom.sql" />
+    <Content Include="SQL\Operations\MovieOperations.RemoveTheater.sql" />
     <Content Include="SQL\Tables\DropTables.sql" />
     <Content Include="SQL\Tables\CreateTables.sql" />
     <Content Include="SQL\Schemas\MovieOperations.sql" />

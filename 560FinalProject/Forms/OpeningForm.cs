@@ -13,9 +13,12 @@ namespace _560FinalProject
 {
     public partial class OpeningForm : Form
     {
-        public OpeningForm()
+        Operations O { get; set; }
+
+        public OpeningForm(Operations o)
         {
             InitializeComponent();
+            O = o;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -25,21 +28,21 @@ namespace _560FinalProject
 
         private void database_button_Click(object sender, EventArgs e)
         {
-            MovieDatabaseForm mdf = new MovieDatabaseForm(this);
+            MovieDatabaseForm mdf = new MovieDatabaseForm(this, O);
             this.Hide();
             mdf.Show();
         }
 
         private void schedule_button_Click(object sender, EventArgs e)
         {
-            ScheduledScreeningsForm ssf = new ScheduledScreeningsForm(this);
+            ScheduledScreeningsForm ssf = new ScheduledScreeningsForm(this, O);
             this.Hide();
             ssf.Show();
         }
 
         private void edit_button_Click(object sender, EventArgs e)
         {
-            EditDatabaseForm edf = new EditDatabaseForm(this);
+            EditDatabaseForm edf = new EditDatabaseForm(this, O);
             this.Hide();
             edf.Show();
         }

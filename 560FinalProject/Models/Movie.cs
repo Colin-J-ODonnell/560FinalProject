@@ -8,12 +8,12 @@ namespace _560FinalProject
 {
     public class Movie
     {
-        public int MovieID;
-        public string Title;
-        public int Duration;
-        public int ReleaseYear;
-        public string Gross;
-        public double Rating;
+        public int MovieID { get; set; }
+        public string Title { get; set; }
+        public int Duration { get; set; }
+        public int ReleaseYear { get; set; }
+        public string Gross { get; set; }
+        public double Rating { get; set; }
 
         public Movie(int movieID, string title, int duration, int releaseYear, string gross, double rating)
         {

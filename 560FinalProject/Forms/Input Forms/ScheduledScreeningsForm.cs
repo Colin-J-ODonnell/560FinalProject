@@ -14,10 +14,13 @@ namespace _560FinalProject
     {
         OpeningForm OF { get; set; }
 
-        public ScheduledScreeningsForm(OpeningForm of)
+        Operations O { get; set; }
+
+        public ScheduledScreeningsForm(OpeningForm of, Operations o)
         {
             InitializeComponent();
             OF = of;
+            O = o;
         }
 
         private void search_button_Click(object sender, EventArgs e)
