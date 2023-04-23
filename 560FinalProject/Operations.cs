@@ -158,7 +158,7 @@ namespace _560FinalProject
                 {
                     using (var command = new SqlCommand("MovieOperations.CreateTheater", connection))
                     {
-                        command.CommandType = CommandType.StoredProcedure;
+                        //command.CommandType = CommandType.StoredProcedure;
 
                         command.Parameters.AddWithValue("Name", name);
                         command.Parameters.AddWithValue("Address", address);
