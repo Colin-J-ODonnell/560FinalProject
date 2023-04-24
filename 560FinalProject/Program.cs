@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using System.Collections.ObjectModel;
 namespace _560FinalProject
 {
     internal static class Program
@@ -23,8 +23,9 @@ namespace _560FinalProject
             // GenerateOrDropTables.TableQuery(connectionString);
             // GenerateMovies.GenerateTables(connectionString);
 
+
             Operations OP = new Operations(connectionString);
-            OP.CreateActor("Billy", "Boi");
+            OP.CreateActor("Billy1", "Boi");
 
             Application.Run(new OpeningForm(OP));
         }
