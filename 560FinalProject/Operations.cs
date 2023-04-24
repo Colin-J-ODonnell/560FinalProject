@@ -57,7 +57,7 @@ namespace _560FinalProject
                     }
                 }
             }
-            using (var transaction = new TransactionScope())
+            /*using (var transaction = new TransactionScope())
             {
                 using (var connection = new SqlConnection(cs))
                 {
@@ -77,7 +77,7 @@ namespace _560FinalProject
                         transaction.Complete();
                     }
                 }
-            }
+            }*/
             return new Actor(2, "jack", "rico");
         }
 
