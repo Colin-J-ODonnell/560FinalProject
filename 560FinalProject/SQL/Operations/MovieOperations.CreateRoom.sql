@@ -1,13 +1,12 @@
 ﻿CREATE OR ALTER PROCEDURE MovieOperations.CreateRoom
     @RoomNumber INT,
     @Capacity INT,
-    @RoomID INT OUTPUT,
-    @TheaterID INT OUTPUT
+    @TheaterID INT,
+    @RoomID INT OUTPUT
 AS
 
-INSERT MovieOperations.Room(RoomNumber, [Capacity])
-VALUES(@RoomNumber, @Capacity);
+INSERT MovieOperations.Room(RoomNumber, [Capacity], TheaterID)
+VALUES(@RoomNumber, @Capacity, @TheaterID);
 
 SET @RoomID = SCOPE_IDENTITY();
-SET @TheaterID = SCOPE_IDENTITY();
 GO

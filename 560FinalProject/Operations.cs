@@ -206,11 +206,10 @@ namespace _560FinalProject
         /// <summary>
         /// Removes an Actor with the given parameters.
         /// </summary>
-        public void RemoveActor(string firstName, string lastName)
+        public void RemoveActor(int id)
         {
             // Verify parameters.
-            if (string.IsNullOrWhiteSpace(firstName)) throw new ArgumentException("The parameter cannot be null or empty.");
-            if (string.IsNullOrWhiteSpace(lastName)) throw new ArgumentException("The parameter cannot be null or empty.");
+            if (string.IsNullOrWhiteSpace(Convert.ToString(id))) throw new ArgumentException("The parameter cannot be null or empty.");
 
             // Save to database.
             using (var transaction = new TransactionScope())
@@ -221,8 +220,7 @@ namespace _560FinalProject
                     {
                         command.CommandType = CommandType.StoredProcedure;
 
-                        command.Parameters.AddWithValue("FirstName", firstName);
-                        command.Parameters.AddWithValue("LastName", lastName);
+                        command.Parameters.AddWithValue("@ActorID", id);
 
                         // Find a way to retrieve the correct actorID. Maybe through an sql program?
 
@@ -246,7 +244,7 @@ namespace _560FinalProject
         /// <summary>
         /// Removes an MovieShowtime with the given parameters.
         /// </summary>
-        public void RemoveMovieShowtime(DateTime movieTime)
+        public void RemoveMovieShowtime(int id)
         {
             // Verify parameters.
             // None Needed Here.
@@ -260,7 +258,7 @@ namespace _560FinalProject
                     {
                         command.CommandType = CommandType.StoredProcedure;
 
-                        command.Parameters.AddWithValue("MovieTime", movieTime);
+                        command.Parameters.AddWithValue("@ShowtimeID", id);
 
                         // Find a way to retrieve the correct actorID. Maybe through an sql program?
 
@@ -290,7 +288,7 @@ namespace _560FinalProject
         /// <summary>
         /// Removes an Room with the given parameters.
         /// </summary>
-        public void RemoveRoom(int roomnumber, int capacity)
+        public void RemoveRoom(int id)
         {
             // Verify parameters.
             // None Needed Here.
@@ -304,8 +302,7 @@ namespace _560FinalProject
                     {
                         command.CommandType = CommandType.StoredProcedure;
 
-                        command.Parameters.AddWithValue("RoomNumber", roomnumber);
-                        command.Parameters.AddWithValue("Capacity", capacity);
+                        command.Parameters.AddWithValue("@RoomID", id);
 
                         // Find a way to retrieve the correct actorID. Maybe through an sql program?
 
@@ -332,11 +329,9 @@ namespace _560FinalProject
         /// <summary>
         /// Removes an Theater with the given parameters.
         /// </summary>
-        public void RemoveTheater(string name, string address)
+        public void RemoveTheater(int id)
         {
             // Verify parameters.
-            if (string.IsNullOrWhiteSpace(name)) throw new ArgumentException("The parameter cannot be null or empty.");
-            if (string.IsNullOrWhiteSpace(address)) throw new ArgumentException("The parameter cannot be null or empty.");
 
             // Save to database.
             using (var transaction = new TransactionScope())
@@ -347,23 +342,13 @@ namespace _560FinalProject
                     {
                         command.CommandType = CommandType.StoredProcedure;
 
-                        command.Parameters.AddWithValue("Name", name);
-                        command.Parameters.AddWithValue("Address", address);
-
-                        // Find a way to retrieve the correct actorID. Maybe through an sql program?
-
-                        // var p = command.Parameters.Add("TheaterID", SqlDbType.Int);
-                        // p.Direction = ParameterDirection.Output;
+                        command.Parameters.AddWithValue("@TheaterID", id);
 
                         connection.Open();
 
                         command.ExecuteNonQuery();
 
                         transaction.Complete();
-
-                        // var theaterid = (int)command.Parameters["TheaterID"].Value;
-
-                        // return new Theater(theaterid, name, address);
                     }
                 }
             }

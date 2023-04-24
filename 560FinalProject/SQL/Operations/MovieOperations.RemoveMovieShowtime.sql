@@ -1,8 +1,6 @@
 ﻿CREATE OR ALTER PROCEDURE MovieOperations.RemoveMovieShowtime
-    @Showtime DateTime,
-    @ShowtimeID INT OUTPUT,
-    @MovieID INT OUTPUT,
-    @RoomID INT OUTPUT
+    @ShowtimeID INT
 AS
 
--- ADD CODE HERE FOR REMOVIING A MOVIESHOWTIME --
+DELETE FROM MovieOperations.MovieShowtime
+WHERE ShowtimeID = @ShowtimeID

@@ -1,7 +1,6 @@
-﻿CREATE OR ALTER PROCEDURE MovieOperations.CreateTheater
-   @Name NVARCHAR(128),
-   @Address NVARCHAR(128),
-   @TheaterID INT OUTPUT
+﻿CREATE OR ALTER PROCEDURE MovieOperations.RemoveTheater
+   @TheaterID INT
 AS
 
--- ADD CODE HERE FOR REMOVING A THEATER --
+DELETE FROM MovieOperations.Theater
+WHERE TheaterID = @TheaterID
