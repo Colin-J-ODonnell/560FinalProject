@@ -41,3 +41,4 @@ ROWTERMINATOR = '\n'
 GO
 SELECT *
 FROM MovieOperations.Actor
+ 

@@ -25,7 +25,7 @@ namespace _560FinalProject
 
 
             Operations OP = new Operations(connectionString);
-            OP.CreateActor("Billy1", "Boi");
+            OP.CreateActor("Billy3", "Boi");
 
             Application.Run(new OpeningForm(OP));
         }

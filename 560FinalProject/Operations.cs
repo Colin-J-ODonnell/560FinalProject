@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using _560FinalProject.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
+using System.Windows.Forms;
 
 namespace _560FinalProject
 {
@@ -53,11 +54,31 @@ namespace _560FinalProject
                         transaction.Complete();
 
                         var actorid = (int)command.Parameters["ActorID"].Value;
-
-                        return new Actor(actorid, firstName, lastName);
                     }
                 }
             }
+            using (var transaction = new TransactionScope())
+            {
+                using (var connection = new SqlConnection(cs))
+                {
+                    using (var command = new SqlCommand("SELECT * FROM MovieOperations.Actor", connection))
+                    {
+                        connection.Open();
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                for (int i = 0; i < reader.FieldCount; i++)
+                                {
+                                    MessageBox.Show(Convert.ToString(reader.GetValue(i)));
+                                }
+                            }
+                        }
+                        transaction.Complete();
+                    }
+                }
+            }
+            return new Actor(2, "jack", "rico");
         }
 
         /// <summary>
