@@ -15,7 +15,7 @@ namespace _560FinalProject
         static void Main()
         {
             // MAKE SURE THIS STRING IS SET TO YOUR LOCAL DATABASE!
-            string connectionString = @"Server=(localdb)\MSSQLLocalDb;Database=DatabaseProject;Integrated Security=SSPI;";
+            string connectionString = @"Server=(localdb)\MSSQLLocalDb;Database=rosen;Integrated Security=SSPI;";
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
@@ -26,7 +26,7 @@ namespace _560FinalProject
             Operations OP = new Operations(connectionString);
             OP.CreateActor("Billy", "Boi");
 
-            Application.Run(new OpeningForm());
+            Application.Run(new OpeningForm(OP));
         }
     }
 }

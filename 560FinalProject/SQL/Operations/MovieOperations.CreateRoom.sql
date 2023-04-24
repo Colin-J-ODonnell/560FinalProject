@@ -5,7 +5,7 @@
     @TheaterID INT OUTPUT
 AS
 
-INSERT MovieOperations.Room(RoomNumber, Capacity)
+INSERT MovieOperations.Room(RoomNumber, [Capacity])
 VALUES(@RoomNumber, @Capacity);
 
 SET @RoomID = SCOPE_IDENTITY();

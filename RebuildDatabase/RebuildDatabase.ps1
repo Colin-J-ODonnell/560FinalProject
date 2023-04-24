@@ -4,7 +4,7 @@
 
 Param(
    [string] $Server = "(localdb)\MSSQLLocalDb",
-   [string] $Database = "DatabaseProject"
+   [string] $Database = "rosen"
 )
 
 # This script requires the SQL Server module for PowerShell.
@@ -20,38 +20,40 @@ $CurrentDrive = (Get-Location).Drive.Name + ":"
 
 Write-Host ""
 Write-Host "Rebuilding database $Database on $Server..."
+Import-Module sqlserver
+Write-Host "Got Here"
 
 <#
    If on your local machine, you can drop and re-create the database.
 #>
-& ".\Scripts\DropDatabase.ps1" -Database $Database
-& ".\Scripts\CreateDatabase.ps1" -Database $Database
+# & ".\Scripts\DropDatabase.ps1" -Database $Database
+# & ".\Scripts\CreateDatabase.ps1" -Database $Database
 
 <#
    If on the department's server, you don't have permissions to drop or create databases.
    In this case, maintain a script to drop all tables.
 #>
 Write-Host "Dropping tables..."
-Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "PersonData\Sql\Tables\DropTables.sql"
+Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "560FinalProject\Sql\Tables\DropTables.sql"
 
 Write-Host "Creating schema..."
-Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "PersonData\Sql\Schemas\MovieOperations.sql"
+Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "560FinalProject\Sql\Schemas\MovieOperations.sql"
 
 Write-Host "Creating tables..."
-Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "PersonData\Sql\Tables\CreateTables.sql"
+Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "560FinalProject\Sql\Tables\CreateTables.sql"
 
-Write-Host "Stored procedures..."
-Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "PersonData\Sql\Procedures\MovieOperations.CreateActor.sql"
-Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "PersonData\Sql\Procedures\MovieOperations.CreateMovieShowtime.sql"
-Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "PersonData\Sql\Procedures\MovieOperations.CreateRoom.sql"
-Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "PersonData\Sql\Procedures\MovieOperations.CreateTheater.sql"
-Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "PersonData\Sql\Procedures\MovieOperations.RemoveActor.sql"
-Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "PersonData\Sql\Procedures\MovieOperations.RemoveMovieShowtime.sql"
-Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "PersonData\Sql\Procedures\MovieOperations.RemoveRoom.sql"
-Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "PersonData\Sql\Procedures\MovieOperations.RemoveTheater.sql"
+Write-Host "Stored Operations..."
+Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "560FinalProject\Sql\Operations\MovieOperations.CreateActor.sql"
+Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "560FinalProject\Sql\Operations\MovieOperations.CreateMovieShowtime.sql"
+Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "560FinalProject\Sql\Operations\MovieOperations.CreateRoom.sql"
+Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "560FinalProject\Sql\Operations\MovieOperations.CreateTheater.sql"
+Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "560FinalProject\Sql\Operations\MovieOperations.RemoveActor.sql"
+Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "560FinalProject\Sql\Operations\MovieOperations.RemoveMovieShowtime.sql"
+Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "560FinalProject\Sql\Operations\MovieOperations.RemoveRoom.sql"
+Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "560FinalProject\Sql\Operations\MovieOperations.RemoveTheater.sql"
 
-Write-Host "Inserting data..."
-Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "PersonData\Sql\Data\PopulateTables.sql"
+#Write-Host "Inserting data..."
+#Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "Sql\Data\PopulateTables.sql"
 
 Write-Host "Rebuild completed."
 Write-Host ""
