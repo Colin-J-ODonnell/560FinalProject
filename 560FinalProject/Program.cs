@@ -26,7 +26,7 @@ namespace _560FinalProject
 
             Operations OP = new Operations(connectionString);
             OP.CreateActor("Billy3", "Boi");
-
+            //OP.RemoveActor(1002);
             Application.Run(new OpeningForm(OP));
         }
     }

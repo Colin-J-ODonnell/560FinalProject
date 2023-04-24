@@ -1,14 +1,12 @@
 ﻿CREATE OR ALTER PROCEDURE MovieOperations.CreateMovieShowtime
     @Showtime DateTime,
-    @ShowtimeID INT OUTPUT,
-    @MovieID INT OUTPUT,
-    @RoomID INT OUTPUT
+    @MovieID INT,
+    @RoomID INT,
+    @ShowtimeID INT OUTPUT
 AS
 
-INSERT MovieOperations.MovieShowtime(Showtime)
-VALUES(@Showtime);
+INSERT MovieOperations.MovieShowtime(Showtime, MovieID, RoomID)
+VALUES(@Showtime, @MovieID, @RoomID);
 
 SET @ShowtimeID = SCOPE_IDENTITY();
-SET @MovieID = SCOPE_IDENTITY();
-SET @RoomID = SCOPE_IDENTITY();
 GO
