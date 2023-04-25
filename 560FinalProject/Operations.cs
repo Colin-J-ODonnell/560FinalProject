@@ -65,7 +65,7 @@ namespace _560FinalProject
 
         private string UserMovieSearch(List<string> userInput)
         {
-            string startCommand = "SELECT M.MovieID, M.Title, M.ReleaseYear, M.Duration, M.Gross, M.Rating FROM MovieOperations.Movie WHERE ";
+            string startCommand = "SELECT M.MovieID, M.Title, M.ReleaseYear, M.Duration, M.Gross, M.Rating FROM MovieOperations.Movie M WHERE ";
             int catcher = 0;
             for(int i = 0; i < userInput.Count;i++)
             {
