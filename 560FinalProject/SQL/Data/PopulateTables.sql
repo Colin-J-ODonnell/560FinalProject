@@ -2,7 +2,7 @@
 BEGIN
 	BULK
 	INSERT MovieOperations.Movie
-	FROM 'C:\Users\odonn\CIS 560\560FinalProject\Excel Files\movies.csv'
+	FROM 'E:\CIS 560\560FinalProject\Excel Files\movies.csv'
 	WITH
 	(
 	FIRSTROW = 2,
@@ -28,7 +28,7 @@ IF(NOT EXISTS(SELECT 1 FROM MovieOperations.Actor))
 BEGIN
 	BULK
 	INSERT MovieOperations.Actor
-	FROM 'C:\Users\odonn\CIS 560\560FinalProject\Excel Files\actors.csv'
+	FROM 'E:\CIS 560\560FinalProject\Excel Files\actors.csv'
 	WITH
 	(
 	FIRSTROW = 1,

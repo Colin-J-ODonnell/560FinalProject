@@ -467,51 +467,5 @@ namespace _560FinalProject
                 }
             }
         }
-
-        public void GenerateRooms()
-        {
-            using (var transaction = new TransactionScope())
-            {
-                using (var connection = new SqlConnection(cs))
-                {
-                    using (var command = new SqlCommand("SELECT * FROM MovieOperations.Theater", connection))
-                    {
-                        int[] roomNumbers = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25 };
-                        int[] holder = roomNumbers;
-                        connection.Open();
-                        List<Room> rooms = new List<Room>();
-                        using (SqlDataReader reader = command.ExecuteReader())
-                        {
-                            while (reader.Read())
-                            {
-                                Random rand = new Random();
-                                int totalCount = 1;
-                                for (int i = 0; i < reader.FieldCount; i+=4)
-                                {
-                                    roomNumbers = roomNumbers.OrderBy(x => rand.Next()).ToArray();
-                                    int count = (int)reader.GetValue(i+3);
-                                    for(int j = 1; j <= count; j++)
-                                    {
-                                        rooms.Add(new Room(totalCount++, i + 1, roomNumbers[j], rand.Next(4, 15) * 5));
-                                    }
-                                    roomNumbers = holder;
-                                }
-                            }
-                        }
-
-                        transaction.Complete();
-
-                        using (StreamWriter sw = new StreamWriter("ryoutput.txt"))
-                        {
-                            for (int i = 0; i < rooms.Count; i++)
-                            {
-                                string s = Convert.ToString(rooms[i].RoomID) + "," + Convert.ToString(rooms[i].TheaterID) + "," + Convert.ToString(rooms[i].RoomNumber) + "," + Convert.ToString(rooms[i].Capacity);
-                                sw.WriteLine(s);
-                            }
-                        }
-                    }
-                }
-            }
-        }
     }
 }
