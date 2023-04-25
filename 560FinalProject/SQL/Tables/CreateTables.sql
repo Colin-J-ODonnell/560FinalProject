@@ -74,3 +74,13 @@ CREATE TABLE MovieOperations.Genre
         CONSTRAINT [PK_MovieOperations_Genre_GenreID] PRIMARY KEY CLUSTERED ( GenreID ASC )
 );
 
+CREATE TABLE MovieOperations.MovieGenres
+(
+    MovieGenreID INT NOT NULL,
+    MovieID INT NOT NULL
+        REFERENCES MovieOperations.Movie(MovieID),
+    GenreID INT NOT NULL
+        REFERENCES MovieOperations.Genre(GenreID),
+
+        CONSTRAINT [PK_MovieOperations_MovieGenres_MovieGenreID] PRIMARY KEY CLUSTERED ( MovieGenreID ASC )
+);

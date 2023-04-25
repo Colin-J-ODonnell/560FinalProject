@@ -28,8 +28,8 @@ namespace _560FinalProject
             string SQLCommand = "";
             if (ind == 1) SQLCommand = UserMovieSearch(userInput); 
             if (ind == 2) SQLCommand = UserActorSearch(userInput);
-            // if (ind == 3) SQLCommand = UserTDRSearch(userInput);
-            // if (ind == 4) SQLCommand = UserGenreSearch(userInput);
+            if (ind == 3) SQLCommand = UserTDRSearch(userInput);
+            if (ind == 4) SQLCommand = UserGenreSearch(userInput);
 
             List<string> outputData = new List<string>();
             
@@ -101,7 +101,7 @@ namespace _560FinalProject
         
         private string UserTDRSearch(List<string> userInput)
         {
-            string startCommand = "SELECT A.ActorID, A.FirstName, A.LastName, A.MovieList FROM MovieOperations.Actor A WHERE ";
+            string startCommand = "SELECT T.TheaterID, T.[Name], T.[Address], T.RoomCount, R.RoomNumber, R. A WHERE ";
             int catcher = 0;
             for (int i = 0; i < userInput.Count; i++)
             {
@@ -117,7 +117,7 @@ namespace _560FinalProject
         }
         private string UserGenreSearch(List<string> userInput)
         {
-            string startCommand = "SELECT G.GenreID, G.GenreType FROM MovieOperations.Genre G WHERE ";
+            string startCommand = "SELECT G.GenreType, MG.MovieGenreID, M.Title, M.Rating, M.ReleaseYear FROM MovieOperations.MovieGenres MG INNER JOIN MovieOperations.Movie M ON M.MovieID = MG.MovieID INNER JOIN MovieOperations.Genre G ON G.GenreID = MG.GenreID WHERE ";
             int catcher = 0;
             for (int i = 0; i < userInput.Count; i++)
             {
@@ -125,7 +125,9 @@ namespace _560FinalProject
                 {
                     if (i == userInput.Count) catcher = 0;
                     if (catcher == 1) startCommand += " AND ";
-                    if (i == 0) startCommand += $"A.GenreType = N'{userInput[i]}'"; catcher = 1;
+                    if (i == 0) startCommand += $"M.ReleaseYear = {userInput[i]}"; catcher = 1;
+                    if (i == 1) startCommand += $"M.Rating = {userInput[i]}"; catcher = 1;
+                    if (i == 2) startCommand += $"G.GenreType = N'{userInput[i]}'"; catcher = 1;
                 }
             }
             return startCommand;

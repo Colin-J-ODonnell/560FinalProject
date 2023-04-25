@@ -1,0 +1,100 @@
+﻿1,AMC Empire,234 W 42nd St New York NY 10036,12
+2,Regal Cinemas LA LIVE,1000 W Olympic Blvd Los Angeles CA 90015,18
+3,Alamo Drafthouse Cinema,1400 Main St Kansas City MO 64105,8
+4,ArcLight Hollywood,6360 Sunset Blvd Los Angeles CA 90028,10
+5,Cinemark Tinseltown,1545 E Cheyenne Mountain Blvd Colorado Springs CO 80906,16
+6,Cinemark Playa Vista,12746 W Jefferson Blvd Los Angeles CA 90094,6
+7,Landmark's Magnolia Theatre,3699 McKinney Ave Dallas TX 75204,12
+8,IFC Center,323 6th Ave New York NY 10014,10
+9,Angelika Film Center & Café,18 W Houston St New York NY 10012,8
+10,The Music Box Theatre,3733 N Southport Ave Chicago IL 60613,6
+11,The Castro Theatre,429 Castro St San Francisco CA 94114,12
+12,The Grand Cinema,606 S Fawcett Ave Tacoma WA 98402,8
+13,The Roxy Cinema,2 6th Ave New York NY 10013,14
+14,The State Theatre,233 S State St Ann Arbor MI 48104,6
+15,The Coolidge Corner Theatre,290 Harvard St Brookline MA 02446,4
+16,The Charles Theatre,1711 N Charles St Baltimore MD 21201,12
+17,The Belcourt Theatre,2102 Belcourt Ave Nashville TN 37212,10
+18,The Prytania Theatre,5339 Prytania St New Orleans LA 70115,10
+19,The Angelika Film Center & Café at Mosaic,2911 District Ave Fairfax VA 22031,6
+20,The Senator Theatre,5904 York Rd Baltimore MD 21212,8
+21,AMC Empire 2,104 E 9th St New York NY 10003,12
+22,Regal Cinemas LA Live 2,567 S Main St Los Angeles CA 90013,12
+23,Alamo Drafthouse Cinema 2,310 W Adams St Chicago IL 60606,18
+24,ArcLight Hollywood 2,462 N Park Ave Winter Park FL 32789,8
+25,Cinemark Tinseltown 2,200 E Chestnut St Louisville KY 40202,10
+26,Cinemark Playa Vista 2,307 W 47th St Kansas City MO 64112,16
+27,Landmark's Magnolia Theatre 2,810 N 7th St Phoenix AZ 85006,6
+28,IFC Center 2,419 E Congress St Tucson AZ 85701,12
+29,Angelika Film Center & Café 2,108 E Main St Durham NC 27701,10
+30,The Music Box Theatre 2,312 S Main St Los Angeles CA 90013,8
+31,The Castro Theatre 2,401 E 3rd St Austin TX 78701,6
+32,The Grand Cinema 2,302 S Market St San Jose CA 95113,12
+33,The Roxy Cinema 2,330 S 4th St Louisville KY 40202,8
+34,The State Theatre 2,105 E 5th St Austin TX 78701,14
+35,The Coolidge Corner Theatre 2,101 N Main St Las Vegas NV 89101,6
+36,The Charles Theatre 2,131 W 7th St Los Angeles CA 90014,4
+37,The Belcourt Theatre 2,800 E 3rd St Los Angeles CA 90013,12
+38,The Prytania Theatre 2,420 S Main St Los Angeles CA 90013,10
+39,The Angelika Film Center & Café at Mosaic 2,401 W Kennedy Blvd Tampa FL 33606,10
+40,The Senator Theatre 2,800 W Olympic Blvd Los Angeles CA 90015,6
+41,AMC Empire 3,600 E Grand Ave Chicago IL 60611,8
+42,Regal Cinemas LA Live 3,315 E Pikes Peak Ave Colorado Springs CO 80903,10
+43,Alamo Drafthouse Cinema 3,1900 S Main St Los Angeles CA 90007,16
+44,ArcLight Hollywood 3,400 S 2nd St Louisville KY 40202,8
+45,Cinemark Tinseltown 3,1440 G St NW Washington DC 20005,12
+46,Cinemark Playa Vista 3,312 S Main St Ann Arbor MI 48104,14
+47,Landmark's Magnolia Theatre 3,301 W 2nd St Austin TX 78701,4
+48,IFC Center 3,1 E Main St Rochester NY 14614,10
+49,Angelika Film Center & Café 3,840 S Spring St Los Angeles CA 90014,10
+50,The Music Box Theatre 3,111 N Wabash Ave Chicago IL 60602,12
+51,The Castro Theatre 3,701 E Washington St Phoenix AZ 85034,6
+52,The Grand Cinema 3,120 E 7th St Austin TX 78701,8
+53,The Roxy Cinema 3,1300 S Figueroa St Los Angeles CA 90015,14
+54,The State Theatre 3,500 N Kingsbury St Chicago IL 60654,18
+55,The Coolidge Corner Theatre 3,333 W 5th St Los Angeles CA 90013,8
+56,The Charles Theatre 3,555 W 5th St Los Angeles CA 90013,10
+57,The Belcourt Theatre 3,401 E 4th St Austin TX 78701,16
+58,The Prytania Theatre 3,105 E 5th St Los Angeles CA 90013,6
+59,The Angelika Film Center & Café at Mosaic 3,555 S Flower St Los Angeles CA 90071,12
+60,The Senator Theatre 3,535 S Grand Ave Los Angeles CA 90071,10
+61,AMC Empire 4,445 S Figueroa St Los Angeles CA 90071,8
+62,Regal Cinemas LA Live 4,425 W Beech St San Diego CA 92101,6
+63,Alamo Drafthouse Cinema 4,1325 6th Ave New York NY 10019,12
+64,ArcLight Hollywood 4,500 W 5th St Austin TX 78701,8
+65,Cinemark Tinseltown 4,1000 Vin Scully Ave Los Angeles CA 90012,14
+66,Cinemark Playa Vista 4,555 W Temple St Los Angeles CA 90012,6
+67,Landmark's Magnolia Theatre 4,900 W Olympic Blvd Los Angeles CA 90015,4
+68,IFC Center 4,601 W 5th St Los Angeles CA 90071,12
+69,Angelika Film Center & Café 4,1401 E 7th St Austin TX 78701,10
+70,The Music Box Theatre 4,401 N Main St Miami OK 74354,10
+71,The Castro Theatre 4,306 S Elm St Hennessey OK 73742,6
+72,The Grand Cinema 4,512 W 2nd St Curtis NE 69025,8
+73,The Roxy Cinema 4,512 S Main St Hoisington KS 67544,12
+74,The State Theatre 4,209 S Sycamore St Ottawa KS 66067,16
+75,The Coolidge Corner Theatre 4,219 N Douglas St Florence KS 66851,8
+76,The Charles Theatre 4,301 N 4th St St. Marys KS 66536,12
+77,The Belcourt Theatre 4,319 W 5th St Benkelman NE 69021,14
+78,The Prytania Theatre 4,502 N Maple St Garnett KS 66032,4
+79,The Angelika Film Center & Café at Mosaic 4,305 S Walnut St Burlingame KS 66413,10
+80,The Senator Theatre 4,305 S 2nd St Cherokee OK 73728,10
+81,AMC Empire 5,508 E Main St Fairview OK 73737,12
+82,Regal Cinemas LA Live 5,510 E 3rd St Holdrege NE 68949,6
+83,Alamo Drafthouse Cinema 5,507 N Main St Pratt KS 67124,8
+84,ArcLight Hollywood 5,510 N Pine St Nowata OK 74048,14
+85,Cinemark Tinseltown 5,215 W 4th St Ainsworth NE 69210,18
+86,Cinemark Playa Vista 5,401 N Market St Solomon KS 67480,8
+87,Landmark's Magnolia Theatre 5,105 S Franklin St Bloomfield NE 68718,10
+88,IFC Center 5,310 S Illinois St Greenfield OK 73043,16
+89,Angelika Film Center & Café 5,507 S Central Ave Wilburton OK 74578,6
+90,The Music Box Theatre 5,207 S 2nd St Osage City KS 66523,12
+91,The Castro Theatre 5,417 N 5th St Wakeeney KS 67672,10
+92,The Grand Cinema 5,305 N Main St Wagoner OK 74467,8
+93,The Roxy Cinema 5,307 S Main St Phillipsburg KS 67661,6
+94,The State Theatre 5,208 S Main St Creighton NE 68729,12
+95,The Coolidge Corner Theatre 5,214 S Jefferson St Lyons KS 67554,8
+96,The Charles Theatre 5,507 N Maple St Garnett KS 66032,14
+97,The Belcourt Theatre 5,509 N 7th St Blackwell OK 74631,6
+98,The Prytania Theatre 5,206 S Main St Cheney KS 67025,4
+99,The Angelika Film Center & Café at Mosaic 5,204 E 6th St Elmwood NE 68349,12
+100,The Senator Theatre 5,200 N Main St Edgerton KS 66021,10

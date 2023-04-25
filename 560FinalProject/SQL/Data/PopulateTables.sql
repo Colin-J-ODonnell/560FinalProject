@@ -15,7 +15,7 @@ IF(NOT EXISTS(SELECT 1 FROM MovieOperations.Genre))
 BEGIN
 	BULK
 	INSERT MovieOperations.Genre
-	FROM 'C:\Users\odonn\CIS 560\560FinalProject\Excel Files\genres.csv'
+	FROM 'E:\CIS 560\560FinalProject\Excel Files\genres.csv'
 	WITH
 	(
 	FIRSTROW = 2,
