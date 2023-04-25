@@ -36,4 +36,17 @@ BEGIN
 	ROWTERMINATOR = '\n'
 	)
 END;
+
+IF(NOT EXISTS(SELECT 1 FROM MovieOperations.Theater))
+BEGIN
+	BULK
+	INSERT MovieOperations.Theater
+	FROM 'C:\Users\rosen\source\repos\560FinalProject\Excel Files\theaters.csv'
+	WITH
+	(
+	FIRSTROW = 1,
+	FIELDTERMINATOR = ',',
+	ROWTERMINATOR = '\n'
+	)
+END;
  

@@ -40,7 +40,8 @@ CREATE TABLE MovieOperations.Theater
 (
     TheaterID INT NOT NULL IDENTITY(1,1),
     [Name] NVARCHAR(128) UNIQUE NOT NULL,
-    [Address] NVARCHAR(128) NOT NULL
+    [Address] NVARCHAR(128) NOT NULL,
+    RoomCount INT NOT NULL
 
     CONSTRAINT [PK_MovieOperations_Theater_TheaterID] PRIMARY KEY CLUSTERED ( TheaterID ASC )
 );
