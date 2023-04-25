@@ -19,7 +19,12 @@ namespace _560FinalProject
         /// </summary>
         private readonly string cs;
 
-        public Operations(string connectionString) { cs = connectionString; }
+        private readonly bool ryanUsing;
+
+        public Operations(string connectionString) 
+        { 
+            cs = connectionString;
+        }
 
         // CREATE ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

@@ -71,7 +71,7 @@ namespace _560FinalProject
 
             using (var transaction = new TransactionScope())
             {
-                using (var connection = new SqlConnection(@"Server=(localdb)\MSSQLLocalDb;Database=local codonnell;Integrated Security=SSPI;"))
+                using (var connection = new SqlConnection(@"Server=(localdb)\MSSQLLocalDb;Database=rosen;Integrated Security=SSPI;"))
                 {
                     using (var command = new SqlCommand("SELECT * FROM MovieOperations.Movie", connection))
                     {
