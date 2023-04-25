@@ -52,7 +52,6 @@
             this.label23 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
-            this.label26 = new System.Windows.Forms.Label();
             this.movieRating_textbox = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.movieDuration_textbox = new System.Windows.Forms.TextBox();
@@ -68,6 +67,11 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.movieGenre_textbox = new System.Windows.Forms.TextBox();
+            this.add_button = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.update_button = new System.Windows.Forms.Button();
+            this.delete_button = new System.Windows.Forms.Button();
+            this.output_listbox = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // label1
@@ -128,11 +132,11 @@
             // 
             // search_button
             // 
-            this.search_button.Font = new System.Drawing.Font("Segoe UI Symbol", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.search_button.Location = new System.Drawing.Point(693, 878);
+            this.search_button.Font = new System.Drawing.Font("Segoe UI Symbol", 12F, System.Drawing.FontStyle.Bold);
+            this.search_button.Location = new System.Drawing.Point(75, 780);
             this.search_button.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.search_button.Name = "search_button";
-            this.search_button.Size = new System.Drawing.Size(565, 124);
+            this.search_button.Size = new System.Drawing.Size(244, 67);
             this.search_button.TabIndex = 17;
             this.search_button.Text = "SEARCH";
             this.search_button.UseVisualStyleBackColor = true;
@@ -233,7 +237,7 @@
             // back_button
             // 
             this.back_button.Font = new System.Drawing.Font("Segoe UI Symbol", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.back_button.Location = new System.Drawing.Point(56, 878);
+            this.back_button.Location = new System.Drawing.Point(686, 1028);
             this.back_button.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.back_button.Name = "back_button";
             this.back_button.Size = new System.Drawing.Size(565, 124);
@@ -291,19 +295,10 @@
             // label25
             // 
             this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(640, 1016);
+            this.label25.Location = new System.Drawing.Point(640, 1022);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(0, 32);
             this.label25.TabIndex = 44;
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(613, 1016);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(70, 32);
-            this.label26.TabIndex = 45;
-            this.label26.Text = "        ";
             // 
             // movieRating_textbox
             // 
@@ -407,10 +402,10 @@
             // 
             // reset_button
             // 
-            this.reset_button.Location = new System.Drawing.Point(777, 752);
+            this.reset_button.Location = new System.Drawing.Point(376, 780);
             this.reset_button.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.reset_button.Name = "reset_button";
-            this.reset_button.Size = new System.Drawing.Size(405, 105);
+            this.reset_button.Size = new System.Drawing.Size(244, 67);
             this.reset_button.TabIndex = 70;
             this.reset_button.Text = "RESET SEARCH";
             this.reset_button.UseVisualStyleBackColor = true;
@@ -440,16 +435,70 @@
             this.movieGenre_textbox.Location = new System.Drawing.Point(176, 531);
             this.movieGenre_textbox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.movieGenre_textbox.Name = "movieGenre_textbox";
-            this.movieGenre_textbox.Size = new System.Drawing.Size(433, 38);
+            this.movieGenre_textbox.Size = new System.Drawing.Size(444, 38);
             this.movieGenre_textbox.TabIndex = 69;
             this.movieGenre_textbox.TextChanged += new System.EventHandler(this.movieGenre_textbox_TextChanged);
+            // 
+            // add_button
+            // 
+            this.add_button.Font = new System.Drawing.Font("Segoe UI Symbol", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.add_button.Location = new System.Drawing.Point(44, 877);
+            this.add_button.Name = "add_button";
+            this.add_button.Size = new System.Drawing.Size(565, 125);
+            this.add_button.TabIndex = 124;
+            this.add_button.Text = "ADD";
+            this.add_button.UseVisualStyleBackColor = true;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(607, 1155);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(70, 32);
+            this.label2.TabIndex = 123;
+            this.label2.Text = "        ";
+            // 
+            // update_button
+            // 
+            this.update_button.Font = new System.Drawing.Font("Segoe UI Symbol", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.update_button.Location = new System.Drawing.Point(44, 1027);
+            this.update_button.Name = "update_button";
+            this.update_button.Size = new System.Drawing.Size(565, 125);
+            this.update_button.TabIndex = 122;
+            this.update_button.Text = "UPDATE";
+            this.update_button.UseVisualStyleBackColor = true;
+            // 
+            // delete_button
+            // 
+            this.delete_button.Font = new System.Drawing.Font("Segoe UI Symbol", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.delete_button.Location = new System.Drawing.Point(686, 877);
+            this.delete_button.Name = "delete_button";
+            this.delete_button.Size = new System.Drawing.Size(565, 125);
+            this.delete_button.TabIndex = 120;
+            this.delete_button.Text = "DELETE";
+            this.delete_button.UseVisualStyleBackColor = true;
+            // 
+            // output_listbox
+            // 
+            this.output_listbox.FormattingEnabled = true;
+            this.output_listbox.ItemHeight = 31;
+            this.output_listbox.Location = new System.Drawing.Point(1323, 34);
+            this.output_listbox.Name = "output_listbox";
+            this.output_listbox.ScrollAlwaysVisible = true;
+            this.output_listbox.Size = new System.Drawing.Size(1254, 1120);
+            this.output_listbox.TabIndex = 125;
             // 
             // MovieDatabaseForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1317, 1147);
+            this.ClientSize = new System.Drawing.Size(2614, 1230);
+            this.Controls.Add(this.output_listbox);
+            this.Controls.Add(this.add_button);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.update_button);
+            this.Controls.Add(this.delete_button);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.reset_button);
@@ -465,7 +514,6 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label27);
-            this.Controls.Add(this.label26);
             this.Controls.Add(this.label25);
             this.Controls.Add(this.dateStart_textbox);
             this.Controls.Add(this.dateEnd_textbox);
@@ -524,7 +572,6 @@
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.Label label26;
         private System.Windows.Forms.TextBox movieRating_textbox;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TextBox movieDuration_textbox;
@@ -540,5 +587,10 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox movieGenre_textbox;
+        private System.Windows.Forms.Button add_button;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button update_button;
+        private System.Windows.Forms.Button delete_button;
+        private System.Windows.Forms.ListBox output_listbox;
     }
 }

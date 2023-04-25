@@ -31,7 +31,6 @@
             this.database_button = new System.Windows.Forms.Button();
             this.schedule_button = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.edit_button = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // database_button
@@ -66,29 +65,17 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "Movie Application";
             // 
-            // edit_button
-            // 
-            this.edit_button.Font = new System.Drawing.Font("Segoe UI Symbol", 14.1F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.edit_button.Location = new System.Drawing.Point(330, 427);
-            this.edit_button.Name = "edit_button";
-            this.edit_button.Size = new System.Drawing.Size(371, 181);
-            this.edit_button.TabIndex = 3;
-            this.edit_button.Text = "Edit Database";
-            this.edit_button.UseVisualStyleBackColor = true;
-            this.edit_button.Click += new System.EventHandler(this.edit_button_Click);
-            // 
             // OpeningForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1033, 653);
-            this.Controls.Add(this.edit_button);
+            this.ClientSize = new System.Drawing.Size(1033, 479);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.schedule_button);
             this.Controls.Add(this.database_button);
             this.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.Name = "OpeningForm";
-            this.Text = "Form1";
+            this.Text = "Open Form";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -100,7 +87,6 @@
         private System.Windows.Forms.Button database_button;
         private System.Windows.Forms.Button schedule_button;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button edit_button;
     }
 }
 
