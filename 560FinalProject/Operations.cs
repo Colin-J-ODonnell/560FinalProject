@@ -98,7 +98,7 @@ namespace _560FinalProject
             return startCommand;
         }
 
-        /*
+        
         private string UserTDRSearch(List<string> userInput)
         {
             string startCommand = "SELECT A.ActorID, A.FirstName, A.LastName, A.MovieList FROM MovieOperations.Actor A WHERE ";
@@ -115,7 +115,6 @@ namespace _560FinalProject
             }
             return startCommand;
         }
-
         private string UserGenreSearch(List<string> userInput)
         {
             string startCommand = "SELECT G.GenreID, G.GenreType FROM MovieOperations.Genre G WHERE ";
@@ -131,7 +130,6 @@ namespace _560FinalProject
             }
             return startCommand;
         }
-        */
 
         // CREATE //
 
