@@ -22,9 +22,8 @@ namespace _560FinalProject
         /// Value assigned when user pics the search to complete 
         /// 1 = MovieSearch
         /// 2 = Actor Seach
-        /// 3 = Theater Search
-        /// 4 = Room Search
-        /// 5 = Date Search
+        /// 3 = TRD Search
+        /// 4 = Genre Search
         /// 0 = RESET
         /// </summary>
         public int SEARCHVALUE = 0;
@@ -101,6 +100,7 @@ namespace _560FinalProject
 
         private void MovieSearchDiabled()
         {
+            SEARCHVALUE = 1;
             actorFirstName_textbox.Enabled = false;
             actorLastName_textbox.Enabled = false;
 
@@ -112,10 +112,13 @@ namespace _560FinalProject
 
             dateStart_textbox.Enabled = false;
             dateEnd_textbox.Enabled = false;
+
+            movieGenre_textbox.Enabled = false;
         }
 
         private void ActorSearchDisabled()
         {
+            SEARCHVALUE = 2;
             theaterName_textbox.Enabled = false;
             theaterAddress_textbox.Enabled = false;
 
@@ -134,148 +137,37 @@ namespace _560FinalProject
             movieGenre_textbox.Enabled = false;
         }
 
-        private void TheaterSearchDisabled()
+        private void TRDSearch()
         {
+            SEARCHVALUE = 3;
             movieTitle_textbox.Enabled = false;
             movieReleaseDate_textbox.Enabled = false;
             movieDuration_textbox.Enabled = false;
             movieRevenue_textbox.Enabled = false;
             movieRating_textbox.Enabled = false;
-
-            movieGenre_textbox.Enabled = false;
-
-            roomNumber_textbox.Enabled = false;
-            roomCapacity_textbox.Enabled = false;
-
-            dateStart_textbox.Enabled = false;
-            dateEnd_textbox.Enabled = false;
-        }
-
-        private void RoomSearchDisabled()
-        {
-            movieTitle_textbox.Enabled = false;
-            movieReleaseDate_textbox.Enabled = false;
-            movieDuration_textbox.Enabled = false;
-            movieRevenue_textbox.Enabled = false;
-            movieRating_textbox.Enabled = false;
-            movieGenre_textbox.Enabled = false;
-
-            dateStart_textbox.Enabled = false;
-            dateEnd_textbox.Enabled = false;
-
-            theaterName_textbox.Enabled = false;
-            theaterAddress_textbox.Enabled = false;
-        }
-
-        private void DateSearchDisabled()
-        {
-            movieTitle_textbox.Enabled = false;
-            movieReleaseDate_textbox.Enabled = false;
-            movieDuration_textbox.Enabled = false;
-            movieRevenue_textbox.Enabled = false;
-            movieRating_textbox.Enabled = false;
-
-            movieGenre_textbox.Enabled = false;
-
             actorFirstName_textbox.Enabled = false;
             actorLastName_textbox.Enabled = false;
+            movieGenre_textbox.Enabled = false;
+        }
 
+        private void GenreSearchDisabled()
+        {
+            movieTitle_textbox.Enabled = false;
+            movieDuration_textbox.Enabled = false;
+            movieRevenue_textbox.Enabled = false;
             theaterName_textbox.Enabled = false;
             theaterAddress_textbox.Enabled = false;
-
             roomNumber_textbox.Enabled = false;
             roomCapacity_textbox.Enabled = false;
+            dateStart_textbox.Enabled = false;
+            dateEnd_textbox.Enabled = false;
 
+            SEARCHVALUE = 6;
         }
-
-        private void movieTitle_textbox_TextChanged(object sender, EventArgs e)
-        {
-            MovieSearchDiabled();
-        }
-
-        private void movieReleaseDate_textbox_TextChanged(object sender, EventArgs e)
-        {
-            MovieSearchDiabled();
-        }
-
-        private void movieDuration_textbox_TextChanged(object sender, EventArgs e)
-        {
-            MovieSearchDiabled();
-        }
-
-        private void movieBudget_textbox_TextChanged(object sender, EventArgs e)
-        {
-            MovieSearchDiabled();
-        }
-
-        private void movieRevenue_textbox_TextChanged(object sender, EventArgs e)
-        {
-            MovieSearchDiabled();
-        }
-
-        private void movieGenre_textbox_TextChanged(object sender, EventArgs e)
-        {
-            MovieSearchDiabled();
-        }
-
-        private void movieRating_textbox_TextChanged(object sender, EventArgs e)
-        {
-            MovieSearchDiabled();
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-            MovieSearchDiabled();
-        }
-
-        private void actorFirstName_textbox_TextChanged(object sender, EventArgs e)
-        {
-            ActorSearchDisabled();        
-        }
-
-        private void actorLastName_textbox_TextChanged(object sender, EventArgs e)
-        {
-            ActorSearchDisabled();
-        }
-
-        private void theaterName_textbox_TextChanged(object sender, EventArgs e)
-        {
-            TheaterSearchDisabled();
-        }
-
-        private void theaterAddress_textbox_TextChanged(object sender, EventArgs e)
-        {
-            TheaterSearchDisabled();
-        }
-
-        private void roomNumber_textbox_TextChanged(object sender, EventArgs e)
-        {
-            RoomSearchDisabled();
-        }
-
-        private void roomCapacity_textbox_TextChanged(object sender, EventArgs e)
-        {
-            RoomSearchDisabled();
-        }
-
-        private void dateStart_textbox_TextChanged(object sender, EventArgs e)
-        {
-            DateSearchDisabled();
-        }
-
-        private void dateEnd_textbox_TextChanged(object sender, EventArgs e)
-        {
-            DateSearchDisabled();
-        }
-
-        private void reset_button_Click(object sender, EventArgs e)
-        {
-            ResetSearch();
-            ResetSearch();
-        }
-
         private void ResetSearch()
         {
+            SEARCHVALUE = 0;
+
             movieTitle_textbox.Enabled = true;
             movieReleaseDate_textbox.Enabled = true;
             movieDuration_textbox.Enabled = true;
@@ -316,5 +208,98 @@ namespace _560FinalProject
             dateStart_textbox.Text = null;
             dateEnd_textbox.Text = null;
         }
+
+
+
+
+
+
+        private void movieTitle_textbox_TextChanged(object sender, EventArgs e)
+        {
+            MovieSearchDiabled();
+        }
+
+        private void movieReleaseDate_textbox_TextChanged(object sender, EventArgs e)
+        {
+            MovieSearchDiabled();
+        }
+
+        private void movieDuration_textbox_TextChanged(object sender, EventArgs e)
+        {
+            MovieSearchDiabled();
+        }
+
+        private void movieBudget_textbox_TextChanged(object sender, EventArgs e)
+        {
+            MovieSearchDiabled();
+        }
+
+        private void movieRevenue_textbox_TextChanged(object sender, EventArgs e)
+        {
+            MovieSearchDiabled();
+        }
+
+        private void movieGenre_textbox_TextChanged(object sender, EventArgs e)
+        {
+            GenreSearchDisabled();
+        }
+
+        private void movieRating_textbox_TextChanged(object sender, EventArgs e)
+        {
+            MovieSearchDiabled();
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+            MovieSearchDiabled();
+        }
+
+        private void actorFirstName_textbox_TextChanged(object sender, EventArgs e)
+        {
+            ActorSearchDisabled();        
+        }
+
+        private void actorLastName_textbox_TextChanged(object sender, EventArgs e)
+        {
+            ActorSearchDisabled();
+        }
+
+        private void theaterName_textbox_TextChanged(object sender, EventArgs e)
+        {
+            TRDSearch();
+        }
+
+        private void theaterAddress_textbox_TextChanged(object sender, EventArgs e)
+        {
+            TRDSearch();
+        }
+
+        private void roomNumber_textbox_TextChanged(object sender, EventArgs e)
+        {
+            TRDSearch();
+        }
+
+        private void roomCapacity_textbox_TextChanged(object sender, EventArgs e)
+        {
+            TRDSearch();
+        }
+
+        private void dateStart_textbox_TextChanged(object sender, EventArgs e)
+        {
+            TRDSearch();
+        }
+
+        private void dateEnd_textbox_TextChanged(object sender, EventArgs e)
+        {
+            TRDSearch();
+        }
+
+        private void reset_button_Click(object sender, EventArgs e)
+        {
+            ResetSearch();
+            ResetSearch();
+        }
+
+        
     }
 }
