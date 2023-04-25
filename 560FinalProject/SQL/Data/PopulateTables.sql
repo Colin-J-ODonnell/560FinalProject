@@ -54,7 +54,7 @@ IF(NOT EXISTS(SELECT 1 FROM MovieOperations.MovieGenres))
 BEGIN
 	BULK
 	INSERT MovieOperations.MovieGenres
-	FROM 'C:\Users\odonn\CIS 560\560FinalProject\Excel Files\genre table.csv'
+	FROM 'E:\CIS 560\560FinalProject\Excel Files\genretemp.csv'
 	WITH
 	(
 	FIELDTERMINATOR = ',',
