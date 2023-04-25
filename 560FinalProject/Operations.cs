@@ -25,7 +25,60 @@ namespace _560FinalProject
             cs = connectionString;
         }
 
-        // CREATE ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        public List<string> MovieSearch(int ind, List<string> userInput)
+        {
+            string SQLCommand = "";
+            if (ind == 1)
+            {
+                SQLCommand = UserMovieSearch(userInput);
+            }
+
+            List<string> outputData = new List<string>();
+            
+            using (var transaction = new TransactionScope())
+            {
+                using (var connection = new SqlConnection(@"Server=(localdb)\MSSQLLocalDb;Database=local codonnell;Integrated Security=SSPI;"))
+                {
+                    using (var command = new SqlCommand(SQLCommand, connection))
+                    {
+                        connection.Open();
+
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                string line = "";
+                                for (int i = 0; i < reader.FieldCount; i++)
+                                {
+                                    if (i == reader.FieldCount - 1) line += $"{reader.GetValue(i)}";
+                                    else line += $"{reader.GetValue(i)},";
+                                }
+                                outputData.Add(line);
+                            }
+                        }
+                        transaction.Complete();
+                    }
+                }
+            }
+            return outputData;
+        }
+
+        private string UserMovieSearch(List<string> userInput)
+        {
+            string startCommand = "SELECT M.MovieID, M.Title, M.ReleaseYear, M.Duration, M.Gross, M.Rating FROM MovieOperations.Movie WHERE ";
+            for(int i = 0; i < userInput.Count;i++)
+            {
+                if (!string.IsNullOrEmpty(userInput[i]))
+                {
+                    
+                }
+            }
+        }
+
+
+
+
+        // CREATE //
 
         /// <summary>
         /// Creates an Actor with the given parameters.
@@ -205,7 +258,7 @@ namespace _560FinalProject
             }
         }
 
-        // REMOVE ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // REMOVE //
 
         /// <summary>
         /// Removes an Actor with the given parameters.

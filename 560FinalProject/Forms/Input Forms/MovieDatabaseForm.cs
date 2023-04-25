@@ -37,59 +37,19 @@ namespace _560FinalProject
 
         private void search_button_Click(object sender, EventArgs e)
         {
-            MovieSearch();
-        }
-
-        private void MovieSearch()
-        {
-            List<string> inputData = new List<string>();
-
-            using (var transaction = new TransactionScope())
+            List<string> output = new List<string>();
+            if (SEARCHVALUE == 1)
             {
-                using (var connection = new SqlConnection(@"Server=(localdb)\MSSQLLocalDb;Database=local codonnell;Integrated Security=SSPI;"))
-                {
-                    using (var command = new SqlCommand("SELECT * FROM MovieOperations.Movie", connection))
-                    {
-                        connection.Open();
-
-                        using (SqlDataReader reader = command.ExecuteReader())
-                        {
-                            while (reader.Read())
-                            {
-                                string line = "";
-                                for (int i = 0; i < reader.FieldCount; i++)
-                                {
-                                    if (i == reader.FieldCount - 1) line += $"{reader.GetValue(i)}"; 
-                                    else line += $"{reader.GetValue(i)},";  
-                                }
-                                inputData.Add(line);
-                            }
-                        }
-                        transaction.Complete();
-                    }
-                }
+                List<string> input = new List<string>();
+                input.Add(movieTitle_textbox.Text);
+                input.Add(movieReleaseDate_textbox.Text);
+                input.Add(movieDuration_textbox.Text);
+                input.Add(movieRevenue_textbox.Text);
+                input.Add(movieRating_textbox.Text);
+                output = O.MovieSearch(SEARCHVALUE, input);
             }
-            output_listbox.DataSource = inputData;
-        }
 
-
-        private string UserMovieSearch()
-        {
-            string 
-            List<string> input = new List<string>();
-            input.Add(movieTitle_textbox.Text);
-            input.Add(movieReleaseDate_textbox.Text);
-            input.Add(movieDuration_textbox.Text);
-            input.Add(movieRevenue_textbox.Text);
-            input.Add(movieRating_textbox.Text);
-
-            foreach(string line in input)
-            {
-                if(!string.IsNullOrEmpty(line))
-                {
-
-                }
-            }
+            output_listbox.DataSource = output;
         }
 
         private void back_button_Click(object sender, EventArgs e)
