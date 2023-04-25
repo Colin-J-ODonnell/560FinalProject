@@ -38,6 +38,7 @@ namespace _560FinalProject
         private void search_button_Click(object sender, EventArgs e)
         {
             List<string> output = new List<string>();
+
             if (SEARCHVALUE == 1)
             {
                 List<string> input = new List<string>();

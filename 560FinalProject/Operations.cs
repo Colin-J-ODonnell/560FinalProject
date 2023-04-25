@@ -28,16 +28,13 @@ namespace _560FinalProject
         public List<string> MovieSearch(int ind, List<string> userInput)
         {
             string SQLCommand = "";
-            if (ind == 1)
-            {
-                SQLCommand = UserMovieSearch(userInput);
-            }
+            if (ind == 1) SQLCommand = UserMovieSearch(userInput); 
 
             List<string> outputData = new List<string>();
             
             using (var transaction = new TransactionScope())
             {
-                using (var connection = new SqlConnection(@"Server=(localdb)\MSSQLLocalDb;Database=local codonnell;Integrated Security=SSPI;"))
+                using (var connection = new SqlConnection(cs))
                 {
                     using (var command = new SqlCommand(SQLCommand, connection))
                     {
@@ -65,7 +62,7 @@ namespace _560FinalProject
 
         private string UserMovieSearch(List<string> userInput)
         {
-            string startCommand = "SELECT M.MovieID, M.Title, M.ReleaseYear, M.Duration, M.Gross, M.Rating FROM MovieOperations.Movie WHERE ";
+            string startCommand = "SELECT M.MovieID, M.Title, M.ReleaseYear, M.Duration, M.Gross, M.Rating FROM MovieOperations.Movie M WHERE ";
             int catcher = 0;
             for(int i = 0; i < userInput.Count;i++)
             {
