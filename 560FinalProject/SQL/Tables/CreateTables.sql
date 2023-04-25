@@ -19,6 +19,7 @@ CREATE TABLE MovieOperations.Actor
     FirstName NVARCHAR(128) NOT NULL,
     LastName NVARCHAR(256) NULL,
     MovieList NVARCHAR(512) NOT NULL
+
         CONSTRAINT [PK_MovieOperations_Actor_ActorID] PRIMARY KEY CLUSTERED ( ActorID ASC )
 );
 
