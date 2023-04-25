@@ -71,7 +71,7 @@ namespace _560FinalProject
             {
                 if (!string.IsNullOrEmpty(userInput[i]))
                 {
-                    if (i == userInput.Count - 1) catcher = 0;
+                    if (i == userInput.Count) catcher = 0;
                     if (catcher == 1) startCommand += " AND ";
                     if (i == 0) startCommand += $"M.Title = N'{userInput[i]}'"; catcher = 1;
                     if (i == 1) startCommand += $"M.ReleaseYear = {userInput[i]}"; catcher = 1;
