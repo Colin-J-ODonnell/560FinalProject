@@ -316,5 +316,10 @@ namespace _560FinalProject
             dateStart_textbox.Text = null;
             dateEnd_textbox.Text = null;
         }
+
+        private void MovieDatabaseForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
