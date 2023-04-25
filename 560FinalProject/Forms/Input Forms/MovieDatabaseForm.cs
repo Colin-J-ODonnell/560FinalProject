@@ -80,6 +80,26 @@ namespace _560FinalProject
 
         }
 
+
+        private string UserMovieSearch()
+        {
+            string 
+            List<string> input = new List<string>();
+            input.Add(movieTitle_textbox.Text);
+            input.Add(movieReleaseDate_textbox.Text);
+            input.Add(movieDuration_textbox.Text);
+            input.Add(movieRevenue_textbox.Text);
+            input.Add(movieRating_textbox.Text);
+
+            foreach(string line in input)
+            {
+                if(!string.IsNullOrEmpty(line))
+                {
+
+                }
+            }
+        }
+
         private void back_button_Click(object sender, EventArgs e)
         {
             this.Close();
