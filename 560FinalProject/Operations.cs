@@ -18,8 +18,6 @@ namespace _560FinalProject
         /// </summary>
         private readonly string cs;
 
-        private readonly bool ryanUsing;
-
         public Operations(string connectionString) 
         { 
             cs = connectionString;
@@ -79,9 +77,6 @@ namespace _560FinalProject
             }
             return startCommand;
         }
-
-
-
 
         // CREATE //
 
