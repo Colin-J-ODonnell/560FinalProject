@@ -29,7 +29,7 @@ namespace _560FinalProject
             if (ind == 1) SQLCommand = UserMovieSearch(userInput); 
             if (ind == 2) SQLCommand = UserActorSearch(userInput);
             // if (ind == 3) SQLCommand = UserTDRSearch(userInput);
-            if (ind == 4) SQLCommand = UserGenreSearch(userInput);
+            // if (ind == 4) SQLCommand = UserGenreSearch(userInput);
 
             List<string> outputData = new List<string>();
             
