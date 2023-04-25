@@ -66,13 +66,21 @@ namespace _560FinalProject
         private string UserMovieSearch(List<string> userInput)
         {
             string startCommand = "SELECT M.MovieID, M.Title, M.ReleaseYear, M.Duration, M.Gross, M.Rating FROM MovieOperations.Movie WHERE ";
+            int catcher = 0;
             for(int i = 0; i < userInput.Count;i++)
             {
                 if (!string.IsNullOrEmpty(userInput[i]))
                 {
-                    
+                    if (i == userInput.Count - 1) catcher = 0;
+                    if (catcher == 1) startCommand += " AND ";
+                    if (i == 0) startCommand += $"M.Title = N'{userInput[i]}'"; catcher = 1;
+                    if (i == 1) startCommand += $"M.ReleaseYear = {userInput[i]}"; catcher = 1;
+                    if (i == 2) startCommand += $"M.Duration = {userInput[i]}"; catcher = 1;
+                    if (i == 3) startCommand += $"M.Gross = N'{userInput[i]}'"; catcher = 1;
+                    if (i == 4) startCommand += $"M.Rating = {userInput[i]}"; catcher = 1;
                 }
             }
+            return startCommand;
         }
 
 
