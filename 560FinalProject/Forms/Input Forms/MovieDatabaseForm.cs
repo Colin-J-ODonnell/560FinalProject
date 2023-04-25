@@ -42,12 +42,6 @@ namespace _560FinalProject
 
         private void MovieSearch()
         {
-            List<int> MovieIDs = new List<int>();
-            List<string> Titles = new List<string>();
-            List<int> Release = new List<int>();
-            List<int> Duration = new List<int>();
-            List<string> Revenue = new List<string>();
-            List<float> Ratings = new List<float>();
             List<string> inputData = new List<string>();
 
             using (var transaction = new TransactionScope())
