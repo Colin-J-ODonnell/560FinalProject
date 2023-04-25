@@ -18,8 +18,6 @@ namespace _560FinalProject
         /// </summary>
         private readonly string cs;
 
-        private readonly bool ryanUsing;
-
         public Operations(string connectionString) 
         { 
             cs = connectionString;
@@ -28,16 +26,16 @@ namespace _560FinalProject
         public List<string> MovieSearch(int ind, List<string> userInput)
         {
             string SQLCommand = "";
-            if (ind == 1)
-            {
-                SQLCommand = UserMovieSearch(userInput);
-            }
+            if (ind == 1) SQLCommand = UserMovieSearch(userInput); 
+            if (ind == 2) SQLCommand = UserActorSearch(userInput);
+            // if (ind == 3) SQLCommand = UserTDRSearch(userInput);
+            // if (ind == 4) SQLCommand = UserGenreSearch(userInput);
 
             List<string> outputData = new List<string>();
             
             using (var transaction = new TransactionScope())
             {
-                using (var connection = new SqlConnection(@"Server=(localdb)\MSSQLLocalDb;Database=local codonnell;Integrated Security=SSPI;"))
+                using (var connection = new SqlConnection(cs))
                 {
                     using (var command = new SqlCommand(SQLCommand, connection))
                     {
@@ -65,18 +63,75 @@ namespace _560FinalProject
 
         private string UserMovieSearch(List<string> userInput)
         {
-            string startCommand = "SELECT M.MovieID, M.Title, M.ReleaseYear, M.Duration, M.Gross, M.Rating FROM MovieOperations.Movie WHERE ";
+            string startCommand = "SELECT M.MovieID, M.Title, M.ReleaseYear, M.Duration, M.Gross, M.Rating FROM MovieOperations.Movie M WHERE ";
+            int catcher = 0;
             for(int i = 0; i < userInput.Count;i++)
             {
                 if (!string.IsNullOrEmpty(userInput[i]))
                 {
-                    
+                    if (i == userInput.Count) catcher = 0;
+                    if (catcher == 1) startCommand += " AND ";
+                    if (i == 0) startCommand += $"M.Title = N'{userInput[i]}'"; catcher = 1;
+                    if (i == 1) startCommand += $"M.ReleaseYear = {userInput[i]}"; catcher = 1;
+                    if (i == 2) startCommand += $"M.Duration = {userInput[i]}"; catcher = 1;
+                    if (i == 3) startCommand += $"M.Gross = N'{userInput[i]}'"; catcher = 1;
+                    if (i == 4) startCommand += $"M.Rating = {userInput[i]}"; catcher = 1;
                 }
             }
+            return startCommand;
         }
 
+        private string UserActorSearch(List<string> userInput)
+        {
+            string startCommand = "SELECT A.ActorID, A.FirstName, A.LastName, A.MovieList FROM MovieOperations.Actor A WHERE ";
+            int catcher = 0;
+            for (int i = 0; i < userInput.Count; i++)
+            {
+                if (!string.IsNullOrEmpty(userInput[i]))
+                {
+                    if (i == userInput.Count) catcher = 0;
+                    if (catcher == 1) startCommand += " AND ";
+                    if (i == 0) startCommand += $"A.FirstName = N'{userInput[i]}'"; catcher = 1;
+                    if (i == 1) startCommand += $"A.LastName = N'{userInput[i]}'"; catcher = 1;
+                }
+            }
+            return startCommand;
+        }
 
+        /*
+        private string UserTDRSearch(List<string> userInput)
+        {
+            string startCommand = "SELECT A.ActorID, A.FirstName, A.LastName, A.MovieList FROM MovieOperations.Actor A WHERE ";
+            int catcher = 0;
+            for (int i = 0; i < userInput.Count; i++)
+            {
+                if (!string.IsNullOrEmpty(userInput[i]))
+                {
+                    if (i == userInput.Count) catcher = 0;
+                    if (catcher == 1) startCommand += " AND ";
+                    if (i == 0) startCommand += $"A.FirstName = N'{userInput[i]}'"; catcher = 1;
+                    if (i == 1) startCommand += $"A.LastName = N'{userInput[i]}'"; catcher = 1;
+                }
+            }
+            return startCommand;
+        }
 
+        private string UserGenreSearch(List<string> userInput)
+        {
+            string startCommand = "SELECT G.GenreID, G.GenreType FROM MovieOperations.Genre G WHERE ";
+            int catcher = 0;
+            for (int i = 0; i < userInput.Count; i++)
+            {
+                if (!string.IsNullOrEmpty(userInput[i]))
+                {
+                    if (i == userInput.Count) catcher = 0;
+                    if (catcher == 1) startCommand += " AND ";
+                    if (i == 0) startCommand += $"A.GenreType = N'{userInput[i]}'"; catcher = 1;
+                }
+            }
+            return startCommand;
+        }
+        */
 
         // CREATE //
 

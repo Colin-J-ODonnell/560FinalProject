@@ -20,8 +20,8 @@ namespace _560FinalProject
 
         /// <summary>
         /// Value assigned when user pics the search to complete 
-        /// 1 = MovieSearch
-        /// 2 = Actor Seach
+        /// 1 = Movie Search
+        /// 2 = Actor Search
         /// 3 = TRD Search
         /// 4 = Genre Search
         /// 0 = RESET
@@ -38,6 +38,7 @@ namespace _560FinalProject
         private void search_button_Click(object sender, EventArgs e)
         {
             List<string> output = new List<string>();
+
             if (SEARCHVALUE == 1)
             {
                 List<string> input = new List<string>();
@@ -46,6 +47,34 @@ namespace _560FinalProject
                 input.Add(movieDuration_textbox.Text);
                 input.Add(movieRevenue_textbox.Text);
                 input.Add(movieRating_textbox.Text);
+                output = O.MovieSearch(SEARCHVALUE, input);
+            }
+            if (SEARCHVALUE == 2)
+            {
+                List<string> input = new List<string>();
+                input.Add(actorFirstName_textbox.Text);
+                input.Add(actorLastName_textbox.Text);
+                output = O.MovieSearch(SEARCHVALUE, input);
+            }
+            if (SEARCHVALUE == 3)
+            {
+                List<string> input = new List<string>();
+                input.Add(theaterName_textbox.Text);
+                input.Add(theaterAddress_textbox.Text);
+                input.Add(roomNumber_textbox.Text);
+                input.Add(roomCapacity_textbox.Text);
+                input.Add(dateStart_textbox.Text);
+                input.Add(dateEnd_textbox.Text);
+                output = O.MovieSearch(SEARCHVALUE, input);
+            }
+            if (SEARCHVALUE == 4)
+            {
+                List<string> input = new List<string>();
+                input.Add(movieGenre_textbox.Text);
+                input.Add(movieReleaseDate_textbox.Text);
+                input.Add(movieRating_textbox.Text);
+                input.Add(actorFirstName_textbox.Text);
+                input.Add(actorLastName_textbox.Text);
                 output = O.MovieSearch(SEARCHVALUE, input);
             }
 
