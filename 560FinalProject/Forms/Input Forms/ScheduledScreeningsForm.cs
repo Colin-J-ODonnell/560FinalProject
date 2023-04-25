@@ -25,9 +25,7 @@ namespace _560FinalProject
 
         private void search_button_Click(object sender, EventArgs e)
         {
-            Screenings_OutputForm sof = new Screenings_OutputForm(this);
-            this.Hide();
-            sof.Show();
+            
         }
 
         private void back_button_Click(object sender, EventArgs e)

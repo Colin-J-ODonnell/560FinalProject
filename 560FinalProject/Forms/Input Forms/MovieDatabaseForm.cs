@@ -75,9 +75,7 @@ namespace _560FinalProject
                     }
                 }
             }
-
             output_listbox.DataSource = inputData;
-
         }
 
         private void back_button_Click(object sender, EventArgs e)
@@ -152,6 +150,7 @@ namespace _560FinalProject
 
             SEARCHVALUE = 6;
         }
+
         private void ResetSearch()
         {
             SEARCHVALUE = 0;
@@ -195,12 +194,7 @@ namespace _560FinalProject
 
             dateStart_textbox.Text = null;
             dateEnd_textbox.Text = null;
-        }
-
-
-
-
-
+        } 
 
         private void movieTitle_textbox_TextChanged(object sender, EventArgs e)
         {
@@ -233,11 +227,6 @@ namespace _560FinalProject
         }
 
         private void movieRating_textbox_TextChanged(object sender, EventArgs e)
-        {
-            MovieSearchDiabled();
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
         {
             MovieSearchDiabled();
         }
@@ -287,7 +276,5 @@ namespace _560FinalProject
             ResetSearch();
             ResetSearch();
         }
-
-        
     }
 }
