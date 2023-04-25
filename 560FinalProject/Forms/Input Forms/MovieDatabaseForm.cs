@@ -51,24 +51,6 @@ namespace _560FinalProject
             List<float> Ratings = new List<float>();
             List<string> inputData = new List<string>();
 
-            List<string> userInput = new List<string>();
-
-            userInput.Add(movieTitle_textbox.Text);
-            userInput.Add(movieReleaseDate_textbox.Text);
-            userInput.Add(movieDuration_textbox.Text);
-            userInput.Add(movieRevenue_textbox.Text);
-            userInput.Add(movieRating_textbox.Text);
-            userInput.Add(movieGenre_textbox.Text);
-            userInput.Add(actorFirstName_textbox.Text);
-            userInput.Add(actorLastName_textbox.Text);
-            userInput.Add(theaterName_textbox.Text);
-            userInput.Add(theaterAddress_textbox.Text);
-            userInput.Add(roomNumber_textbox.Text);
-            userInput.Add(dateStart_textbox.Text);
-            userInput.Add(roomCapacity_textbox.Text);
-            userInput.Add(dateEnd_textbox.Text);
-            
-
             using (var transaction = new TransactionScope())
             {
                 using (var connection = new SqlConnection(@"Server=(localdb)\MSSQLLocalDb;Database=rosen;Integrated Security=SSPI;"))
@@ -76,6 +58,7 @@ namespace _560FinalProject
                     using (var command = new SqlCommand("SELECT * FROM MovieOperations.Movie", connection))
                     {
                         connection.Open();
+
                         using (SqlDataReader reader = command.ExecuteReader())
                         {
                             while (reader.Read())
@@ -83,15 +66,8 @@ namespace _560FinalProject
                                 string line = "";
                                 for (int i = 0; i < reader.FieldCount; i++)
                                 {
-                                    if (i == reader.FieldCount - 1)
-                                    {
-                                        line += $"{reader.GetValue(i)}";
-                                    }
-                                    else
-                                    {
-                                        line += $"{reader.GetValue(i)},";
-                                    }
-
+                                    if (i == reader.FieldCount - 1) line += $"{reader.GetValue(i)}"; 
+                                    else line += $"{reader.GetValue(i)},";  
                                 }
                                 inputData.Add(line);
                             }
@@ -123,11 +99,6 @@ namespace _560FinalProject
             OF.Show();
         }
 
-        private void MovieDatabaseForm_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void MovieSearchDiabled()
         {
             actorFirstName_textbox.Enabled = false;
@@ -147,8 +118,10 @@ namespace _560FinalProject
         {
             theaterName_textbox.Enabled = false;
             theaterAddress_textbox.Enabled = false;
+
             roomNumber_textbox.Enabled = false;
             roomCapacity_textbox.Enabled = false;
+
             dateStart_textbox.Enabled = false;
             dateEnd_textbox.Enabled = false;
             
@@ -157,6 +130,7 @@ namespace _560FinalProject
             movieDuration_textbox.Enabled = false;
             movieRevenue_textbox.Enabled = false;
             movieRating_textbox.Enabled = false;
+
             movieGenre_textbox.Enabled = false;
         }
 
@@ -167,9 +141,12 @@ namespace _560FinalProject
             movieDuration_textbox.Enabled = false;
             movieRevenue_textbox.Enabled = false;
             movieRating_textbox.Enabled = false;
+
             movieGenre_textbox.Enabled = false;
+
             roomNumber_textbox.Enabled = false;
             roomCapacity_textbox.Enabled = false;
+
             dateStart_textbox.Enabled = false;
             dateEnd_textbox.Enabled = false;
         }
@@ -182,8 +159,10 @@ namespace _560FinalProject
             movieRevenue_textbox.Enabled = false;
             movieRating_textbox.Enabled = false;
             movieGenre_textbox.Enabled = false;
+
             dateStart_textbox.Enabled = false;
             dateEnd_textbox.Enabled = false;
+
             theaterName_textbox.Enabled = false;
             theaterAddress_textbox.Enabled = false;
         }
@@ -195,6 +174,7 @@ namespace _560FinalProject
             movieDuration_textbox.Enabled = false;
             movieRevenue_textbox.Enabled = false;
             movieRating_textbox.Enabled = false;
+
             movieGenre_textbox.Enabled = false;
 
             actorFirstName_textbox.Enabled = false;
@@ -288,11 +268,6 @@ namespace _560FinalProject
             DateSearchDisabled();
         }
 
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void reset_button_Click(object sender, EventArgs e)
         {
             ResetSearch();
@@ -306,6 +281,7 @@ namespace _560FinalProject
             movieDuration_textbox.Enabled = true;
             movieRevenue_textbox.Enabled = true;
             movieRating_textbox.Enabled = true;
+
             movieGenre_textbox.Enabled = true;
 
             actorFirstName_textbox.Enabled = true;
@@ -325,6 +301,7 @@ namespace _560FinalProject
             movieDuration_textbox.Text = null;
             movieRevenue_textbox.Text = null;
             movieRating_textbox.Text = null;
+
             movieGenre_textbox.Text = null;
 
             actorFirstName_textbox.Text = null;
