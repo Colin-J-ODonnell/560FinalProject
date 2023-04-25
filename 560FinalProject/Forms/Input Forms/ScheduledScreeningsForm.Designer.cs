@@ -54,6 +54,7 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
+            this.output_listbox = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // movieGenre_textbox
@@ -271,18 +272,29 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(266, 1128);
+            this.label11.Location = new System.Drawing.Point(619, 1095);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(70, 32);
             this.label11.TabIndex = 56;
             this.label11.Text = "        ";
+            // 
+            // output_listbox
+            // 
+            this.output_listbox.FormattingEnabled = true;
+            this.output_listbox.ItemHeight = 31;
+            this.output_listbox.Location = new System.Drawing.Point(651, 34);
+            this.output_listbox.Name = "output_listbox";
+            this.output_listbox.ScrollAlwaysVisible = true;
+            this.output_listbox.Size = new System.Drawing.Size(729, 1058);
+            this.output_listbox.TabIndex = 57;
             // 
             // ScheduledScreeningsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(662, 1199);
+            this.ClientSize = new System.Drawing.Size(1416, 1199);
+            this.Controls.Add(this.output_listbox);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.label12);
@@ -344,5 +356,6 @@
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.ListBox output_listbox;
     }
 }
