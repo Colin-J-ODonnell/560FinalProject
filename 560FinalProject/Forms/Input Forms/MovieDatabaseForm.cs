@@ -38,10 +38,7 @@ namespace _560FinalProject
 
         private void search_button_Click(object sender, EventArgs e)
         {
-
             MovieSearch();
-
-            
         }
 
         private void MovieSearch()
@@ -53,6 +50,25 @@ namespace _560FinalProject
             List<string> Revenue = new List<string>();
             List<float> Ratings = new List<float>();
             List<string> inputData = new List<string>();
+
+            List<string> userInput = new List<string>();
+
+            userInput.Add(movieTitle_textbox.Text);
+            userInput.Add(movieReleaseDate_textbox.Text);
+            userInput.Add(movieDuration_textbox.Text);
+            userInput.Add(movieRevenue_textbox.Text);
+            userInput.Add(movieRating_textbox.Text);
+            userInput.Add(movieGenre_textbox.Text);
+            userInput.Add(actorFirstName_textbox.Text);
+            userInput.Add(actorLastName_textbox.Text);
+            userInput.Add(theaterName_textbox.Text);
+            userInput.Add(theaterAddress_textbox.Text);
+            userInput.Add(roomNumber_textbox.Text);
+            userInput.Add(dateStart_textbox.Text);
+            userInput.Add(roomCapacity_textbox.Text);
+            userInput.Add(dateEnd_textbox.Text);
+            
+
             using (var transaction = new TransactionScope())
             {
                 using (var connection = new SqlConnection(@"Server=(localdb)\MSSQLLocalDb;Database=local codonnell;Integrated Security=SSPI;"))
