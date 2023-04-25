@@ -52,7 +52,7 @@ namespace _560FinalProject
 
             using (var transaction = new TransactionScope())
             {
-                using (var connection = new SqlConnection(@"Server=(localdb)\MSSQLLocalDb;Database=rosen;Integrated Security=SSPI;"))
+                using (var connection = new SqlConnection(@"Server=(localdb)\MSSQLLocalDb;Database=local codonnell;Integrated Security=SSPI;"))
                 {
                     using (var command = new SqlCommand("SELECT * FROM MovieOperations.Movie", connection))
                     {
@@ -76,20 +76,8 @@ namespace _560FinalProject
                 }
             }
 
-            foreach (string s in inputData)
-            {
-                string[] split = s.Split(',');
-                MovieIDs.Add(Convert.ToInt32(split[0]));
-                Titles.Add(split[1]);
-                Release.Add(Convert.ToInt32(split[2]));
-                Duration.Add(Convert.ToInt32(split[3]));
-                Revenue.Add(split[4]);
-                Ratings.Add((float)Convert.ToDouble(split[5]));
-            }
+            output_listbox.DataSource = inputData;
 
-            Database_OutputForm of = new Database_OutputForm(this, O, MovieIDs, Titles, Release, Duration, Revenue, Ratings);
-            this.Hide();
-            of.Show();
         }
 
         private void back_button_Click(object sender, EventArgs e)
