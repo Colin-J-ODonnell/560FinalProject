@@ -482,6 +482,7 @@
             this.delete_button.TabIndex = 120;
             this.delete_button.Text = "DELETE";
             this.delete_button.UseVisualStyleBackColor = true;
+            this.delete_button.Click += new System.EventHandler(this.delete_button_Click);
             // 
             // output_listbox
             // 

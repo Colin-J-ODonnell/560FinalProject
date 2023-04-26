@@ -84,7 +84,7 @@ namespace _560FinalProject
 
         private string UserActorSearch(List<string> userInput)
         {
-            string startCommand = "SELECT A.FirstName, A.LastName, M.Title FROM MovieOperations.Actor A INNER JOIN MovieOperations.MovieCast MC ON MC.ActorID = A.ActorID INNER JOIN MovieOperations.Movie M ON M.MovieID = MC.MovieID WHERE ";
+            string startCommand = "SELECT A.ActorID A.FirstName, A.LastName, M.Title FROM MovieOperations.Actor A INNER JOIN MovieOperations.MovieCast MC ON MC.ActorID = A.ActorID INNER JOIN MovieOperations.Movie M ON M.MovieID = MC.MovieID WHERE ";
             int catcher = 0;
             for (int i = 0; i < userInput.Count; i++)
             {
@@ -102,7 +102,7 @@ namespace _560FinalProject
         
         private string UserTDRSearch(List<string> userInput)
         {
-            string startCommand = "SELECT T.[Name], M.Title, ST.Showtime FROM MovieOperations.Theater T INNER JOIN MovieOperations.Room R ON R.TheaterID = T.TheaterID " +
+            string startCommand = "SELECT T.TheaterID, R.RoomID, T.[Name], M.Title, ST.Showtime FROM MovieOperations.Theater T INNER JOIN MovieOperations.Room R ON R.TheaterID = T.TheaterID " +
                 "INNER JOIN MovieOperations.MovieShowtime ST ON ST.RoomID = R.RoomID INNER JOIN MovieOperations.Movie M ON M.MovieID = ST.MovieID WHERE ";
             int catcher = 0;
             for (int i = 0; i < userInput.Count; i++)
@@ -367,7 +367,7 @@ namespace _560FinalProject
         /// <summary>
         /// Removes an MovieShowtime with the given parameters.
         /// </summary>
-        public void RemoveMovieShowtime(int id)
+        public void RemoveMovie(int id)
         {
             // Verify parameters.
             // None Needed Here.
@@ -377,11 +377,11 @@ namespace _560FinalProject
             {
                 using (var connection = new SqlConnection(cs))
                 {
-                    using (var command = new SqlCommand("MovieOperations.RemoveMovieShowtime", connection))
+                    using (var command = new SqlCommand("MovieOperations.RemoveMovie", connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
 
-                        command.Parameters.AddWithValue("@ShowtimeID", id);
+                        command.Parameters.AddWithValue("@MovieID", id);
 
                         // Find a way to retrieve the correct actorID. Maybe through an sql program?
 

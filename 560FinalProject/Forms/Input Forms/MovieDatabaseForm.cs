@@ -94,10 +94,22 @@ namespace _560FinalProject
 
         private void update_button_Click(object sender, EventArgs e)
         {
-            EditForm ef = new EditForm(this, O);
-            ef.Data = (string)output_listbox.SelectedItem;
-            this.Hide();
-            ef.Show();
+            if (output_listbox.SelectedItem != null)
+            {
+                EditForm ef = new EditForm(this, O, SEARCHVALUE, output_listbox.SelectedItem.ToString());
+                ef.Show();
+            }
+            else MessageBox.Show("No selected item!");
+        }
+
+        private void delete_button_Click(object sender, EventArgs e)
+        {
+            if (output_listbox.SelectedItem != null)
+            {
+                DeleteForm df = new DeleteForm(this, O, output_listbox.SelectedItem.ToString());
+                df.Show();
+            }
+            else MessageBox.Show("No selected item!");
         }
 
         private void back_button_Click(object sender, EventArgs e)

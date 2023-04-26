@@ -102,6 +102,12 @@
     <Compile Include="Forms\Other Forms\Add Forms\AddTheaterForm.Designer.cs">
       <DependentUpon>AddTheaterForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Other Forms\DeleteForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Other Forms\DeleteForm.Designer.cs">
+      <DependentUpon>DeleteForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Other Forms\EditForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -158,6 +164,9 @@
     <EmbeddedResource Include="Forms\Other Forms\Add Forms\AddTheaterForm.resx">
       <DependentUpon>AddTheaterForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Other Forms\DeleteForm.resx">
+      <DependentUpon>DeleteForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Other Forms\EditForm.resx">
       <DependentUpon>EditForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -194,12 +203,12 @@
     <Content Include="SQL\Data\PopulateTablesRy.sql" />
     <Content Include="SQL\Data\PopulateTablesSebi.sql" />
     <Content Include="SQL\Operations\MovieOperations.CreateActor.sql" />
-    <Content Include="SQL\Operations\MovieOperations.CreateMovieShowtime.sql" />
+    <Content Include="SQL\Operations\MovieOperations.CreateMovie.sql" />
     <Content Include="SQL\Operations\MovieOperations.CreateRoom.sql" />
     <Content Include="SQL\Operations\MovieOperations.CreateTheater.sql" />
     <Content Include="SQL\Data\PopulateTables.sql" />
     <Content Include="SQL\Operations\MovieOperations.RemoveActor.sql" />
-    <Content Include="SQL\Operations\MovieOperations.RemoveMovieShowtime.sql" />
+    <Content Include="SQL\Operations\MovieOperations.RemoveMovie.sql" />
     <Content Include="SQL\Operations\MovieOperations.RemoveRoom.sql" />
     <Content Include="SQL\Operations\MovieOperations.RemoveTheater.sql" />
     <Content Include="SQL\Tables\DropTables.sql" />
