@@ -49,4 +49,16 @@ BEGIN
 	ROWTERMINATOR = '\n'
 	)
 END;
+
+IF(NOT EXISTS(SELECT 1 FROM MovieOperations.MovieGenres))
+BEGIN
+	BULK
+	INSERT MovieOperations.MovieGenres
+	FROM 'E:\CIS 560\560FinalProject\Excel Files\genretemp.csv'
+	WITH
+	(
+	FIELDTERMINATOR = ',',
+	ROWTERMINATOR = '\n'
+	)
+END;
  

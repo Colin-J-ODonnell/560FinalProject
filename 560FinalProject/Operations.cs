@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 using System.Windows.Forms;
+using System.IO;
 
 namespace _560FinalProject
 {
@@ -28,8 +29,8 @@ namespace _560FinalProject
             string SQLCommand = "";
             if (ind == 1) SQLCommand = UserMovieSearch(userInput); 
             if (ind == 2) SQLCommand = UserActorSearch(userInput);
-            // if (ind == 3) SQLCommand = UserTDRSearch(userInput);
-            // if (ind == 4) SQLCommand = UserGenreSearch(userInput);
+            if (ind == 3) SQLCommand = UserTDRSearch(userInput);
+            if (ind == 4) SQLCommand = UserGenreSearch(userInput);
 
             List<string> outputData = new List<string>();
             
@@ -98,10 +99,11 @@ namespace _560FinalProject
             return startCommand;
         }
 
-        /*
+        
         private string UserTDRSearch(List<string> userInput)
         {
-            string startCommand = "SELECT A.ActorID, A.FirstName, A.LastName, A.MovieList FROM MovieOperations.Actor A WHERE ";
+            string startCommand = "SELECT T.TheaterID, T.[Name], T.[Address], T.RoomCount, R.RoomNumber, R.Capacity FROM MovieOperations.Theater T INNER JOIN MovieOperations.Room R ON R.TheaterID = T.TheaterID INNER JOIN " +
+                "INNER JOIN MovieOperations.MovieShowtime ST ON ST.RoomID = R.RoomID INNER JOIN MovieOperations.Movie M ON M.MovieID = ST.MovieID WHERE ";
             int catcher = 0;
             for (int i = 0; i < userInput.Count; i++)
             {
@@ -115,10 +117,9 @@ namespace _560FinalProject
             }
             return startCommand;
         }
-
         private string UserGenreSearch(List<string> userInput)
         {
-            string startCommand = "SELECT G.GenreID, G.GenreType FROM MovieOperations.Genre G WHERE ";
+            string startCommand = "SELECT G.GenreType, MG.MovieGenreID, M.Title, M.Rating, M.ReleaseYear FROM MovieOperations.MovieGenres MG INNER JOIN MovieOperations.Movie M ON M.MovieID = MG.MovieID INNER JOIN MovieOperations.Genre G ON G.GenreID = MG.GenreID WHERE ";
             int catcher = 0;
             for (int i = 0; i < userInput.Count; i++)
             {
@@ -126,12 +127,13 @@ namespace _560FinalProject
                 {
                     if (i == userInput.Count) catcher = 0;
                     if (catcher == 1) startCommand += " AND ";
-                    if (i == 0) startCommand += $"A.GenreType = N'{userInput[i]}'"; catcher = 1;
+                    if (i == 0) startCommand += $"M.ReleaseYear = {userInput[i]}"; catcher = 1;
+                    if (i == 1) startCommand += $"M.Rating = {userInput[i]}"; catcher = 1;
+                    if (i == 2) startCommand += $"G.GenreType = N'{userInput[i]}'"; catcher = 1;
                 }
             }
             return startCommand;
         }
-        */
 
         // CREATE //
 
@@ -461,6 +463,52 @@ namespace _560FinalProject
                         command.ExecuteNonQuery();
 
                         transaction.Complete();
+                    }
+                }
+            }
+        }
+
+        public void GenerateRooms()
+        {
+            using (var transaction = new TransactionScope())
+            {
+                using (var connection = new SqlConnection(cs))
+                {
+                    using (var command = new SqlCommand("SELECT * FROM MovieOperations.Theater", connection))
+                    {
+                        int[] roomNumbers = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25 };
+                        int[] holder = roomNumbers;
+                        connection.Open();
+                        List<Room> rooms = new List<Room>();
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                Random rand = new Random();
+                                int totalCount = 1;
+                                for (int i = 0; i < reader.FieldCount; i+=4)
+                                {
+                                    roomNumbers = roomNumbers.OrderBy(x => rand.Next()).ToArray();
+                                    int count = (int)reader.GetValue(i+3);
+                                    for(int j = 1; j <= count; j++)
+                                    {
+                                        rooms.Add(new Room(totalCount++, i + 1, roomNumbers[j], rand.Next(4, 15) * 5));
+                                    }
+                                    roomNumbers = holder;
+                                }
+                            }
+                        }
+
+                        transaction.Complete();
+
+                        using (StreamWriter sw = new StreamWriter("ryoutput.txt"))
+                        {
+                            for (int i = 0; i < rooms.Count; i++)
+                            {
+                                string s = Convert.ToString(rooms[i].RoomID) + "," + Convert.ToString(rooms[i].TheaterID) + "," + Convert.ToString(rooms[i].RoomNumber) + "," + Convert.ToString(rooms[i].Capacity);
+                                sw.WriteLine(s);
+                            }
+                        }
                     }
                 }
             }

@@ -70,11 +70,9 @@ namespace _560FinalProject
             if (SEARCHVALUE == 4)
             {
                 List<string> input = new List<string>();
-                input.Add(movieGenre_textbox.Text);
                 input.Add(movieReleaseDate_textbox.Text);
                 input.Add(movieRating_textbox.Text);
-                input.Add(actorFirstName_textbox.Text);
-                input.Add(actorLastName_textbox.Text);
+                input.Add(movieGenre_textbox.Text);
                 output = O.MovieSearch(SEARCHVALUE, input);
             }
 
@@ -150,8 +148,9 @@ namespace _560FinalProject
             roomCapacity_textbox.Enabled = false;
             dateStart_textbox.Enabled = false;
             dateEnd_textbox.Enabled = false;
-
-            SEARCHVALUE = 6;
+            actorFirstName_textbox.Enabled = false;
+            actorLastName_textbox.Enabled = false;
+            SEARCHVALUE = 4;
         }
 
         private void ResetSearch()
@@ -206,7 +205,11 @@ namespace _560FinalProject
 
         private void movieReleaseDate_textbox_TextChanged(object sender, EventArgs e)
         {
-            MovieSearchDiabled();
+            if (SEARCHVALUE != 4)
+            {
+                MovieSearchDiabled();
+            }
+            else GenreSearchDisabled();
         }
 
         private void movieDuration_textbox_TextChanged(object sender, EventArgs e)
@@ -231,7 +234,11 @@ namespace _560FinalProject
 
         private void movieRating_textbox_TextChanged(object sender, EventArgs e)
         {
-            MovieSearchDiabled();
+            if (SEARCHVALUE != 4)
+            {
+                MovieSearchDiabled();
+            }
+            else GenreSearchDisabled();
         }
 
         private void actorFirstName_textbox_TextChanged(object sender, EventArgs e)
