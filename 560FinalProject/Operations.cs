@@ -72,7 +72,7 @@ namespace _560FinalProject
                 {
                     if (i == userInput.Count) catcher = 0;
                     if (catcher == 1) startCommand += " AND ";
-                    if (i == 0) startCommand += $"M.Title = N'{userInput[i]}'"; catcher = 1;
+                    if (i == 0) startCommand += $"M.Title LIKE N'%{userInput[i]}%'"; catcher = 1;
                     if (i == 1) startCommand += $"M.ReleaseYear = {userInput[i]}"; catcher = 1;
                     if (i == 2) startCommand += $"M.Duration = {userInput[i]}"; catcher = 1;
                     if (i == 3) startCommand += $"M.Gross = N'{userInput[i]}'"; catcher = 1;
@@ -114,7 +114,7 @@ namespace _560FinalProject
                     switch (i)
                     {
                         case 0:
-                            startCommand += $"T.[Name] = N'{userInput[i]}'"; 
+                            startCommand += $"T.[Name] LIKE N'%{userInput[i]}%'"; 
                             catcher = 1;
                             break;
                         case 1:
