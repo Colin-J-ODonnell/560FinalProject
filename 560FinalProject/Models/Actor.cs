@@ -11,12 +11,14 @@ namespace _560FinalProject
         public int ActorID { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public List<string> MovieList { get; set; }
 
-        public Actor(int actorID, string firstName, string lastName)
+        public Actor(int actorID, string firstName, string lastName, List<string> movieList)
         {
             ActorID = actorID;
             FirstName = firstName;
             LastName = lastName;
+            MovieList = movieList;
         }
 
         /// <summary>
@@ -27,6 +29,7 @@ namespace _560FinalProject
             ActorID = 696969;
             FirstName = "JO'";
             LastName = "MAMA";
+            MovieList = new List<string>();
         }
     }
 }
