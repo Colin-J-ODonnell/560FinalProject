@@ -80,6 +80,27 @@ namespace _560FinalProject
             output_listbox.DataSource = output;
         }
 
+        private void reset_button_Click(object sender, EventArgs e)
+        {
+            ResetSearch();
+            ResetSearch();
+        }
+
+        private void add_button_Click(object sender, EventArgs e)
+        {
+            AddForm af = new AddForm(this, O);
+            this.Hide();
+            af.Show();
+        }
+
+        private void update_button_Click(object sender, EventArgs e)
+        {
+            EditForm ef = new EditForm(this, O);
+            ef.Data = (string)output_listbox.SelectedItem;
+            this.Hide();
+            ef.Show();
+        }
+
         private void back_button_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -280,27 +301,6 @@ namespace _560FinalProject
         private void dateEnd_textbox_TextChanged(object sender, EventArgs e)
         {
             TRDSearch();
-        }
-
-        private void reset_button_Click(object sender, EventArgs e)
-        {
-            ResetSearch();
-            ResetSearch();
-        }
-
-        private void add_button_Click(object sender, EventArgs e)
-        {
-            AddForm af = new AddForm(this, O);
-            this.Hide();
-            af.Show();
-        }
-
-        private void update_button_Click(object sender, EventArgs e)
-        {
-            EditForm ef = new EditForm(this, O);
-            ef.Data = (string)output_listbox.SelectedItem;
-            this.Hide();
-            ef.Show();
         }
     }
 }
