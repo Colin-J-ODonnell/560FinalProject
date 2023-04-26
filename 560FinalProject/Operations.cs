@@ -102,8 +102,8 @@ namespace _560FinalProject
         
         private string UserTDRSearch(List<string> userInput)
         {
-            string startCommand = "SELECT T.TheaterID, T.[Name], T.[Address], T.RoomCount, R.RoomNumber, R.Capacity FROM MovieOperations.Theater T INNER JOIN MovieOperations.Room R ON R.TheaterID = T.TheaterID " +
-                "INNER JOIN MovieOperations.MovieShowtime ST ON ST.RoomID = R.RoomID WHERE ";
+            string startCommand = "SELECT T.[Name], M.Title, ST.Showtime FROM MovieOperations.Theater T INNER JOIN MovieOperations.Room R ON R.TheaterID = T.TheaterID " +
+                "INNER JOIN MovieOperations.MovieShowtime ST ON ST.RoomID = R.RoomID INNER JOIN MovieOperations.Movie M ON M.MovieID = ST.MovieID WHERE ";
             int catcher = 0;
             for (int i = 0; i < userInput.Count; i++)
             {
@@ -130,16 +130,17 @@ namespace _560FinalProject
                             catcher = 1;
                             break;
                         case 4:
-                            startCommand += $"ST.Showtime > {userInput[i]}";
+                            startCommand += $"ST.Showtime > '{userInput[i]}'";
                             catcher = 1;
                             break;
                         case 5:
-                            startCommand += $"ST.Showtime < {userInput[i]}";
+                            startCommand += $"ST.Showtime < '{userInput[i]}'";
                             break;
                     }
 
                 }
             }
+            startCommand += " ORDER BY ST.Showtime ASC";
             return startCommand;
         }
         private string UserGenreSearch(List<string> userInput)
