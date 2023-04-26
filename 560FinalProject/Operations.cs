@@ -102,7 +102,8 @@ namespace _560FinalProject
         
         private string UserTDRSearch(List<string> userInput)
         {
-            string startCommand = "SELECT T.TheaterID, T.[Name], T.[Address], T.RoomCount, R.RoomNumber, R.Capacity FROM MovieOperations.Theater T INNER JOIN MovieOperations.Room R ON R.TheaterID = T.TheaterID WHERE ";
+            string startCommand = "SELECT T.TheaterID, T.[Name], T.[Address], T.RoomCount, R.RoomNumber, R.Capacity FROM MovieOperations.Theater T INNER JOIN MovieOperations.Room R ON R.TheaterID = T.TheaterID " +
+                "INNER JOIN MovieOperations.MovieShowtime ST ON ST.RoomID = R.RoomID WHERE ";
             int catcher = 0;
             for (int i = 0; i < userInput.Count; i++)
             {
@@ -110,8 +111,33 @@ namespace _560FinalProject
                 {
                     if (i == userInput.Count) catcher = 0;
                     if (catcher == 1) startCommand += " AND ";
-                    if (i == 0) startCommand += $"T.[Name] = N'{userInput[i]}'"; catcher = 1;
-                    if (i == 1) startCommand += $"A.[Address] = N'{userInput[i]}'"; catcher = 1;
+                    switch (i)
+                    {
+                        case 0:
+                            startCommand += $"T.[Name] = N'{userInput[i]}'"; 
+                            catcher = 1;
+                            break;
+                        case 1:
+                            startCommand += $"T.[Address] = N'{userInput[i]}'"; 
+                            catcher = 1;
+                            break;
+                        case 2:
+                            startCommand += $"R.RoomNumber = {userInput[i]}";
+                            catcher = 1;
+                            break;
+                        case 3:
+                            startCommand += $"R.Capacity = {userInput[i]}";
+                            catcher = 1;
+                            break;
+                        case 4:
+                            startCommand += $"ST.Showtime > {userInput[i]}";
+                            catcher = 1;
+                            break;
+                        case 5:
+                            startCommand += $"ST.Showtime < {userInput[i]}";
+                            break;
+                    }
+
                 }
             }
             return startCommand;
