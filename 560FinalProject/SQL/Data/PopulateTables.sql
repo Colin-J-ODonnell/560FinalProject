@@ -61,4 +61,16 @@ BEGIN
 	ROWTERMINATOR = '\n'
 	)
 END;
+
+IF(NOT EXISTS(SELECT 1 FROM MovieOperations.MovieCast))
+BEGIN
+	BULK
+	INSERT MovieOperations.MovieCast
+	FROM 'E:\CIS 560\560FinalProject\Excel Files\moviecast.csv'
+	WITH
+	(
+	FIELDTERMINATOR = ',',
+	ROWTERMINATOR = '\n'
+	)
+END;
  

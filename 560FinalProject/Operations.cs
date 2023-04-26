@@ -84,7 +84,7 @@ namespace _560FinalProject
 
         private string UserActorSearch(List<string> userInput)
         {
-            string startCommand = "SELECT A.ActorID, A.FirstName, A.LastName, A.MovieList FROM MovieOperations.Actor A WHERE ";
+            string startCommand = "SELECT A.FirstName, A.LastName, M.Title FROM MovieOperations.Actor A INNER JOIN MovieOperations.MovieCast MC ON MC.ActorID = A.ActorID INNER JOIN MovieOperations.Movie M ON M.MovieID = MC.MovieID WHERE ";
             int catcher = 0;
             for (int i = 0; i < userInput.Count; i++)
             {
