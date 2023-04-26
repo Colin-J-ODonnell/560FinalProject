@@ -24,13 +24,13 @@ namespace _560FinalProject
             cs = connectionString;
         }
 
-        public List<string> MovieSearch(int ind, List<string> userInput)
+        public List<string> MovieSearch(int ind, List<string> userInput, int NumUpDown)
         {
             string SQLCommand = "";
-            if (ind == 1) SQLCommand = UserMovieSearch(userInput); 
-            if (ind == 2) SQLCommand = UserActorSearch(userInput);
-            if (ind == 3) SQLCommand = UserTDRSearch(userInput);
-            if (ind == 4) SQLCommand = UserGenreSearch(userInput);
+            if (ind == 1) SQLCommand = UserMovieSearch(userInput, NumUpDown); 
+            if (ind == 2) SQLCommand = UserActorSearch(userInput, NumUpDown);
+            if (ind == 3) SQLCommand = UserTDRSearch(userInput, NumUpDown);
+            if (ind == 4) SQLCommand = UserGenreSearch(userInput, NumUpDown);
 
             List<string> outputData = new List<string>();
             
@@ -62,9 +62,9 @@ namespace _560FinalProject
             return outputData;
         }
 
-        private string UserMovieSearch(List<string> userInput)
+        private string UserMovieSearch(List<string> userInput, int NumUpDown)
         {
-            string startCommand = "SELECT M.MovieID, M.Title, M.ReleaseYear, M.Duration, M.Gross, M.Rating FROM MovieOperations.Movie M WHERE ";
+            string startCommand = $"SELECT TOP {NumUpDown} M.MovieID, M.Title, M.ReleaseYear, M.Duration, M.Gross, M.Rating FROM MovieOperations.Movie M WHERE ";
             int catcher = 0;
             for(int i = 0; i < userInput.Count;i++)
             {
@@ -79,10 +79,11 @@ namespace _560FinalProject
                     if (i == 4) startCommand += $"M.Rating = {userInput[i]}"; catcher = 1;
                 }
             }
+            //if(NumUpDown != 0) startCommand += $" AND ROWNUM <= {NumUpDown}";
             return startCommand;
         }
 
-        private string UserActorSearch(List<string> userInput)
+        private string UserActorSearch(List<string> userInput, int NumUpDown)
         {
             string startCommand = "SELECT A.ActorID A.FirstName, A.LastName, M.Title FROM MovieOperations.Actor A INNER JOIN MovieOperations.MovieCast MC ON MC.ActorID = A.ActorID INNER JOIN MovieOperations.Movie M ON M.MovieID = MC.MovieID WHERE ";
             int catcher = 0;
@@ -96,11 +97,12 @@ namespace _560FinalProject
                     if (i == 1) startCommand += $"A.LastName = N'{userInput[i]}'"; catcher = 1;
                 }
             }
+            if (NumUpDown != 0)  startCommand += $" LIMIT {NumUpDown}";
             return startCommand;
         }
 
         
-        private string UserTDRSearch(List<string> userInput)
+        private string UserTDRSearch(List<string> userInput, int NumUpDown)
         {
             string startCommand = "SELECT T.TheaterID, R.RoomID, T.[Name], M.Title, ST.Showtime FROM MovieOperations.Theater T INNER JOIN MovieOperations.Room R ON R.TheaterID = T.TheaterID " +
                 "INNER JOIN MovieOperations.MovieShowtime ST ON ST.RoomID = R.RoomID INNER JOIN MovieOperations.Movie M ON M.MovieID = ST.MovieID WHERE ";
@@ -140,10 +142,11 @@ namespace _560FinalProject
 
                 }
             }
-            startCommand += " ORDER BY ST.Showtime ASC";
+            startCommand += " ORDER BY ST.Showtime ASC ";
+            if (NumUpDown != 0) startCommand += $" LIMIT {NumUpDown}";
             return startCommand;
         }
-        private string UserGenreSearch(List<string> userInput)
+        private string UserGenreSearch(List<string> userInput, int NumUpDown)
         {
             string startCommand = "SELECT G.GenreType, MG.MovieGenreID, M.Title, M.Rating, M.ReleaseYear FROM MovieOperations.MovieGenres MG INNER JOIN MovieOperations.Movie M ON M.MovieID = MG.MovieID INNER JOIN MovieOperations.Genre G ON G.GenreID = MG.GenreID WHERE ";
             int catcher = 0;
@@ -158,6 +161,7 @@ namespace _560FinalProject
                     if (i == 2) startCommand += $"G.GenreType = N'{userInput[i]}'"; catcher = 1;
                 }
             }
+            if (NumUpDown != 0) startCommand += $" LIMIT {NumUpDown}";
             return startCommand;
         }
 

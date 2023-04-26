@@ -45,7 +45,7 @@ namespace _560FinalProject
                 input.Add(movieDuration_textbox.Text);
                 input.Add(movieRevenue_textbox.Text);
                 input.Add(movieRating_textbox.Text);
-                output = O.MovieSearch(SEARCHVALUE, input);
+                output = O.MovieSearch(SEARCHVALUE, input, 0);
             }
 
             output_listbox.DataSource = output;

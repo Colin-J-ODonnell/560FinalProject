@@ -39,7 +39,7 @@ namespace _560FinalProject
         private void search_button_Click(object sender, EventArgs e)
         {
             List<string> output = new List<string>();
-
+            int numUpDwn = Convert.ToInt32(numericUpDown1.Value);
             if (SEARCHVALUE == 1)
             {
                 List<string> input = new List<string>();
@@ -48,14 +48,14 @@ namespace _560FinalProject
                 input.Add(movieDuration_textbox.Text);
                 input.Add(movieRevenue_textbox.Text);
                 input.Add(movieRating_textbox.Text);
-                output = O.MovieSearch(SEARCHVALUE, input);
+                output = O.MovieSearch(SEARCHVALUE, input, numUpDwn);
             }
             if (SEARCHVALUE == 2)
             {
                 List<string> input = new List<string>();
                 input.Add(actorFirstName_textbox.Text);
                 input.Add(actorLastName_textbox.Text);
-                output = O.MovieSearch(SEARCHVALUE, input);
+                output = O.MovieSearch(SEARCHVALUE, input, numUpDwn);
             }
             if (SEARCHVALUE == 3)
             {
@@ -66,7 +66,7 @@ namespace _560FinalProject
                 input.Add(roomCapacity_textbox.Text);
                 input.Add(dateStart_textbox.Text);
                 input.Add(dateEnd_textbox.Text);
-                output = O.MovieSearch(SEARCHVALUE, input);
+                output = O.MovieSearch(SEARCHVALUE, input, numUpDwn);
             }
             if (SEARCHVALUE == 4)
             {
@@ -74,7 +74,7 @@ namespace _560FinalProject
                 input.Add(movieReleaseDate_textbox.Text);
                 input.Add(movieRating_textbox.Text);
                 input.Add(movieGenre_textbox.Text);
-                output = O.MovieSearch(SEARCHVALUE, input);
+                output = O.MovieSearch(SEARCHVALUE, input, numUpDwn);
             }
 
             output_listbox.DataSource = output;
@@ -312,6 +312,11 @@ namespace _560FinalProject
         private void dateEnd_textbox_TextChanged(object sender, EventArgs e)
         {
             TRDSearch();
+        }
+
+        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
