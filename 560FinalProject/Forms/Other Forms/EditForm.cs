@@ -45,8 +45,10 @@ namespace _560FinalProject.Forms.Other_Forms
                 case 1:
                     // M.MovieID, M.Title, M.ReleaseYear, M.Duration, M.Gross, M.Rating
                     if (!string.IsNullOrEmpty(movieTitle_textbox.Text) && !string.IsNullOrEmpty(movieDuration_textbox.Text) && !string.IsNullOrEmpty(movieReleaseDate_textbox.Text) &&
-                    !string.IsNullOrEmpty(movieTitle_textbox.Text) && !string.IsNullOrEmpty(movieRating_textbox.Text))
+                    !string.IsNullOrEmpty(movieRevenue_textbox.Text) && !string.IsNullOrEmpty(movieRating_textbox.Text))
                     {
+                        string[] split = Data.Split(',');
+                        O.UpdateMovie(movieTitle_textbox.Text, Convert.ToInt32(movieDuration_textbox.Text), Convert.ToInt32(movieReleaseDate_textbox.Text), movieRevenue_textbox.Text, Convert.ToDouble(movieRating_textbox.Text),Convert.ToInt32(split[0]));
                         // Edit code from Operations here.
                     }
                     else MessageBox.Show("Please input all required Data.");

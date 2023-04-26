@@ -79,13 +79,12 @@ namespace _560FinalProject
                     if (i == 4) startCommand += $"M.Rating = {userInput[i]}"; catcher = 1;
                 }
             }
-            //if(NumUpDown != 0) startCommand += $" AND ROWNUM <= {NumUpDown}";
             return startCommand;
         }
 
         private string UserActorSearch(List<string> userInput, int NumUpDown)
         {
-            string startCommand = "SELECT A.ActorID A.FirstName, A.LastName, M.Title FROM MovieOperations.Actor A INNER JOIN MovieOperations.MovieCast MC ON MC.ActorID = A.ActorID INNER JOIN MovieOperations.Movie M ON M.MovieID = MC.MovieID WHERE ";
+            string startCommand = $"SELECT TOP {NumUpDown} A.ActorID A.FirstName, A.LastName, M.Title FROM MovieOperations.Actor A INNER JOIN MovieOperations.MovieCast MC ON MC.ActorID = A.ActorID INNER JOIN MovieOperations.Movie M ON M.MovieID = MC.MovieID WHERE ";
             int catcher = 0;
             for (int i = 0; i < userInput.Count; i++)
             {
@@ -97,14 +96,14 @@ namespace _560FinalProject
                     if (i == 1) startCommand += $"A.LastName = N'{userInput[i]}'"; catcher = 1;
                 }
             }
-            if (NumUpDown != 0)  startCommand += $" LIMIT {NumUpDown}";
+            
             return startCommand;
         }
 
         
         private string UserTDRSearch(List<string> userInput, int NumUpDown)
         {
-            string startCommand = "SELECT T.TheaterID, R.RoomID, T.[Name], M.Title, ST.Showtime FROM MovieOperations.Theater T INNER JOIN MovieOperations.Room R ON R.TheaterID = T.TheaterID " +
+            string startCommand = $"SELECT TOP {NumUpDown} T.TheaterID, R.RoomID, T.[Name], M.Title, ST.Showtime FROM MovieOperations.Theater T INNER JOIN MovieOperations.Room R ON R.TheaterID = T.TheaterID " +
                 "INNER JOIN MovieOperations.MovieShowtime ST ON ST.RoomID = R.RoomID INNER JOIN MovieOperations.Movie M ON M.MovieID = ST.MovieID WHERE ";
             int catcher = 0;
             for (int i = 0; i < userInput.Count; i++)
@@ -143,12 +142,11 @@ namespace _560FinalProject
                 }
             }
             startCommand += " ORDER BY ST.Showtime ASC ";
-            if (NumUpDown != 0) startCommand += $" LIMIT {NumUpDown}";
             return startCommand;
         }
         private string UserGenreSearch(List<string> userInput, int NumUpDown)
         {
-            string startCommand = "SELECT G.GenreType, MG.MovieGenreID, M.Title, M.Rating, M.ReleaseYear FROM MovieOperations.MovieGenres MG INNER JOIN MovieOperations.Movie M ON M.MovieID = MG.MovieID INNER JOIN MovieOperations.Genre G ON G.GenreID = MG.GenreID WHERE ";
+            string startCommand = $"SELECT TOP {NumUpDown} G.GenreType, MG.MovieGenreID, M.Title, M.Rating, M.ReleaseYear FROM MovieOperations.MovieGenres MG INNER JOIN MovieOperations.Movie M ON M.MovieID = MG.MovieID INNER JOIN MovieOperations.Genre G ON G.GenreID = MG.GenreID WHERE ";
             int catcher = 0;
             for (int i = 0; i < userInput.Count; i++)
             {
@@ -161,7 +159,6 @@ namespace _560FinalProject
                     if (i == 2) startCommand += $"G.GenreType = N'{userInput[i]}'"; catcher = 1;
                 }
             }
-            if (NumUpDown != 0) startCommand += $" LIMIT {NumUpDown}";
             return startCommand;
         }
 
@@ -252,6 +249,42 @@ namespace _560FinalProject
             }
         }
 
+
+        public Movie UpdateMovie(string title, int duration, int releaseYear, string gross, double rating, int id)
+        {
+            // Verify parameters.
+            if (string.IsNullOrWhiteSpace(title)) throw new ArgumentException("The parameter cannot be null or empty.");
+            if (string.IsNullOrWhiteSpace(gross)) throw new ArgumentException("The parameter cannot be null or empty.");
+
+            // Save to database.
+            using (var transaction = new TransactionScope())
+            {
+                using (var connection = new SqlConnection(cs))
+                {
+                    using (var command = new SqlCommand("MovieOperations.UpdateMovie", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        command.Parameters.AddWithValue("Title", title);
+                        command.Parameters.AddWithValue("Duration", duration);
+                        command.Parameters.AddWithValue("ReleaseYear", releaseYear);
+                        command.Parameters.AddWithValue("Gross", gross);
+                        command.Parameters.AddWithValue("Rating", rating);
+                        command.Parameters.AddWithValue("MovieID", id);
+
+                        connection.Open();
+
+                        command.ExecuteNonQuery();
+
+                        transaction.Complete();
+
+                        var movieid = (int)command.Parameters["MovieID"].Value;
+
+                        return new Movie(movieid, title, duration, releaseYear, gross, rating);
+                    }
+                }
+            }
+        }
         /// <summary>
         /// Creates an Room with the given parameters.
         /// </summary>
