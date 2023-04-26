@@ -58,7 +58,7 @@ CREATE TABLE MovieOperations.Room
 CREATE TABLE MovieOperations.MovieShowtime
 (
     ShowtimeID INT NOT NULL,
-    RoomID INT UNIQUE NOT NULL FOREIGN KEY
+    RoomID INT NOT NULL FOREIGN KEY
         REFERENCES MovieOperations.Room(RoomID),
     MovieID INT NOT NULL
         REFERENCES MovieOperations.Movie(MovieID),

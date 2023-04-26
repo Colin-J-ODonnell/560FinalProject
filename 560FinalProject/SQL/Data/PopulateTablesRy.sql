@@ -49,4 +49,42 @@ BEGIN
 	ROWTERMINATOR = '\n'
 	)
 END;
+
+IF(NOT EXISTS(SELECT 1 FROM MovieOperations.Room))
+BEGIN
+	BULK
+	INSERT MovieOperations.Room
+	FROM 'C:\Users\rosen\source\repos\560FinalProject\Excel Files\rooms.csv'
+	WITH
+	(
+	FIRSTROW = 1,
+	FIELDTERMINATOR = ',',
+	ROWTERMINATOR = '\n'
+	)
+END;
  
+IF(NOT EXISTS(SELECT 1 FROM MovieOperations.MovieCast))
+BEGIN
+	BULK
+	INSERT MovieOperations.MovieCast
+	FROM 'C:\Users\rosen\source\repos\560FinalProject\Excel Files\moviecast.csv'
+	WITH
+	(
+	FIRSTROW = 1,
+	FIELDTERMINATOR = ',',
+	ROWTERMINATOR = '\n'
+	)
+END;
+
+IF(NOT EXISTS(SELECT 1 FROM MovieOperations.MovieShowtime))
+BEGIN
+	BULK
+	INSERT MovieOperations.MovieShowtime
+	FROM 'C:\Users\rosen\source\repos\560FinalProject\Excel Files\showtimes.csv'
+	WITH
+	(
+	FIRSTROW = 1,
+	FIELDTERMINATOR = ',',
+	ROWTERMINATOR = '\n'
+	)
+END;
