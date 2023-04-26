@@ -89,7 +89,6 @@ namespace _560FinalProject
         private void add_button_Click(object sender, EventArgs e)
         {
             AddForm af = new AddForm(this, O);
-            this.Hide();
             af.Show();
         }
 
