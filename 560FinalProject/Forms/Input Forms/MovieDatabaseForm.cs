@@ -1,4 +1,5 @@
-﻿using System;
+﻿using _560FinalProject.Forms.Other_Forms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -285,6 +286,21 @@ namespace _560FinalProject
         {
             ResetSearch();
             ResetSearch();
+        }
+
+        private void add_button_Click(object sender, EventArgs e)
+        {
+            AddForm af = new AddForm(this, O);
+            this.Hide();
+            af.Show();
+        }
+
+        private void update_button_Click(object sender, EventArgs e)
+        {
+            EditForm ef = new EditForm(this, O);
+            ef.Data = (string)output_listbox.SelectedItem;
+            this.Hide();
+            ef.Show();
         }
     }
 }

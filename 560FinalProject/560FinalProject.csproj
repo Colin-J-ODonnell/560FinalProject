@@ -72,6 +72,42 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\Other Forms\Add Forms\AddActorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Other Forms\Add Forms\AddActorForm.Designer.cs">
+      <DependentUpon>AddActorForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Other Forms\Add Forms\AddRoomForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Other Forms\Add Forms\AddRoomForm.Designer.cs">
+      <DependentUpon>AddRoomForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Other Forms\AddForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Other Forms\AddForm.Designer.cs">
+      <DependentUpon>AddForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Other Forms\Add Forms\AddMovieForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Other Forms\Add Forms\AddMovieForm.Designer.cs">
+      <DependentUpon>AddMovieForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Other Forms\Add Forms\AddTheaterForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Other Forms\Add Forms\AddTheaterForm.Designer.cs">
+      <DependentUpon>AddTheaterForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Other Forms\EditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Other Forms\EditForm.Designer.cs">
+      <DependentUpon>EditForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\MovieCast.cs" />
     <Compile Include="Models\MovieGenres.cs" />
     <Compile Include="Models\MovieShowtime.cs" />
@@ -106,6 +142,24 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\OpeningForm.resx">
       <DependentUpon>OpeningForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Other Forms\Add Forms\AddActorForm.resx">
+      <DependentUpon>AddActorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Other Forms\Add Forms\AddRoomForm.resx">
+      <DependentUpon>AddRoomForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Other Forms\AddForm.resx">
+      <DependentUpon>AddForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Other Forms\Add Forms\AddMovieForm.resx">
+      <DependentUpon>AddMovieForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Other Forms\Add Forms\AddTheaterForm.resx">
+      <DependentUpon>AddTheaterForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Other Forms\EditForm.resx">
+      <DependentUpon>EditForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

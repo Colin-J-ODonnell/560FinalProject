@@ -140,7 +140,7 @@ namespace _560FinalProject
         /// <summary>
         /// Creates an Actor with the given parameters.
         /// </summary>
-        public Actor CreateActor(string firstName, string lastName)
+        public Actor CreateActor(string firstName, string lastName, string movielist)
         {
             // Verify parameters.
             if (string.IsNullOrWhiteSpace(firstName)) throw new ArgumentException("The parameter cannot be null or empty.");
@@ -158,6 +158,12 @@ namespace _560FinalProject
                         command.Parameters.AddWithValue("FirstName", firstName);
                         command.Parameters.AddWithValue("LastName", lastName);
 
+                        List<string> list = new List<string>();
+                        string[] strs = movielist.Split(',');
+                        foreach (string str in strs) list.Add(str);
+
+                        command.Parameters.AddWithValue("LastName", list);
+
                         var p = command.Parameters.Add("ActorID", SqlDbType.Int);
                         p.Direction = ParameterDirection.Output;
 
@@ -168,58 +174,39 @@ namespace _560FinalProject
                         transaction.Complete();
 
                         var actorid = (int)command.Parameters["ActorID"].Value;
+
+                        return new Actor(actorid, firstName, lastName, list);
                     }
                 }
             }
-            /*using (var transaction = new TransactionScope())
-            {
-                using (var connection = new SqlConnection(cs))
-                {
-                    using (var command = new SqlCommand("SELECT * FROM MovieOperations.Actor", connection))
-                    {
-                        connection.Open();
-                        using (SqlDataReader reader = command.ExecuteReader())
-                        {
-                            while (reader.Read())
-                            {
-                                for (int i = 0; i < reader.FieldCount; i++)
-                                {
-                                    MessageBox.Show(Convert.ToString(reader.GetValue(i)));
-                                }
-                            }
-                        }
-                        transaction.Complete();
-                    }
-                }
-            }*/
-            return new Actor(2, "jack", "rico");
         }
 
         /// <summary>
         /// Creates an MovieShowtime with the given parameters.
         /// </summary>
-        public MovieShowtime CreateMovieShowtime(DateTime movieTime)
+        public Movie CreateMovie(string title, int duration, int releaseYear, string gross, double rating)
         {
             // Verify parameters.
-            // None Needed Here.
+            if (string.IsNullOrWhiteSpace(title)) throw new ArgumentException("The parameter cannot be null or empty.");
+            if (string.IsNullOrWhiteSpace(gross)) throw new ArgumentException("The parameter cannot be null or empty.");
 
             // Save to database.
             using (var transaction = new TransactionScope())
             {
                 using (var connection = new SqlConnection(cs))
                 {
-                    using (var command = new SqlCommand("MovieOperations.CreateMovieShowtime", connection))
+                    using (var command = new SqlCommand("MovieOperations.CreateMovie", connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
 
-                        command.Parameters.AddWithValue("MovieTime", movieTime);
+                        command.Parameters.AddWithValue("Title", title);
+                        command.Parameters.AddWithValue("Duration", duration);
+                        command.Parameters.AddWithValue("ReleaseYear", releaseYear);
+                        command.Parameters.AddWithValue("Gross", gross);
+                        command.Parameters.AddWithValue("Rating", rating);
 
-                        var a = command.Parameters.Add("ShowtimeID", SqlDbType.Int);
-                        a.Direction = ParameterDirection.Output;
                         var b = command.Parameters.Add("MovieID", SqlDbType.Int);
                         b.Direction = ParameterDirection.Output;
-                        var c = command.Parameters.Add("RoomID", SqlDbType.Int);
-                        c.Direction = ParameterDirection.Output;
 
                         connection.Open();
 
@@ -227,11 +214,9 @@ namespace _560FinalProject
 
                         transaction.Complete();
 
-                        var showtimeid = (int)command.Parameters["ShowtimeID"].Value;
                         var movieid = (int)command.Parameters["MovieID"].Value;
-                        var roomid = (int)command.Parameters["RoomID"].Value;
 
-                        return new MovieShowtime(showtimeid, movieid, roomid, movieTime);
+                        return new Movie(movieid, title, duration, releaseYear, gross, rating);
                     }
                 }
             }
@@ -240,7 +225,7 @@ namespace _560FinalProject
         /// <summary>
         /// Creates an Room with the given parameters.
         /// </summary>
-        public Room CreateRoom(int roomnumber, int capacity)
+        public Room CreateRoom(int roomnumber, int capacity, int theaterid)
         {
             // Verify parameters.
             // None Needed Here.
@@ -256,11 +241,10 @@ namespace _560FinalProject
 
                         command.Parameters.AddWithValue("RoomNumber", roomnumber);
                         command.Parameters.AddWithValue("Capacity", capacity);
+                        command.Parameters.AddWithValue("TheaterID", theaterid);
 
                         var a = command.Parameters.Add("RoomID", SqlDbType.Int);
                         a.Direction = ParameterDirection.Output;
-                        var b = command.Parameters.Add("TheaterID", SqlDbType.Int);
-                        b.Direction = ParameterDirection.Output;
 
                         connection.Open();
 
@@ -269,7 +253,6 @@ namespace _560FinalProject
                         transaction.Complete();
 
                         var roomid = (int)command.Parameters["RoomID"].Value;
-                        var theaterid = (int)command.Parameters["TheaterID"].Value;
 
                         return new Room(roomid, theaterid, roomnumber, capacity);
                     }
