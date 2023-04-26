@@ -48,9 +48,9 @@ CREATE TABLE MovieOperations.Theater
 CREATE TABLE MovieOperations.Room
 (
     RoomID INT NOT NULL,
-    TheaterID INT UNIQUE NOT NULL FOREIGN KEY
+    TheaterID INT NOT NULL FOREIGN KEY
         REFERENCES MovieOperations.Theater(TheaterID),
-    RoomNumber INT UNIQUE NOT NULL,
+    RoomNumber INT NOT NULL,
     [Capacity] INT NOT NULL
 
         CONSTRAINT [PK_MovieOperations_Room_RoomID] PRIMARY KEY CLUSTERED ( RoomID ASC )
