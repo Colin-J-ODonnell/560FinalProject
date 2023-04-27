@@ -28,6 +28,7 @@ namespace _560FinalProject.Forms.Other_Forms.Add_Forms
             if(!string.IsNullOrEmpty(theaterName_textbox.Text) && !string.IsNullOrEmpty(theaterAddress_textbox.Text))
             {
                 O.CreateTheater(theaterName_textbox.Text, theaterAddress_textbox.Text);
+                this.Close();
             }
         }
 
