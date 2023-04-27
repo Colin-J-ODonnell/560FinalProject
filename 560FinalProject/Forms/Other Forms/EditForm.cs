@@ -69,7 +69,8 @@ namespace _560FinalProject.Forms.Other_Forms
                     if (!string.IsNullOrEmpty(theaterName_textbox.Text) && !string.IsNullOrEmpty(theaterAddress_textbox.Text))
                     {
                         string[] split = Data.Split(',');
-                        O.UpdateTheater(theaterName_textbox.Text, theaterAddress_textbox.Text);
+                        Theater newTheater = O.UpdateTheater(theaterName_textbox.Text, theaterAddress_textbox.Text, Convert.ToInt32(split[0]));
+                        this.Close();
                     }
                     else MessageBox.Show("Please input all required Data.");
                     break;

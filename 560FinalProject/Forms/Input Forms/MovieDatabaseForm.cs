@@ -29,6 +29,8 @@ namespace _560FinalProject
         /// </summary>
         public int SEARCHVALUE = 0;
 
+        public List<string> DATA;
+
         public MovieDatabaseForm(OpeningForm of, Operations o)
         {
             InitializeComponent();
@@ -76,8 +78,8 @@ namespace _560FinalProject
                 input.Add(movieGenre_textbox.Text);
                 output = O.MovieSearch(SEARCHVALUE, input, numUpDwn);
             }
-
-            output_listbox.DataSource = output;
+            DATA = output;
+            output_listbox.DataSource = DATA;
         }
 
         private void reset_button_Click(object sender, EventArgs e)

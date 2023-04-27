@@ -252,7 +252,7 @@ namespace _560FinalProject
             }
         }
 
-        public Theater UpdateTheater(string name, string address)
+        public Theater UpdateTheater(string name, string address, int theaterID)
         {
             using (var transaction = new TransactionScope())
             {
@@ -261,9 +261,9 @@ namespace _560FinalProject
                     using (var command = new SqlCommand("MovieOperations.UpdateTheater", connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
-
-                        command.Parameters.AddWithValue("[Name]", name);
-                        command.Parameters.AddWithValue("[Address]", address);
+                        command.Parameters.AddWithValue("@Name", name);
+                        command.Parameters.AddWithValue("@Address", address);
+                        command.Parameters.AddWithValue("@TheaterID", theaterID);
 
                         connection.Open();
 
@@ -271,9 +271,7 @@ namespace _560FinalProject
 
                         transaction.Complete();
 
-                        var theaterid = (int)command.Parameters["TheaterID"].Value;
-
-                        return new Theater(theaterid, name, address);
+                        return new Theater(theaterID, name, address);
                     }
                 }
             }
