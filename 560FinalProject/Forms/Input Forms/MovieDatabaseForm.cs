@@ -96,8 +96,18 @@ namespace _560FinalProject
         {
             if (output_listbox.SelectedItem != null)
             {
-                EditForm ef = new EditForm(this, O, SEARCHVALUE, output_listbox.SelectedItem.ToString());
-                ef.Show();
+                EditForm ef;
+                if (SEARCHVALUE == 1)
+                {
+                    ef = new EditForm(this, O, SEARCHVALUE, output_listbox.SelectedItem.ToString());
+                    ef.Show();
+                }
+                else
+                {
+                    ChoiceForm cf = new ChoiceForm(this, O, output_listbox.SelectedItem.ToString());
+                    cf.Show();
+                    ef = cf.ef;
+                }
             }
             else MessageBox.Show("No selected item!");
         }

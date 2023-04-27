@@ -22,9 +22,12 @@ namespace _560FinalProject.Forms.Other_Forms
         /// Value assigned when user pics the edit to complete 
         /// 1 = Movie Edit
         /// 2 = Actor Edit
-        /// 3 = TRD Edit
+        /// 3 = Theater
+        /// 4 = Showtime
+        /// 5 = Room
         /// </summary>
         public int EDITVALUE;
+
 
         public EditForm(MovieDatabaseForm mdf, Operations o, int value, string input)
         {
@@ -128,8 +131,16 @@ namespace _560FinalProject.Forms.Other_Forms
                     break;
                 case 3:
                     // T.TheaterID, R.RoomID, T.[Name], M.Title, ST.Showtime
-                    theaterName_textbox.Text = input[2];
-                    movieTitle_textbox.Text = input[3];
+                    theaterName_textbox.Text = input[1];
+                    theaterAddress_textbox.Text = input[2];
+                    movieTitle_textbox.Text = input[6];
+                    break;
+                case 4:
+                    dateStart_textbox.Text = input[7];
+                    break;
+                case 5:
+                    roomNumber_textbox.Text = input[4];
+                    roomCapacity_textbox.Text = input[5];
                     break;
                 default:
                     break;
