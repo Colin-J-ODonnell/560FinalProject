@@ -30,8 +30,8 @@ namespace _560FinalProject.Forms.Other_Forms.Add_Forms
             {
                 O.CreateMovie(movieTitle_textbox.Text, Convert.ToInt32(movieDuration_textbox.Text), Convert.ToInt32(movieReleaseDate_textbox.Text),
                 movieRevenue_textbox.Text, Convert.ToDouble(movieRating_textbox.Text));
+                this.Close();
             }
-            this.Close();
         }
 
         private void back_button_Click(object sender, EventArgs e)

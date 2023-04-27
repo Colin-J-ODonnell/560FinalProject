@@ -85,8 +85,8 @@ namespace _560FinalProject
 
         private string UserActorSearch(List<string> userInput, int NumUpDown)
         {
-            string startCommand = $"SELECT TOP {NumUpDown} A.ActorID A.FirstName, A.LastName, M.Title FROM MovieOperations.Actor A INNER JOIN " +
-                $"MovieOperations.MovieCast MC ON MC.ActorID = A.ActorID INNER JOIN MovieOperations.Movie M ON M.MovieID = MC.MovieID WHERE ";
+            string startCommand = $"SELECT TOP ({NumUpDown}) A.ActorID, A.FirstName, A.LastName, COUNT(MC.ActorID) FROM MovieOperations.Actor A INNER JOIN " +
+                $"MovieOperations.MovieCast MC ON MC.ActorID = A.ActorID WHERE ";
             int catcher = 0;
             for (int i = 0; i < userInput.Count; i++)
             {
@@ -98,7 +98,8 @@ namespace _560FinalProject
                     if (i == 1) startCommand += $"A.LastName = N'{userInput[i]}'"; catcher = 1;
                 }
             }
-            
+            startCommand += $" GROUP BY A.ActorID, A.FirstName, A.LastName";
+            startCommand += $" ORDER BY COUNT(MC.ActorID) DESC";
             return startCommand;
         }
 
@@ -188,10 +189,10 @@ namespace _560FinalProject
                         command.Parameters.AddWithValue("LastName", lastName);
 
                         List<string> list = new List<string>();
-                        string[] strs = movielist.Split(',');
+                        string[] strs = movielist.Split(' ');
                         foreach (string str in strs) list.Add(str);
 
-                        command.Parameters.AddWithValue("LastName", list);
+                        command.Parameters.AddWithValue("MovieList", movielist);
 
                         var p = command.Parameters.Add("ActorID", SqlDbType.Int);
                         p.Direction = ParameterDirection.Output;
