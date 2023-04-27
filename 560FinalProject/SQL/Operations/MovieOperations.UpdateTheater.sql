@@ -5,7 +5,7 @@
 AS
 
 UPDATE MovieOperations.Theater
-SET [Name] = @Name, [Address] = @Address
+SET TheaterName = @Name, TheaterAddress = @Address
 WHERE TheaterID = @TheaterID
 GO
 

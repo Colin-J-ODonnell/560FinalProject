@@ -106,7 +106,7 @@ namespace _560FinalProject
         
         private string UserTDRSearch(List<string> userInput, int NumUpDown)
         {
-            string startCommand = $"SELECT TOP {NumUpDown} T.TheaterID, T.[Name], T.[Address], R.RoomID, R.RoomNumber, R.Capacity, M.Title, ST.Showtime FROM MovieOperations.Theater T INNER JOIN MovieOperations.Room R ON R.TheaterID = T.TheaterID " +
+            string startCommand = $"SELECT TOP {NumUpDown} T.TheaterID, T.TheaterName, T.TheaterAddress, R.RoomID, R.RoomNumber, R.Capacity, M.Title, ST.Showtime FROM MovieOperations.Theater T INNER JOIN MovieOperations.Room R ON R.TheaterID = T.TheaterID " +
                 "INNER JOIN MovieOperations.MovieShowtime ST ON ST.RoomID = R.RoomID INNER JOIN MovieOperations.Movie M ON M.MovieID = ST.MovieID WHERE ";
             int catcher = 0;
             for (int i = 0; i < userInput.Count; i++)
@@ -118,11 +118,11 @@ namespace _560FinalProject
                     switch (i)
                     {
                         case 0:
-                            startCommand += $"T.[Name] LIKE N'%{userInput[i]}%'"; 
+                            startCommand += $"T.TheaterName LIKE N'%{userInput[i]}%'"; 
                             catcher = 1;
                             break;
                         case 1:
-                            startCommand += $"T.[Address] = N'{userInput[i]}'"; 
+                            startCommand += $"T.TheaterAddress = N'{userInput[i]}'"; 
                             catcher = 1;
                             break;
                         case 2:
@@ -261,9 +261,9 @@ namespace _560FinalProject
                     using (var command = new SqlCommand("MovieOperations.UpdateTheater", connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
-                        command.Parameters.AddWithValue("@Name", name);
-                        command.Parameters.AddWithValue("@Address", address);
-                        command.Parameters.AddWithValue("@TheaterID", theaterID);
+                        command.Parameters.AddWithValue("Name", name);
+                        command.Parameters.AddWithValue("Address", address);
+                        command.Parameters.AddWithValue("TheaterID", theaterID);
 
                         connection.Open();
 
