@@ -202,6 +202,7 @@
   <ItemGroup>
     <Content Include="SQL\Data\PopulateTablesRy.sql" />
     <Content Include="SQL\Data\PopulateTablesSebi.sql" />
+    <Content Include="SQL\Data\PopulateTablesZach.sql" />
     <Content Include="SQL\Operations\MovieOperations.CreateActor.sql" />
     <Content Include="SQL\Operations\MovieOperations.UpdateTheater.sql" />
     <Content Include="SQL\Operations\MovieOperations.UpdateMovie.sql" />
