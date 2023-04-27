@@ -49,7 +49,7 @@ namespace _560FinalProject.Forms.Other_Forms
                     {
                         string[] split = Data.Split(',');
                         O.UpdateMovie(movieTitle_textbox.Text, Convert.ToInt32(movieDuration_textbox.Text), Convert.ToInt32(movieReleaseDate_textbox.Text), movieRevenue_textbox.Text, Convert.ToDouble(movieRating_textbox.Text),Convert.ToInt32(split[0]));
-                        // Edit code from Operations here.
+                        this.Close();
                     }
                     else MessageBox.Show("Please input all required Data.");
                     break;
@@ -63,9 +63,10 @@ namespace _560FinalProject.Forms.Other_Forms
                     break;
                 case 3:
                     // T.TheaterID, R.RoomID, T.[Name], M.Title, ST.Showtime
-                    if (!string.IsNullOrEmpty(theaterName_textbox.Text) && !string.IsNullOrEmpty(movieTitle_textbox.Text))
+                    if (!string.IsNullOrEmpty(theaterName_textbox.Text) && !string.IsNullOrEmpty(theaterAddress_textbox.Text))
                     {
-                        // Edit code from Operations here.
+                        string[] split = Data.Split(',');
+                        O.UpdateTheater(theaterName_textbox.Text, theaterAddress_textbox.Text);
                     }
                     else MessageBox.Show("Please input all required Data.");
                     break;
@@ -165,6 +166,11 @@ namespace _560FinalProject.Forms.Other_Forms
 
             dateEnd_textbox.Enabled = false;
             dateStart_textbox.Enabled = false; 
+        }
+
+        private void EditForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

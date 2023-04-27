@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 using System.Windows.Forms;
 using System.IO;
+using System.Text.RegularExpressions;
 
 namespace _560FinalProject
 {
@@ -84,7 +85,8 @@ namespace _560FinalProject
 
         private string UserActorSearch(List<string> userInput, int NumUpDown)
         {
-            string startCommand = $"SELECT TOP {NumUpDown} A.ActorID A.FirstName, A.LastName, M.Title FROM MovieOperations.Actor A INNER JOIN MovieOperations.MovieCast MC ON MC.ActorID = A.ActorID INNER JOIN MovieOperations.Movie M ON M.MovieID = MC.MovieID WHERE ";
+            string startCommand = $"SELECT TOP {NumUpDown} A.ActorID A.FirstName, A.LastName, M.Title FROM MovieOperations.Actor A INNER JOIN " +
+                $"MovieOperations.MovieCast MC ON MC.ActorID = A.ActorID INNER JOIN MovieOperations.Movie M ON M.MovieID = MC.MovieID WHERE ";
             int catcher = 0;
             for (int i = 0; i < userInput.Count; i++)
             {
@@ -249,7 +251,32 @@ namespace _560FinalProject
             }
         }
 
+        public Theater UpdateTheater(string name, string address)
+        {
+            using (var transaction = new TransactionScope())
+            {
+                using (var connection = new SqlConnection(cs))
+                {
+                    using (var command = new SqlCommand("MovieOperations.UpdateTheater", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
 
+                        command.Parameters.AddWithValue("[Name]", name);
+                        command.Parameters.AddWithValue("[Address]", address);
+
+                        connection.Open();
+
+                        command.ExecuteNonQuery();
+
+                        transaction.Complete();
+
+                        var theaterid = (int)command.Parameters["TheaterID"].Value;
+
+                        return new Theater(theaterid, name, address);
+                    }
+                }
+            }
+        }
         public Movie UpdateMovie(string title, int duration, int releaseYear, string gross, double rating, int id)
         {
             // Verify parameters.
