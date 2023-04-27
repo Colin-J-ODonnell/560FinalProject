@@ -15,8 +15,6 @@ namespace _560FinalProject
 {
     public partial class MovieDatabaseForm : Form
     {
-        OpeningForm OF { get; set; }
-
         Operations O { get; set; }
 
         /// <summary>
@@ -31,10 +29,9 @@ namespace _560FinalProject
 
         public List<string> DATA;
 
-        public MovieDatabaseForm(OpeningForm of, Operations o)
+        public MovieDatabaseForm(Operations o)
         {
             InitializeComponent();
-            OF = of;
             O = o;
         }
 
@@ -122,12 +119,6 @@ namespace _560FinalProject
                 df.Show();
             }
             else MessageBox.Show("No selected item!");
-        }
-
-        private void back_button_Click(object sender, EventArgs e)
-        {
-            this.Close();
-            OF.Show();
         }
 
         private void MovieSearchDiabled()
