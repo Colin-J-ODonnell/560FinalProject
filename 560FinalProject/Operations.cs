@@ -261,8 +261,8 @@ namespace _560FinalProject
                     using (var command = new SqlCommand("MovieOperations.UpdateTheater", connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
-                        command.Parameters.AddWithValue("Name", name);
-                        command.Parameters.AddWithValue("Address", address);
+                        command.Parameters.AddWithValue("TheaterName", name);
+                        command.Parameters.AddWithValue("TheaterAddress", address);
                         command.Parameters.AddWithValue("TheaterID", theaterID);
 
                         connection.Open();
@@ -367,8 +367,8 @@ namespace _560FinalProject
                     {
                         //command.CommandType = CommandType.StoredProcedure;
 
-                        command.Parameters.AddWithValue("Name", name);
-                        command.Parameters.AddWithValue("Address", address);
+                        command.Parameters.AddWithValue("TheaterName", name);
+                        command.Parameters.AddWithValue("TheaterAddress", address);
 
                         var p = command.Parameters.Add("TheaterID", SqlDbType.Int);
                         p.Direction = ParameterDirection.Output;

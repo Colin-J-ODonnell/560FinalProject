@@ -1,11 +1,11 @@
 ﻿CREATE OR ALTER PROCEDURE MovieOperations.UpdateTheater
-   @Name NVARCHAR(128),
-   @Address NVARCHAR(128),
+   @TheaterName NVARCHAR(128),
+   @TheaterAddress NVARCHAR(128),
    @TheaterID INT
 AS
 
 UPDATE MovieOperations.Theater
-SET TheaterName = @Name, TheaterAddress = @Address
+SET TheaterName = @TheaterName, TheaterAddress = @TheaterAddress
 WHERE TheaterID = @TheaterID
 GO
 
