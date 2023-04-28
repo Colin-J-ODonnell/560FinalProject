@@ -4,7 +4,7 @@
 
 Param(
    [string] $Server = "(localdb)\MSSQLLocalDb",
-   [string] $Database = "rosen"
+   [string] $Database = "local codonnell"
 )
 
 # This script requires the SQL Server module for PowerShell.
@@ -56,8 +56,8 @@ Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "560FinalPr
 Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "560FinalProject\Sql\Operations\MovieOperations.UpdateRoom.sql"
 Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "560FinalProject\Sql\Operations\MovieOperations.UpdateActor.sql"
 Write-Host "Inserting data..."
-#Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "560FinalProject\Sql\Data\PopulateTables.sql"
- Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "560FinalProject\Sql\Data\PopulateTablesRy.sql"
+  Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "560FinalProject\Sql\Data\PopulateTables.sql"
+# Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "560FinalProject\Sql\Data\PopulateTablesRy.sql"
 # Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "560FinalProject\Sql\Data\PopulateTablesSebi.sql"
 
 Write-Host "Rebuild completed."

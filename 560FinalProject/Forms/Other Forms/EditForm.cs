@@ -74,6 +74,23 @@ namespace _560FinalProject.Forms.Other_Forms
                     }
                     else MessageBox.Show("Please input all required Data.");
                     break;
+                case 4:
+                    if (!string.IsNullOrEmpty(dateStart_textbox.Text) && !string.IsNullOrEmpty(theaterName_textbox.Text) && !string.IsNullOrEmpty(theaterAddress_textbox.Text) && !string.IsNullOrEmpty(movieTitle_textbox.Text) && !string.IsNullOrEmpty(roomNumber_textbox.Text))
+                    {
+                        string[] split = Data.Split(',');
+                        //O.UpdateShowtime();
+                    }
+                    else MessageBox.Show("Please input all required Data.");
+                    break;
+                case 5:
+                    if(!string.IsNullOrEmpty(roomNumber_textbox.Text) && !string.IsNullOrEmpty(roomCapacity_textbox.Text))
+                    {
+                        string[] split = Data.Split(',');
+                        O.UpdateRoom(split[4], split[5], Convert.ToInt32(split[3]));
+                        this.Close();
+                    }
+                    else MessageBox.Show("Please input all required Data.");
+                    break;
                 default:
                     MessageBox.Show("Edit value not accepted!");
                     break;
@@ -104,6 +121,14 @@ namespace _560FinalProject.Forms.Other_Forms
                     MovieOptionsOFF();
                     ActorOptionsOFF();
                     GenreOptionsOFF();
+                    break;
+                case 4:
+                    GenreOptionsOFF();
+                    ActorOptionsOFF();
+                    MovieOptionsOFF();
+                    movieTitle_textbox.Enabled = true;
+                    dateEnd_textbox.Enabled = false;
+                    roomCapacity_textbox.Enabled = false;
                     break;
                 default:
                     break;
@@ -138,6 +163,10 @@ namespace _560FinalProject.Forms.Other_Forms
                     break;
                 case 4:
                     dateStart_textbox.Text = input[7];
+                    movieTitle_textbox.Text = input[6];
+                    theaterName_textbox.Text = input[1];
+                    theaterAddress_textbox.Text = input[2];
+                    roomNumber_textbox.Text = input[4];
                     break;
                 case 5:
                     roomNumber_textbox.Text = input[4];
