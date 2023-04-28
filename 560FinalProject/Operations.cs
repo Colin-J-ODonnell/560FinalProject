@@ -197,6 +197,7 @@ namespace _560FinalProject
             // Verify parameters.
             if (string.IsNullOrWhiteSpace(firstName)) throw new ArgumentException("The parameter cannot be null or empty.");
             if (string.IsNullOrWhiteSpace(lastName)) throw new ArgumentException("The parameter cannot be null or empty.");
+            if (string.IsNullOrWhiteSpace(movielist)) throw new ArgumentException("The parameter cannot be null or empty.");
 
             // Save to database.
             using (var transaction = new TransactionScope())
@@ -235,8 +236,13 @@ namespace _560FinalProject
             }
         }
 
+        /// <summary>
+        /// Creates an MovieCast with the given parameters.
+        /// </summary>
         public MovieCast CreateMovieCast(int movieID, int actorID)
         {
+            if (string.IsNullOrWhiteSpace(Convert.ToString(movieID))) throw new ArgumentException("The parameter cannot be null or empty.");
+            if (string.IsNullOrWhiteSpace(Convert.ToString(actorID))) throw new ArgumentException("The parameter cannot be null or empty.");
 
             // Save to database.
             using (var transaction = new TransactionScope())
@@ -274,7 +280,10 @@ namespace _560FinalProject
         {
             // Verify parameters.
             if (string.IsNullOrWhiteSpace(title)) throw new ArgumentException("The parameter cannot be null or empty.");
+            if (string.IsNullOrWhiteSpace(Convert.ToString(duration))) throw new ArgumentException("The parameter cannot be null or empty.");
+            if (string.IsNullOrWhiteSpace(Convert.ToString(releaseYear))) throw new ArgumentException("The parameter cannot be null or empty.");
             if (string.IsNullOrWhiteSpace(gross)) throw new ArgumentException("The parameter cannot be null or empty.");
+            if (string.IsNullOrWhiteSpace(Convert.ToString(rating))) throw new ArgumentException("The parameter cannot be null or empty.");
 
             // Save to database.
             using (var transaction = new TransactionScope())
@@ -352,7 +361,9 @@ namespace _560FinalProject
         public Room CreateRoom(int roomnumber, int capacity, int theaterid)
         {
             // Verify parameters.
-            // None Needed Here.
+            if (string.IsNullOrWhiteSpace(Convert.ToString(roomnumber))) throw new ArgumentException("The parameter cannot be null or empty.");
+            if (string.IsNullOrWhiteSpace(Convert.ToString(capacity))) throw new ArgumentException("The parameter cannot be null or empty.");
+            if (string.IsNullOrWhiteSpace(Convert.ToString(theaterid))) throw new ArgumentException("The parameter cannot be null or empty.");
 
             // Save to database.
             using (var transaction = new TransactionScope())
@@ -393,7 +404,11 @@ namespace _560FinalProject
         {
             // Verify parameters.
             if (string.IsNullOrWhiteSpace(title)) throw new ArgumentException("The parameter cannot be null or empty.");
+            if (string.IsNullOrWhiteSpace(Convert.ToString(duration))) throw new ArgumentException("The parameter cannot be null or empty.");
+            if (string.IsNullOrWhiteSpace(Convert.ToString(releaseYear))) throw new ArgumentException("The parameter cannot be null or empty.");
             if (string.IsNullOrWhiteSpace(gross)) throw new ArgumentException("The parameter cannot be null or empty.");
+            if (string.IsNullOrWhiteSpace(Convert.ToString(rating))) throw new ArgumentException("The parameter cannot be null or empty.");
+            if (string.IsNullOrWhiteSpace(Convert.ToString(id))) throw new ArgumentException("The parameter cannot be null or empty.");
 
             // Save to database.
             using (var transaction = new TransactionScope())
@@ -425,8 +440,16 @@ namespace _560FinalProject
             }
         }
 
+        /// <summary>
+        /// Update a Showtime with the given parameters.
+        /// </summary>
         public void UpdateShowtime(int showtimeID, int roomID, int movieID, DateTime dt)
         {
+            if (string.IsNullOrWhiteSpace(Convert.ToString(showtimeID))) throw new ArgumentException("The parameter cannot be null or empty.");
+            if (string.IsNullOrWhiteSpace(Convert.ToString(roomID))) throw new ArgumentException("The parameter cannot be null or empty.");
+            if (string.IsNullOrWhiteSpace(Convert.ToString(movieID))) throw new ArgumentException("The parameter cannot be null or empty.");
+            if (string.IsNullOrWhiteSpace(Convert.ToString(dt))) throw new ArgumentException("The parameter cannot be null or empty.");
+
             using (var transaction = new TransactionScope())
             {
                 using (var connection = new SqlConnection(cs))
@@ -456,6 +479,10 @@ namespace _560FinalProject
         /// </summary>
         public Theater UpdateTheater(string name, string address, int theaterID)
         {
+            if (string.IsNullOrWhiteSpace(name)) throw new ArgumentException("The parameter cannot be null or empty.");
+            if (string.IsNullOrWhiteSpace(address)) throw new ArgumentException("The parameter cannot be null or empty.");
+            if (string.IsNullOrWhiteSpace(Convert.ToString(theaterID))) throw new ArgumentException("The parameter cannot be null or empty.");
+
             using (var transaction = new TransactionScope())
             {
                 using (var connection = new SqlConnection(cs))
@@ -482,8 +509,12 @@ namespace _560FinalProject
         /// <summary>
         /// Update an Room with the given parameters.
         /// </summary>
-        public void UpdateRoom(string roomNum, string capacity, int roomID)
+        public void UpdateRoom(int roomNum, int capacity, int roomID)
         {
+            if (string.IsNullOrWhiteSpace(Convert.ToString(roomNum))) throw new ArgumentException("The parameter cannot be null or empty.");
+            if (string.IsNullOrWhiteSpace(Convert.ToString(capacity))) throw new ArgumentException("The parameter cannot be null or empty.");
+            if (string.IsNullOrWhiteSpace(Convert.ToString(roomID))) throw new ArgumentException("The parameter cannot be null or empty.");
+
             using (var transaction = new TransactionScope())
             {
                 using (var connection = new SqlConnection(cs))
@@ -508,7 +539,7 @@ namespace _560FinalProject
         // REMOVE //
 
         /// <summary>
-        /// Removes an Actor with the given parameters.
+        /// Removes an Actor with the given ID.
         /// </summary>
         public void RemoveActor(int id)
         {
@@ -538,6 +569,9 @@ namespace _560FinalProject
             }
         }
 
+        /// <summary>
+        /// Removes an MovieCast with the given ID.
+        /// </summary>
         public void RemoveFromMovieCast(int id)
         {
             if (string.IsNullOrWhiteSpace(Convert.ToString(id))) throw new ArgumentException("The parameter cannot be null or empty.");
@@ -567,6 +601,8 @@ namespace _560FinalProject
         /// </summary>
         public void RemoveMovie(int id)
         {
+            if (string.IsNullOrWhiteSpace(Convert.ToString(id))) throw new ArgumentException("The parameter cannot be null or empty.");
+
             // Save to database.
             using (var transaction = new TransactionScope())
             {
@@ -591,62 +627,16 @@ namespace _560FinalProject
         /// <summary>
         /// Removes an Room with the given parameters.
         /// </summary>
-        public void RemoveRoom(int roomID)
+        public void RemoveRoom(int id)
         {
-            RemoveShowtime(roomID);
+            if (string.IsNullOrWhiteSpace(Convert.ToString(id))) throw new ArgumentException("The parameter cannot be null or empty.");
+
             // Save to database.
             using (var transaction = new TransactionScope())
             {
                 using (var connection = new SqlConnection(cs))
                 {
                     using (var command = new SqlCommand("MovieOperations.RemoveRoom", connection))
-                    {
-                        command.CommandType = CommandType.StoredProcedure;
-                        command.Parameters.AddWithValue("@RoomID", roomID);
-                        connection.Open();
-
-                        command.ExecuteNonQuery();
-
-                        transaction.Complete();
-                    }
-                }
-            }
-        }
-
-        /// <summary>
-        /// Removes an Theater with the given parameters.
-        /// </summary>
-        public void RemoveTheater(int roomID, int theaterID)
-        {
-            // Save to database.
-            using (var transaction = new TransactionScope())
-            {
-                using (var connection = new SqlConnection(cs))
-                {
-                    using (var command = new SqlCommand("MovieOperations.RemoveTheater", connection))
-                    {
-                        command.CommandType = CommandType.StoredProcedure;
-
-                        command.Parameters.AddWithValue("@TheaterID", theaterID);
-
-                        connection.Open();
-
-                        command.ExecuteNonQuery();
-
-                        transaction.Complete();
-                    }
-                }
-            }
-        }
-
-        public void RemoveShowtime(int id)
-        {
-            // Save to database.
-            using (var transaction = new TransactionScope())
-            {
-                using (var connection = new SqlConnection(cs))
-                {
-                    using (var command = new SqlCommand("MovieOperations.RemoveShowtime", connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
 
@@ -661,6 +651,33 @@ namespace _560FinalProject
                 }
             }
         }
+
+        /// <summary>
+        /// Removes an Theater with the given parameters.
+        /// </summary>
+        public void RemoveTheater(int id)
+        {
+            if (string.IsNullOrWhiteSpace(Convert.ToString(id))) throw new ArgumentException("The parameter cannot be null or empty.");
+
+            // Save to database.
+            using (var transaction = new TransactionScope())
+            {
+                using (var connection = new SqlConnection(cs))
+                {
+                    using (var command = new SqlCommand("MovieOperations.RemoveTheater", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        command.Parameters.AddWithValue("@TheaterID", id);
+
+                        connection.Open();
+
+                        command.ExecuteNonQuery();
+
+                        transaction.Complete();
+                    }
+                }
+            }
+        }
     }
 }
-

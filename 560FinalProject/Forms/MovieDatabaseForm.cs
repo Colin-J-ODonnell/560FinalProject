@@ -226,10 +226,7 @@ namespace _560FinalProject
             dateEnd_textbox.Text = null;
         } 
 
-        private void movieTitle_textbox_TextChanged(object sender, EventArgs e)
-        {
-            MovieSearchDiabled();
-        }
+        private void movieTitle_textbox_TextChanged(object sender, EventArgs e) { MovieSearchDiabled(); }
 
         private void movieReleaseDate_textbox_TextChanged(object sender, EventArgs e)
         {
@@ -240,25 +237,13 @@ namespace _560FinalProject
             else GenreSearchDisabled();
         }
 
-        private void movieDuration_textbox_TextChanged(object sender, EventArgs e)
-        {
-            MovieSearchDiabled();
-        }
+        private void movieDuration_textbox_TextChanged(object sender, EventArgs e) { MovieSearchDiabled(); }
 
-        private void movieBudget_textbox_TextChanged(object sender, EventArgs e)
-        {
-            MovieSearchDiabled();
-        }
+        private void movieBudget_textbox_TextChanged(object sender, EventArgs e) { MovieSearchDiabled(); }
 
-        private void movieRevenue_textbox_TextChanged(object sender, EventArgs e)
-        {
-            MovieSearchDiabled();
-        }
+        private void movieRevenue_textbox_TextChanged(object sender, EventArgs e) { MovieSearchDiabled(); }
 
-        private void movieGenre_textbox_TextChanged(object sender, EventArgs e)
-        {
-            GenreSearchDisabled();
-        }
+        private void movieGenre_textbox_TextChanged(object sender, EventArgs e) { GenreSearchDisabled(); }
 
         private void movieRating_textbox_TextChanged(object sender, EventArgs e)
         {
@@ -269,49 +254,20 @@ namespace _560FinalProject
             else GenreSearchDisabled();
         }
 
-        private void actorFirstName_textbox_TextChanged(object sender, EventArgs e)
-        {
-            ActorSearchDisabled();        
-        }
+        private void actorFirstName_textbox_TextChanged(object sender, EventArgs e) { ActorSearchDisabled(); }
 
-        private void actorLastName_textbox_TextChanged(object sender, EventArgs e)
-        {
-            ActorSearchDisabled();
-        }
+        private void actorLastName_textbox_TextChanged(object sender, EventArgs e) { ActorSearchDisabled(); }
 
-        private void theaterName_textbox_TextChanged(object sender, EventArgs e)
-        {
-            TRDSearch();
-        }
+        private void theaterName_textbox_TextChanged(object sender, EventArgs e) { TRDSearch(); }
 
-        private void theaterAddress_textbox_TextChanged(object sender, EventArgs e)
-        {
-            TRDSearch();
-        }
+        private void theaterAddress_textbox_TextChanged(object sender, EventArgs e) { TRDSearch(); }
 
-        private void roomNumber_textbox_TextChanged(object sender, EventArgs e)
-        {
-            TRDSearch();
-        }
+        private void roomNumber_textbox_TextChanged(object sender, EventArgs e) { TRDSearch(); }
 
-        private void roomCapacity_textbox_TextChanged(object sender, EventArgs e)
-        {
-            TRDSearch();
-        }
+        private void roomCapacity_textbox_TextChanged(object sender, EventArgs e) { TRDSearch(); }
 
-        private void dateStart_textbox_TextChanged(object sender, EventArgs e)
-        {
-            TRDSearch();
-        }
+        private void dateStart_textbox_TextChanged(object sender, EventArgs e) { TRDSearch(); }
 
-        private void dateEnd_textbox_TextChanged(object sender, EventArgs e)
-        {
-            TRDSearch();
-        }
-
-        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
+        private void dateEnd_textbox_TextChanged(object sender, EventArgs e) { TRDSearch(); }
     }
 }

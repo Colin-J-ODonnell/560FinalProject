@@ -81,7 +81,7 @@ namespace _560FinalProject.Forms.Other_Forms
                     if(!string.IsNullOrEmpty(roomNumber_textbox.Text) && !string.IsNullOrEmpty(roomCapacity_textbox.Text))
                     {
                         string[] split = Data.Split(',');
-                        O.UpdateRoom(split[4], split[5], Convert.ToInt32(split[3]));
+                        O.UpdateRoom(Convert.ToInt32(split[4]), Convert.ToInt32(split[5]), Convert.ToInt32(split[3]));
                         MDF.Search();
                         this.Close();
                     }

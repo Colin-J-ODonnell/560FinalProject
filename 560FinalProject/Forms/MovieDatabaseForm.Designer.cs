@@ -488,7 +488,7 @@
             // 
             // numericUpDown1
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(2264, 1168);
+            this.numericUpDown1.Location = new System.Drawing.Point(2239, 1176);
             this.numericUpDown1.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.numericUpDown1.Minimum = new decimal(new int[] {
             1,
@@ -503,7 +503,6 @@
             0,
             0,
             0});
-            this.numericUpDown1.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
             // 
             // label15
             // 
