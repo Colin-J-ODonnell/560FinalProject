@@ -81,13 +81,18 @@ namespace _560FinalProject
                 if ((int.TryParse(movieReleaseDate_textbox.Text, out result) || string.IsNullOrEmpty(movieReleaseDate_textbox.Text)) && 
                     (int.TryParse(movieDuration_textbox.Text, out result) || string.IsNullOrEmpty(movieDuration_textbox.Text)))
                 {
-                    List<string> input = new List<string>();
-                    input.Add(movieTitle_textbox.Text);
-                    input.Add(movieReleaseDate_textbox.Text);
-                    input.Add(movieDuration_textbox.Text);
-                    input.Add(movieRevenue_textbox.Text);
-                    input.Add(movieRating_textbox.Text);
-                    output = O.MovieSearch(SEARCHVALUE, input, numUpDwn, sortBy);
+                    double result2;
+                    if(double.TryParse(movieRating_textbox.Text, out result2) || string.IsNullOrEmpty(movieRating_textbox.Text))
+                    {
+                        List<string> input = new List<string>();
+                        input.Add(movieTitle_textbox.Text);
+                        input.Add(movieReleaseDate_textbox.Text);
+                        input.Add(movieDuration_textbox.Text);
+                        input.Add(movieRevenue_textbox.Text);
+                        input.Add(movieRating_textbox.Text);
+                        output = O.MovieSearch(SEARCHVALUE, input, numUpDwn, sortBy);
+                    }
+                    else MessageBox.Show("Movie Rating is invalid. This must be a double!");
                 }
                 else MessageBox.Show("Movie Duration or Release Date is invalid. These must be integers!");
             }
