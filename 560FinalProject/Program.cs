@@ -15,13 +15,13 @@ namespace _560FinalProject
         static void Main()
         {
             // MAKE SURE THIS STRING IS SET TO YOUR LOCAL DATABASE!
-            string connectionString = @"Server=(localdb)\MSSQLLocalDb;Database=rosen;Integrated Security=SSPI;";
+            string connectionString = @"Server=(localdb)\MSSQLLocalDb;Database=DatabaseProject;Integrated Security=SSPI;";
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
             Operations OP = new Operations(connectionString);
-            Application.Run(new OpeningForm(OP));
+            Application.Run(new MovieDatabaseForm(OP));
         }
     }
 }
