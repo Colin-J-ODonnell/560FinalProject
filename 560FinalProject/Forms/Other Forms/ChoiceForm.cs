@@ -14,15 +14,14 @@ namespace _560FinalProject.Forms.Other_Forms
     public partial class ChoiceForm : Form
     {
         public int choice;
-
-        public EditForm ef;
-        public MovieDatabaseForm mdf;
+        public MovieDatabaseForm MDF;
         public Operations O;
         string input;
+
         public ChoiceForm(MovieDatabaseForm mdf, Operations O, string item)
         {
             InitializeComponent();
-            this.mdf = mdf;
+            this.MDF = mdf;
             this.O = O;
             input = item;
         }
@@ -30,7 +29,7 @@ namespace _560FinalProject.Forms.Other_Forms
         private void editTheater_button_Click(object sender, EventArgs e)
         {
             choice = 3;
-            ef = new EditForm(mdf, O, choice, input);
+            EditForm ef = new EditForm(MDF, O, choice, input);
             ef.Show();
             this.Close();
         }
@@ -38,7 +37,7 @@ namespace _560FinalProject.Forms.Other_Forms
         private void editShowtime_button_Click(object sender, EventArgs e)
         {
             choice = 4;
-            ef = new EditForm(mdf, O, choice, input);
+            EditForm ef = new EditForm(MDF, O, choice, input);
             ef.Show();
             this.Close();
         }
@@ -46,10 +45,17 @@ namespace _560FinalProject.Forms.Other_Forms
         private void editRoom_button_Click(object sender, EventArgs e)
         {
             choice = 5;
-            ef = new EditForm(mdf, O, choice, input);
+            EditForm ef = new EditForm(MDF, O, choice, input);
             ef.Show();
             this.Close();
         }
-        
+
+        private void editMovie_button_Click(object sender, EventArgs e)
+        {
+            choice = 1;
+            EditForm ef = new EditForm(MDF, O, choice, input);
+            ef.Show();
+            this.Close();
+        }
     }
 }

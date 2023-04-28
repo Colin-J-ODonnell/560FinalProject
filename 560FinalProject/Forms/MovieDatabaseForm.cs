@@ -35,7 +35,41 @@ namespace _560FinalProject
             O = o;
         }
 
-        private void search_button_Click(object sender, EventArgs e)
+        private void search_button_Click(object sender, EventArgs e) { Search(); }
+
+        private void reset_button_Click(object sender, EventArgs e)
+        {
+            ResetSearch();
+            ResetSearch();
+        }
+
+        private void add_button_Click(object sender, EventArgs e)
+        {
+            AddForm af = new AddForm(this, O);
+            af.Show();
+        }
+
+        private void update_button_Click(object sender, EventArgs e)
+        {
+            if (output_listbox.SelectedItem != null)
+            {
+                ChoiceForm cf = new ChoiceForm(this, O, output_listbox.SelectedItem.ToString());
+                cf.Show();
+            }
+            else MessageBox.Show("No selected item!");
+        }
+
+        private void delete_button_Click(object sender, EventArgs e)
+        {
+            if (output_listbox.SelectedItem != null)
+            {
+                DeleteForm df = new DeleteForm(this, O, output_listbox.SelectedItem.ToString());
+                df.Show();
+            }
+            else MessageBox.Show("No selected item!");
+        }
+
+        public void Search()
         {
             List<string> output = new List<string>();
             int numUpDwn = Convert.ToInt32(numericUpDown1.Value);
@@ -77,48 +111,6 @@ namespace _560FinalProject
             }
             DATA = output;
             output_listbox.DataSource = DATA;
-        }
-
-        private void reset_button_Click(object sender, EventArgs e)
-        {
-            ResetSearch();
-            ResetSearch();
-        }
-
-        private void add_button_Click(object sender, EventArgs e)
-        {
-            AddForm af = new AddForm(this, O);
-            af.Show();
-        }
-
-        private void update_button_Click(object sender, EventArgs e)
-        {
-            if (output_listbox.SelectedItem != null)
-            {
-                EditForm ef;
-                if (SEARCHVALUE == 1)
-                {
-                    ef = new EditForm(this, O, SEARCHVALUE, output_listbox.SelectedItem.ToString());
-                    ef.Show();
-                }
-                else
-                {
-                    ChoiceForm cf = new ChoiceForm(this, O, output_listbox.SelectedItem.ToString());
-                    cf.Show();
-                    ef = cf.ef;
-                }
-            }
-            else MessageBox.Show("No selected item!");
-        }
-
-        private void delete_button_Click(object sender, EventArgs e)
-        {
-            if (output_listbox.SelectedItem != null)
-            {
-                DeleteForm df = new DeleteForm(this, O, output_listbox.SelectedItem.ToString());
-                df.Show();
-            }
-            else MessageBox.Show("No selected item!");
         }
 
         private void MovieSearchDiabled()
