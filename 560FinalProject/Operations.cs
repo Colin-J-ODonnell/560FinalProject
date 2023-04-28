@@ -311,6 +311,32 @@ namespace _560FinalProject
                 }
             }
         }
+
+        public void UpdateRoom(string roomNum, string capacity, int roomID)
+        {
+            using (var transaction = new TransactionScope())
+            {
+                using (var connection = new SqlConnection(cs))
+                {
+                    using (var command = new SqlCommand("MovieOperations.UpdateRoom", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.AddWithValue("RoomNumber", roomNum);
+                        command.Parameters.AddWithValue("Capacity", capacity);
+                        command.Parameters.AddWithValue("RoomID", roomID);
+
+                        connection.Open();
+
+                        command.ExecuteNonQuery();
+
+                        transaction.Complete();
+
+                    }
+                }
+            }
+        }
+
+        public void UpdateActor()
         /// <summary>
         /// Creates an Room with the given parameters.
         /// </summary>

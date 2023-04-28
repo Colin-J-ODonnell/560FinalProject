@@ -122,7 +122,7 @@
             // theaterAddress_textbox
             // 
             this.theaterAddress_textbox.Location = new System.Drawing.Point(326, 92);
-            this.theaterAddress_textbox.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.theaterAddress_textbox.Margin = new System.Windows.Forms.Padding(1);
             this.theaterAddress_textbox.Name = "theaterAddress_textbox";
             this.theaterAddress_textbox.Size = new System.Drawing.Size(158, 20);
             this.theaterAddress_textbox.TabIndex = 15;
@@ -131,7 +131,7 @@
             // theaterName_textbox
             // 
             this.theaterName_textbox.Location = new System.Drawing.Point(314, 65);
-            this.theaterName_textbox.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.theaterName_textbox.Margin = new System.Windows.Forms.Padding(1);
             this.theaterName_textbox.Name = "theaterName_textbox";
             this.theaterName_textbox.Size = new System.Drawing.Size(170, 20);
             this.theaterName_textbox.TabIndex = 16;
@@ -141,7 +141,7 @@
             // 
             this.search_button.Font = new System.Drawing.Font("Segoe UI Symbol", 12F, System.Drawing.FontStyle.Bold);
             this.search_button.Location = new System.Drawing.Point(28, 327);
-            this.search_button.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.search_button.Margin = new System.Windows.Forms.Padding(1);
             this.search_button.Name = "search_button";
             this.search_button.Size = new System.Drawing.Size(92, 28);
             this.search_button.TabIndex = 17;
@@ -163,7 +163,7 @@
             // actorFirstName_textbox
             // 
             this.actorFirstName_textbox.Location = new System.Drawing.Point(88, 274);
-            this.actorFirstName_textbox.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.actorFirstName_textbox.Margin = new System.Windows.Forms.Padding(1);
             this.actorFirstName_textbox.Name = "actorFirstName_textbox";
             this.actorFirstName_textbox.Size = new System.Drawing.Size(147, 20);
             this.actorFirstName_textbox.TabIndex = 22;
@@ -172,7 +172,7 @@
             // actorLastName_textbox
             // 
             this.actorLastName_textbox.Location = new System.Drawing.Point(87, 299);
-            this.actorLastName_textbox.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.actorLastName_textbox.Margin = new System.Windows.Forms.Padding(1);
             this.actorLastName_textbox.Name = "actorLastName_textbox";
             this.actorLastName_textbox.Size = new System.Drawing.Size(148, 20);
             this.actorLastName_textbox.TabIndex = 21;
@@ -201,7 +201,7 @@
             // roomNumber_textbox
             // 
             this.roomNumber_textbox.Location = new System.Drawing.Point(354, 146);
-            this.roomNumber_textbox.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.roomNumber_textbox.Margin = new System.Windows.Forms.Padding(1);
             this.roomNumber_textbox.Name = "roomNumber_textbox";
             this.roomNumber_textbox.Size = new System.Drawing.Size(130, 20);
             this.roomNumber_textbox.TabIndex = 37;
@@ -210,7 +210,7 @@
             // roomCapacity_textbox
             // 
             this.roomCapacity_textbox.Location = new System.Drawing.Point(328, 173);
-            this.roomCapacity_textbox.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.roomCapacity_textbox.Margin = new System.Windows.Forms.Padding(1);
             this.roomCapacity_textbox.Name = "roomCapacity_textbox";
             this.roomCapacity_textbox.Size = new System.Drawing.Size(156, 20);
             this.roomCapacity_textbox.TabIndex = 36;
@@ -251,7 +251,7 @@
             // 
             this.back_button.Font = new System.Drawing.Font("Segoe UI Symbol", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.back_button.Location = new System.Drawing.Point(257, 431);
-            this.back_button.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.back_button.Margin = new System.Windows.Forms.Padding(1);
             this.back_button.Name = "back_button";
             this.back_button.Size = new System.Drawing.Size(212, 52);
             this.back_button.TabIndex = 38;
@@ -262,7 +262,7 @@
             // dateStart_textbox
             // 
             this.dateStart_textbox.Location = new System.Drawing.Point(332, 225);
-            this.dateStart_textbox.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.dateStart_textbox.Margin = new System.Windows.Forms.Padding(1);
             this.dateStart_textbox.Name = "dateStart_textbox";
             this.dateStart_textbox.Size = new System.Drawing.Size(151, 20);
             this.dateStart_textbox.TabIndex = 43;
@@ -271,7 +271,7 @@
             // dateEnd_textbox
             // 
             this.dateEnd_textbox.Location = new System.Drawing.Point(328, 252);
-            this.dateEnd_textbox.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.dateEnd_textbox.Margin = new System.Windows.Forms.Padding(1);
             this.dateEnd_textbox.Name = "dateEnd_textbox";
             this.dateEnd_textbox.Size = new System.Drawing.Size(155, 20);
             this.dateEnd_textbox.TabIndex = 42;
@@ -304,9 +304,9 @@
             this.label24.Location = new System.Drawing.Point(267, 198);
             this.label24.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(93, 19);
+            this.label24.Size = new System.Drawing.Size(200, 19);
             this.label24.TabIndex = 39;
-            this.label24.Text = "Date Search";
+            this.label24.Text = "Date Search: MM/DD/YYYY";
             // 
             // label25
             // 
@@ -320,7 +320,7 @@
             // movieRating_textbox
             // 
             this.movieRating_textbox.Location = new System.Drawing.Point(67, 173);
-            this.movieRating_textbox.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.movieRating_textbox.Margin = new System.Windows.Forms.Padding(1);
             this.movieRating_textbox.Name = "movieRating_textbox";
             this.movieRating_textbox.Size = new System.Drawing.Size(168, 20);
             this.movieRating_textbox.TabIndex = 68;
@@ -339,7 +339,7 @@
             // movieDuration_textbox
             // 
             this.movieDuration_textbox.Location = new System.Drawing.Point(77, 117);
-            this.movieDuration_textbox.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.movieDuration_textbox.Margin = new System.Windows.Forms.Padding(1);
             this.movieDuration_textbox.Name = "movieDuration_textbox";
             this.movieDuration_textbox.Size = new System.Drawing.Size(158, 20);
             this.movieDuration_textbox.TabIndex = 65;
@@ -348,7 +348,7 @@
             // movieRevenue_textbox
             // 
             this.movieRevenue_textbox.Location = new System.Drawing.Point(79, 144);
-            this.movieRevenue_textbox.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.movieRevenue_textbox.Margin = new System.Windows.Forms.Padding(1);
             this.movieRevenue_textbox.Name = "movieRevenue_textbox";
             this.movieRevenue_textbox.Size = new System.Drawing.Size(156, 20);
             this.movieRevenue_textbox.TabIndex = 63;
@@ -357,7 +357,7 @@
             // movieReleaseDate_textbox
             // 
             this.movieReleaseDate_textbox.Location = new System.Drawing.Point(101, 90);
-            this.movieReleaseDate_textbox.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.movieReleaseDate_textbox.Margin = new System.Windows.Forms.Padding(1);
             this.movieReleaseDate_textbox.Name = "movieReleaseDate_textbox";
             this.movieReleaseDate_textbox.Size = new System.Drawing.Size(134, 20);
             this.movieReleaseDate_textbox.TabIndex = 62;
@@ -366,7 +366,7 @@
             // movieTitle_textbox
             // 
             this.movieTitle_textbox.Location = new System.Drawing.Point(88, 62);
-            this.movieTitle_textbox.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.movieTitle_textbox.Margin = new System.Windows.Forms.Padding(1);
             this.movieTitle_textbox.Name = "movieTitle_textbox";
             this.movieTitle_textbox.Size = new System.Drawing.Size(147, 20);
             this.movieTitle_textbox.TabIndex = 61;
@@ -409,9 +409,9 @@
             this.label3.Location = new System.Drawing.Point(26, 91);
             this.label3.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(75, 13);
+            this.label3.Size = new System.Drawing.Size(74, 13);
             this.label3.TabIndex = 56;
-            this.label3.Text = "Release Date:";
+            this.label3.Text = "Release Year:";
             // 
             // label27
             // 
@@ -457,7 +457,7 @@
             // movieGenre_textbox
             // 
             this.movieGenre_textbox.Location = new System.Drawing.Point(66, 223);
-            this.movieGenre_textbox.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.movieGenre_textbox.Margin = new System.Windows.Forms.Padding(1);
             this.movieGenre_textbox.Name = "movieGenre_textbox";
             this.movieGenre_textbox.Size = new System.Drawing.Size(169, 20);
             this.movieGenre_textbox.TabIndex = 69;
@@ -467,7 +467,7 @@
             // 
             this.add_button.Font = new System.Drawing.Font("Segoe UI Symbol", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.add_button.Location = new System.Drawing.Point(16, 368);
-            this.add_button.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.add_button.Margin = new System.Windows.Forms.Padding(1);
             this.add_button.Name = "add_button";
             this.add_button.Size = new System.Drawing.Size(212, 52);
             this.add_button.TabIndex = 124;
@@ -489,7 +489,7 @@
             // 
             this.update_button.Font = new System.Drawing.Font("Segoe UI Symbol", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.update_button.Location = new System.Drawing.Point(16, 431);
-            this.update_button.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.update_button.Margin = new System.Windows.Forms.Padding(1);
             this.update_button.Name = "update_button";
             this.update_button.Size = new System.Drawing.Size(212, 52);
             this.update_button.TabIndex = 122;
@@ -501,7 +501,7 @@
             // 
             this.delete_button.Font = new System.Drawing.Font("Segoe UI Symbol", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.delete_button.Location = new System.Drawing.Point(257, 368);
-            this.delete_button.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.delete_button.Margin = new System.Windows.Forms.Padding(1);
             this.delete_button.Name = "delete_button";
             this.delete_button.Size = new System.Drawing.Size(212, 52);
             this.delete_button.TabIndex = 120;
@@ -513,7 +513,7 @@
             // 
             this.output_listbox.FormattingEnabled = true;
             this.output_listbox.Location = new System.Drawing.Point(496, 14);
-            this.output_listbox.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.output_listbox.Margin = new System.Windows.Forms.Padding(1);
             this.output_listbox.Name = "output_listbox";
             this.output_listbox.ScrollAlwaysVisible = true;
             this.output_listbox.Size = new System.Drawing.Size(473, 472);
@@ -600,7 +600,7 @@
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.Margin = new System.Windows.Forms.Padding(1);
             this.Name = "MovieDatabaseForm";
             this.Text = "MovieDatabaseForm";
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
