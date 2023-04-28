@@ -280,40 +280,74 @@ namespace _560FinalProject
             {
                 case "ID_ASC":
                     SORT = SortByEnum.ID_ASC;
+                    Search(SORT);
                     break;
                 case "ID_DESC":
                     SORT = SortByEnum.ID_DESC;
+                    Search(SORT);
                     break;
                 case "DATE_ASC":
-                    if (SEARCHVALUE == 3) SORT = SortByEnum.DATE_ASC;
+                    if (SEARCHVALUE == 3)
+                    {
+                        SORT = SortByEnum.DATE_ASC;
+                        Search(SORT);
+                    }
                     else MessageBox.Show("Sorting value does not work for this input.");
                     break;
                 case "DATE_DESC":
-                    if (SEARCHVALUE == 3) SORT = SortByEnum.DATE_DESC;
+                    if (SEARCHVALUE == 3)
+                    {
+                        SORT = SortByEnum.DATE_DESC;
+                        Search(SORT);
+                    }
                     else MessageBox.Show("Sorting value does not work for this input.");
                     break;
                 case "NUM_MOVIES_ASC":
-                    if(SEARCHVALUE == 2) SORT = SortByEnum.NUM_MOVIES_ASC;
+                    if (SEARCHVALUE == 2)
+                    {
+                        SORT = SortByEnum.NUM_MOVIES_ASC;
+                        Search(SORT);
+                    }
                     else MessageBox.Show("Sorting value does not work for this input.");
                     break;
                 case "NUM_MOVIES_DESC":
-                    if (SEARCHVALUE == 2) SORT = SortByEnum.NUM_MOVIES_DESC;
+                    if (SEARCHVALUE == 2) 
+                    {
+                        SORT = SortByEnum.NUM_MOVIES_DESC;
+                        Search(SORT);
+                    }
                     else MessageBox.Show("Sorting value does not work for this input.");
                     break;
                 case "YEAR_ASC":
-                    if (SEARCHVALUE == 1) SORT = SortByEnum.YEAR_ASC;
+                    if (SEARCHVALUE == 1)
+                    {
+                        SORT = SortByEnum.YEAR_ASC;
+                        Search(SORT);
+                    }
                     else MessageBox.Show("Sorting value does not work for this input.");
                     break;
                 case "YEAR_DESC":
-                    if (SEARCHVALUE == 1) SORT = SortByEnum.YEAR_DESC;
+                    if (SEARCHVALUE == 1)
+                    {
+                        SORT = SortByEnum.YEAR_DESC;
+                        Search(SORT);
+                    }
                     else MessageBox.Show("Sorting value does not work for this input.");
                     break;
                 case "RATING_ASC":
-                    if (SEARCHVALUE == 1) SORT = SortByEnum.RATING_ASC;
+                    if (SEARCHVALUE == 1 || SEARCHVALUE == 4)
+                    {
+                        SORT = SortByEnum.RATING_ASC;
+                        Search(SORT);
+                    }
                     else MessageBox.Show("Sorting value does not work for this input.");
                     break;
                 case "RATING_DESC":
-                    if (SEARCHVALUE == 1) SORT = SortByEnum.RATING_DESC;
+                    if (SEARCHVALUE == 1 || SEARCHVALUE == 4)
+                    {
+                        SORT = SortByEnum.RATING_DESC;
+                        Search(SORT);
+                    }
                     else MessageBox.Show("Sorting value does not work for this input.");
                     break;
                 default:
