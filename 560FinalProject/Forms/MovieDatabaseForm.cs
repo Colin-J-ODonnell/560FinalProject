@@ -90,6 +90,7 @@ namespace _560FinalProject
                 List<string> input = new List<string>();
                 input.Add(actorFirstName_textbox.Text);
                 input.Add(actorLastName_textbox.Text);
+                input.Add(movieGenre_textbox.Text);
                 output = O.MovieSearch(SEARCHVALUE, input, numUpDwn, sortBy);
             }
             if (SEARCHVALUE == 3)
@@ -150,8 +151,6 @@ namespace _560FinalProject
             movieDuration_textbox.Enabled = false;
             movieRevenue_textbox.Enabled = false;
             movieRating_textbox.Enabled = false;
-
-            movieGenre_textbox.Enabled = false;
         }
 
         private void TRDSearch()
@@ -245,7 +244,10 @@ namespace _560FinalProject
 
         private void movieRevenue_textbox_TextChanged(object sender, EventArgs e) { MovieSearchDiabled(); }
 
-        private void movieGenre_textbox_TextChanged(object sender, EventArgs e) { GenreSearchDisabled(); }
+        private void movieGenre_textbox_TextChanged(object sender, EventArgs e) 
+        {
+            if(SEARCHVALUE != 2) GenreSearchDisabled();
+        }
 
         private void movieRating_textbox_TextChanged(object sender, EventArgs e)
         {
