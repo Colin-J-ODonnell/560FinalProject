@@ -78,7 +78,8 @@ namespace _560FinalProject
             if (SEARCHVALUE == 1)
             {
                 int result;
-                if (int.TryParse(movieReleaseDate_textbox.Text, out result) && int.TryParse(movieDuration_textbox.Text, out result))
+                if ((int.TryParse(movieReleaseDate_textbox.Text, out result) || string.IsNullOrEmpty(movieReleaseDate_textbox.Text)) && 
+                    (int.TryParse(movieDuration_textbox.Text, out result) || string.IsNullOrEmpty(movieDuration_textbox.Text)))
                 {
                     List<string> input = new List<string>();
                     input.Add(movieTitle_textbox.Text);
@@ -101,10 +102,12 @@ namespace _560FinalProject
             if (SEARCHVALUE == 3)
             {
                 int result;
-                if (int.TryParse(roomNumber_textbox.Text, out result) && int.TryParse(roomCapacity_textbox.Text, out result))
+                if ((int.TryParse(roomNumber_textbox.Text, out result) || string.IsNullOrEmpty(roomNumber_textbox.Text)) && 
+                    (int.TryParse(roomCapacity_textbox.Text, out result) || string.IsNullOrEmpty(roomCapacity_textbox.Text)))
                 {
                     DateTime result2;
-                    if (DateTime.TryParse(dateStart_textbox.Text, out result2) && DateTime.TryParse(dateEnd_textbox.Text, out result2))
+                    if ((DateTime.TryParse(dateStart_textbox.Text, out result2) || string.IsNullOrEmpty(dateStart_textbox.Text)) && 
+                        (DateTime.TryParse(dateEnd_textbox.Text, out result2) || string.IsNullOrEmpty(dateEnd_textbox.Text)))
                     {
                         List<string> input = new List<string>();
                         input.Add(theaterName_textbox.Text);
@@ -122,10 +125,10 @@ namespace _560FinalProject
             if (SEARCHVALUE == 4)
             {
                 int result;
-                if(int.TryParse(movieReleaseDate_textbox.Text, out result))
+                if(int.TryParse(movieReleaseDate_textbox.Text, out result) || string.IsNullOrEmpty(movieReleaseDate_textbox.Text))
                 {
                     double result2;
-                    if(double.TryParse(movieRating_textbox.Text, out result2))
+                    if(double.TryParse(movieRating_textbox.Text, out result2) || string.IsNullOrEmpty(movieRating_textbox.Text))
                     {
                         List<string> input = new List<string>();
                         input.Add(movieReleaseDate_textbox.Text);
