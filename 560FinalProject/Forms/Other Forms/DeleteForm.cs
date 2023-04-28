@@ -59,8 +59,8 @@ namespace _560FinalProject.Forms.Other_Forms
                         O.RemoveTheater(id);
                         break;
                     case 4:
-                        id = Convert.ToInt32(strs[1]);
-                        O.RemoveRoom(id);
+                        id = Convert.ToInt32(strs[0]);
+                        O.RemoveRoom(Convert.ToInt32(strs[3]));
                         break;
                     default:
                         MessageBox.Show("Not an item you can remove!");
