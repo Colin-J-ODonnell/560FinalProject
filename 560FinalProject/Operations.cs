@@ -24,13 +24,13 @@ namespace _560FinalProject
 
         public Operations(string connectionString) { cs = connectionString; }
 
-        public List<string> MovieSearch(int ind, List<string> userInput, int NumUpDown)
+        public List<string> MovieSearch(int ind, List<string> userInput, int NumUpDown, SortByEnum sort)
         {
             string SQLCommand = "";
-            if (ind == 1) SQLCommand = UserMovieSearch(userInput, NumUpDown); 
-            if (ind == 2) SQLCommand = UserActorSearch(userInput, NumUpDown);
-            if (ind == 3) SQLCommand = UserTDRSearch(userInput, NumUpDown);
-            if (ind == 4) SQLCommand = UserGenreSearch(userInput, NumUpDown);
+            if (ind == 1) SQLCommand = UserMovieSearch(userInput, NumUpDown, sort); 
+            if (ind == 2) SQLCommand = UserActorSearch(userInput, NumUpDown, sort);
+            if (ind == 3) SQLCommand = UserTDRSearch(userInput, NumUpDown, sort);
+            if (ind == 4) SQLCommand = UserGenreSearch(userInput, NumUpDown, sort);
 
             List<string> outputData = new List<string>();
             
@@ -62,7 +62,7 @@ namespace _560FinalProject
             return outputData;
         }
 
-        private string UserMovieSearch(List<string> userInput, int NumUpDown)
+        private string UserMovieSearch(List<string> userInput, int NumUpDown, SortByEnum sort)
         {
             string startCommand = $"SELECT TOP {NumUpDown} M.MovieID, M.Title, M.ReleaseYear, M.Duration, M.Gross, M.Rating FROM MovieOperations.Movie M WHERE ";
             int catcher = 0;
@@ -85,10 +85,31 @@ namespace _560FinalProject
                 }
             }
             if (count == 5) startCommand = startCommand.Substring(0, startCommand.Length - 6);
+            switch (sort)
+            {
+                case SortByEnum.ID_ASC:
+                    startCommand += " GROUP BY  M.MovieID, M.Title, M.ReleaseYear, M.Duration, M.Gross, M.Rating ORDER BY M.MovieID ASC";
+                    break;
+                case SortByEnum.ID_DESC:
+                    startCommand += " GROUP BY  M.MovieID, M.Title, M.ReleaseYear, M.Duration, M.Gross, M.Rating ORDER BY M.MovieID DESC";
+                    break;
+                case SortByEnum.RATING_ASC:
+                    startCommand += " GROUP BY  M.MovieID, M.Title, M.ReleaseYear, M.Duration, M.Gross, M.Rating ORDER BY M.Rating ASC";
+                    break;
+                case SortByEnum.RATING_DESC:
+                    startCommand += " GROUP BY  M.MovieID, M.Title, M.ReleaseYear, M.Duration, M.Gross, M.Rating ORDER BY M.Rating DESC";
+                    break;
+                case SortByEnum.YEAR_ASC:
+                    startCommand += " GROUP BY  M.MovieID, M.Title, M.ReleaseYear, M.Duration, M.Gross, M.Rating ORDER BY M.ReleaseYear ASC";
+                    break;
+                case SortByEnum.YEAR_DESC:
+                    startCommand += " GROUP BY  M.MovieID, M.Title, M.ReleaseYear, M.Duration, M.Gross, M.Rating ORDER BY M.ReleaseYear DESC";
+                    break;
+            }
             return startCommand;
         }
 
-        private string UserActorSearch(List<string> userInput, int NumUpDown)
+        private string UserActorSearch(List<string> userInput, int NumUpDown, SortByEnum sort)
         {
             string startCommand = $"SELECT TOP ({NumUpDown}) A.ActorID, A.FirstName, A.LastName, COUNT(MC.ActorID) FROM MovieOperations.Actor A INNER JOIN " +
                 $"MovieOperations.MovieCast MC ON MC.ActorID = A.ActorID WHERE ";
@@ -109,12 +130,25 @@ namespace _560FinalProject
             {
                 startCommand = startCommand.Substring(0, startCommand.Length - 6);
             }
-            startCommand += $" GROUP BY A.ActorID, A.FirstName, A.LastName";
-            startCommand += $" ORDER BY COUNT(MC.ActorID) DESC";
+            switch (sort)
+            {
+                case SortByEnum.ID_ASC:
+                    startCommand += " GROUP BY A.ActorID, A.FirstName, A.LastName ORDER BY A.ActorID ASC";
+                    break;
+                case SortByEnum.ID_DESC:
+                    startCommand += " GROUP BY A.ActorID, A.FirstName, A.LastName ORDER BT A.ActorID DESC";
+                    break;
+                case SortByEnum.NUM_MOVIES_ASC:
+                    startCommand += " GROUP BY A.ActorID, A.FirstName, A.LastName ORDER BY COUNT(MC.ActorID) ASC";
+                    break;
+                case SortByEnum.NUM_MOVIES_DESC:
+                    startCommand += " GROUP BY A.ActorID, A.FirstName, A.LastName ORDER BY COUNT(MC.ActorID) DESC";
+                    break;
+            }
             return startCommand;
         }
 
-        private string UserTDRSearch(List<string> userInput, int NumUpDown)
+        private string UserTDRSearch(List<string> userInput, int NumUpDown, SortByEnum sort)
         {
             string startCommand = $"SELECT TOP {NumUpDown} T.TheaterID, T.TheaterName, T.TheaterAddress, R.RoomID, R.RoomNumber, R.Capacity, M.MovieID, M.Title, ST.ShowtimeID, ST.Showtime FROM MovieOperations.Theater T INNER JOIN MovieOperations.Room R ON R.TheaterID = T.TheaterID " +
                 "INNER JOIN MovieOperations.MovieShowtime ST ON ST.RoomID = R.RoomID INNER JOIN MovieOperations.Movie M ON M.MovieID = ST.MovieID WHERE ";
@@ -159,11 +193,25 @@ namespace _560FinalProject
             {
                 startCommand = startCommand.Substring(0, startCommand.Length - 6);
             }
-            startCommand += " ORDER BY ST.Showtime ASC ";
+            switch (sort)
+            {
+                case SortByEnum.ID_ASC:
+                    startCommand += " GROUP BY T.TheaterID, T.TheaterName, T.TheaterAddress, R.RoomID, R.RoomNumber, R.Capacity, M.MovieID, M.Title, ST.ShowtimeID, ST.Showtime ORDER BY T.TheaterID ASC";
+                    break;
+                case SortByEnum.ID_DESC:
+                    startCommand += " GROUP BY T.TheaterID, T.TheaterName, T.TheaterAddress, R.RoomID, R.RoomNumber, R.Capacity, M.MovieID, M.Title, ST.ShowtimeID, ST.Showtime ORDER BY T.TheaterID DESC";
+                    break;
+                case SortByEnum.DATE_ASC:
+                    startCommand += " GROUP BY T.TheaterID, T.TheaterName, T.TheaterAddress, R.RoomID, R.RoomNumber, R.Capacity, M.MovieID, M.Title, ST.ShowtimeID, ST.Showtime ORDER BY ST.Showtime ASC";
+                    break;
+                case SortByEnum.DATE_DESC:
+                    startCommand += " GROUP BY T.TheaterID, T.TheaterName, T.TheaterAddress, R.RoomID, R.RoomNumber, R.Capacity, M.MovieID, M.Title, ST.ShowtimeID, ST.Showtime ORDER BY ST.Showtime DESC";
+                    break;
+            }
             return startCommand;
         }
 
-        private string UserGenreSearch(List<string> userInput, int NumUpDown)
+        private string UserGenreSearch(List<string> userInput, int NumUpDown, SortByEnum sort)
         {
             string startCommand = $"SELECT TOP {NumUpDown} G.GenreType, MG.MovieGenreID, M.Title, M.Rating, M.ReleaseYear FROM MovieOperations.MovieGenres MG INNER JOIN MovieOperations.Movie M ON M.MovieID = MG.MovieID INNER JOIN MovieOperations.Genre G ON G.GenreID = MG.GenreID WHERE ";
             int catcher = 0;
@@ -184,6 +232,16 @@ namespace _560FinalProject
                 }
             }
             if(count == userInput.Count) startCommand = startCommand.Substring(0, startCommand.Length - 6);
+
+            switch (sort)
+            {
+                case SortByEnum.ID_ASC:
+                    startCommand += " GROUP BY G.GenreType, MG.MovieGenreID, M.Title, M.Rating, M.ReleaseYear ORDER BY G.GenreID ASC";
+                    break;
+                case SortByEnum.ID_DESC:
+                    startCommand += " GROUP BY G.GenreType, MG.MovieGenreID, M.Title, M.Rating, M.ReleaseYear ORDER BY G.GenreID DESC";
+                    break;
+            }
             return startCommand;
         }
 

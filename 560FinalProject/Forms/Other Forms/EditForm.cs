@@ -51,7 +51,7 @@ namespace _560FinalProject.Forms.Other_Forms
                     {
                         string[] split = Data.Split(',');
                         O.UpdateMovie(movieTitle_textbox.Text, Convert.ToInt32(movieDuration_textbox.Text), Convert.ToInt32(movieReleaseDate_textbox.Text), movieRevenue_textbox.Text, Convert.ToDouble(movieRating_textbox.Text),Convert.ToInt32(split[0]));
-                        MDF.Search();
+                        MDF.Search(MDF.SORT);
                         this.Close();
                     }
                     else MessageBox.Show("Please input all required Data.");
@@ -62,7 +62,7 @@ namespace _560FinalProject.Forms.Other_Forms
                     {
                         string[] split = Data.Split(',');
                         Theater newTheater = O.UpdateTheater(theaterName_textbox.Text, theaterAddress_textbox.Text, Convert.ToInt32(split[0]));
-                        MDF.Search();
+                        MDF.Search(MDF.SORT);
                         this.Close();
                     }
                     else MessageBox.Show("Please input all required Data.");
@@ -72,7 +72,7 @@ namespace _560FinalProject.Forms.Other_Forms
                     {
                         string[] split = Data.Split(',');
                         O.UpdateShowtime(Convert.ToInt32(split[8]), Convert.ToInt32(split[3]), Convert.ToInt32(split[6]), Convert.ToDateTime(dateStart_textbox.Text));
-                        MDF.Search();
+                        MDF.Search(MDF.SORT);
                         this.Close();
                     }
                     else MessageBox.Show("Please input all required Data.");
@@ -82,7 +82,7 @@ namespace _560FinalProject.Forms.Other_Forms
                     {
                         string[] split = Data.Split(',');
                         O.UpdateRoom(Convert.ToInt32(split[4]), Convert.ToInt32(split[5]), Convert.ToInt32(split[3]));
-                        MDF.Search();
+                        MDF.Search(MDF.SORT);
                         this.Close();
                     }
                     else MessageBox.Show("Please input all required Data.");

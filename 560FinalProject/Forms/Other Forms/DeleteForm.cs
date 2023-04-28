@@ -66,7 +66,7 @@ namespace _560FinalProject.Forms.Other_Forms
                         MessageBox.Show("Not an item you can remove!");
                         break;
                 }
-
+                MDF.Search(MDF.SORT);
                 this.Close();
             }
             else MessageBox.Show("No item selected!!");

@@ -12,8 +12,12 @@ namespace _560FinalProject
         ID_DESC,
         DATE_ASC,
         DATE_DESC,
-        NUM_MOVIES,
+        NUM_MOVIES_ASC,
+        NUM_MOVIES_DESC,
         YEAR_ASC,
-        YEAR_DESC
+        YEAR_DESC,
+        RATING_ASC,
+        RATING_DESC,
+        NONE
     }
 }
