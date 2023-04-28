@@ -591,14 +591,62 @@ namespace _560FinalProject
         /// <summary>
         /// Removes an Room with the given parameters.
         /// </summary>
-        public void RemoveRoom(int id)
+        public void RemoveRoom(int roomID)
         {
+            RemoveShowtime(roomID);
             // Save to database.
             using (var transaction = new TransactionScope())
             {
                 using (var connection = new SqlConnection(cs))
                 {
                     using (var command = new SqlCommand("MovieOperations.RemoveRoom", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.AddWithValue("@RoomID", roomID);
+                        connection.Open();
+
+                        command.ExecuteNonQuery();
+
+                        transaction.Complete();
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Removes an Theater with the given parameters.
+        /// </summary>
+        public void RemoveTheater(int roomID, int theaterID)
+        {
+            // Save to database.
+            using (var transaction = new TransactionScope())
+            {
+                using (var connection = new SqlConnection(cs))
+                {
+                    using (var command = new SqlCommand("MovieOperations.RemoveTheater", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        command.Parameters.AddWithValue("@TheaterID", theaterID);
+
+                        connection.Open();
+
+                        command.ExecuteNonQuery();
+
+                        transaction.Complete();
+                    }
+                }
+            }
+        }
+
+        public void RemoveShowtime(int id)
+        {
+            // Save to database.
+            using (var transaction = new TransactionScope())
+            {
+                using (var connection = new SqlConnection(cs))
+                {
+                    using (var command = new SqlCommand("MovieOperations.RemoveShowtime", connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
 
@@ -613,31 +661,6 @@ namespace _560FinalProject
                 }
             }
         }
-
-        /// <summary>
-        /// Removes an Theater with the given parameters.
-        /// </summary>
-        public void RemoveTheater(int id)
-        {
-            // Save to database.
-            using (var transaction = new TransactionScope())
-            {
-                using (var connection = new SqlConnection(cs))
-                {
-                    using (var command = new SqlCommand("MovieOperations.RemoveTheater", connection))
-                    {
-                        command.CommandType = CommandType.StoredProcedure;
-
-                        command.Parameters.AddWithValue("@TheaterID", id);
-
-                        connection.Open();
-
-                        command.ExecuteNonQuery();
-
-                        transaction.Complete();
-                    }
-                }
-            }
-        }
     }
 }
+
