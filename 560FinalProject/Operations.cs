@@ -112,7 +112,8 @@ namespace _560FinalProject
         private string UserActorSearch(List<string> userInput, int NumUpDown, SortByEnum sort)
         {
             string startCommand = $"SELECT TOP ({NumUpDown}) A.ActorID, A.FirstName, A.LastName, COUNT(MC.ActorID) FROM MovieOperations.Actor A INNER JOIN " +
-                $"MovieOperations.MovieCast MC ON MC.ActorID = A.ActorID WHERE ";
+                $"MovieOperations.MovieCast MC ON MC.ActorID = A.ActorID INNER JOIN MovieOperations.Movie M ON M.MovieID = MC.MovieID INNER JOIN " +
+                $"MovieOperations.MovieGenres MG ON MG.MovieID = M.MovieID INNER JOIN MovieOperations.Genre G ON G.GenreID = MG.GenreID WHERE ";
             int catcher = 0;
             int count = 0;
             for (int i = 0; i < userInput.Count; i++)
@@ -123,10 +124,11 @@ namespace _560FinalProject
                     if (catcher == 1) startCommand += " AND ";
                     if (i == 0) startCommand += $"A.FirstName LIKE N'%{userInput[i]}%'"; catcher = 1;
                     if (i == 1) startCommand += $"A.LastName LIKE N'%{userInput[i]}%'"; catcher = 1;
+                    if (i == 2) startCommand += $"G.GenreType LIKE N'%{userInput[i]}%'"; catcher = 1;
                 }
                 else count++;
             }
-            if (count == 2)
+            if (count == 3)
             {
                 startCommand = startCommand.Substring(0, startCommand.Length - 6);
             }
