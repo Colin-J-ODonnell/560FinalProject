@@ -55,6 +55,7 @@ Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "560FinalPr
 Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "560FinalProject\Sql\Operations\MovieOperations.UpdateTheater.sql"
 Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "560FinalProject\Sql\Operations\MovieOperations.UpdateRoom.sql"
 Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "560FinalProject\Sql\Operations\MovieOperations.UpdateActor.sql"
+
 Write-Host "Inserting data..."
   Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "560FinalProject\Sql\Data\PopulateTables.sql"
 # Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "560FinalProject\Sql\Data\PopulateTablesRy.sql"
