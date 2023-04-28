@@ -77,13 +77,18 @@ namespace _560FinalProject
             int numUpDwn = Convert.ToInt32(numericUpDown1.Value);
             if (SEARCHVALUE == 1)
             {
-                List<string> input = new List<string>();
-                input.Add(movieTitle_textbox.Text);
-                input.Add(movieReleaseDate_textbox.Text);
-                input.Add(movieDuration_textbox.Text);
-                input.Add(movieRevenue_textbox.Text);
-                input.Add(movieRating_textbox.Text);
-                output = O.MovieSearch(SEARCHVALUE, input, numUpDwn, sortBy);
+                int result;
+                if (int.TryParse(movieReleaseDate_textbox.Text, out result) && int.TryParse(movieDuration_textbox.Text, out result))
+                {
+                    List<string> input = new List<string>();
+                    input.Add(movieTitle_textbox.Text);
+                    input.Add(movieReleaseDate_textbox.Text);
+                    input.Add(movieDuration_textbox.Text);
+                    input.Add(movieRevenue_textbox.Text);
+                    input.Add(movieRating_textbox.Text);
+                    output = O.MovieSearch(SEARCHVALUE, input, numUpDwn, sortBy);
+                }
+                else MessageBox.Show("Movie Duration or Release Date is invalid. These must be integers!");
             }
             if (SEARCHVALUE == 2)
             {
@@ -95,22 +100,42 @@ namespace _560FinalProject
             }
             if (SEARCHVALUE == 3)
             {
-                List<string> input = new List<string>();
-                input.Add(theaterName_textbox.Text);
-                input.Add(theaterAddress_textbox.Text);
-                input.Add(roomNumber_textbox.Text);
-                input.Add(roomCapacity_textbox.Text);
-                input.Add(dateStart_textbox.Text);
-                input.Add(dateEnd_textbox.Text);
-                output = O.MovieSearch(SEARCHVALUE, input, numUpDwn, sortBy);
+                int result;
+                if (int.TryParse(roomNumber_textbox.Text, out result) && int.TryParse(roomCapacity_textbox.Text, out result))
+                {
+                    DateTime result2;
+                    if (DateTime.TryParse(dateStart_textbox.Text, out result2) && DateTime.TryParse(dateEnd_textbox.Text, out result2))
+                    {
+                        List<string> input = new List<string>();
+                        input.Add(theaterName_textbox.Text);
+                        input.Add(theaterAddress_textbox.Text);
+                        input.Add(roomNumber_textbox.Text);
+                        input.Add(roomCapacity_textbox.Text);
+                        input.Add(dateStart_textbox.Text);
+                        input.Add(dateEnd_textbox.Text);
+                        output = O.MovieSearch(SEARCHVALUE, input, numUpDwn, sortBy);
+                    }
+                    else MessageBox.Show("Start Date or End Date is invalid. These must be DateTime's in format MM/dd/yyyy!");
+                }
+                else MessageBox.Show("Room Number or Room Capacity is invalid. These must be integers!");
             }
             if (SEARCHVALUE == 4)
             {
-                List<string> input = new List<string>();
-                input.Add(movieReleaseDate_textbox.Text);
-                input.Add(movieRating_textbox.Text);
-                input.Add(movieGenre_textbox.Text);
-                output = O.MovieSearch(SEARCHVALUE, input, numUpDwn, sortBy);
+                int result;
+                if(int.TryParse(movieReleaseDate_textbox.Text, out result))
+                {
+                    double result2;
+                    if(double.TryParse(movieRating_textbox.Text, out result2))
+                    {
+                        List<string> input = new List<string>();
+                        input.Add(movieReleaseDate_textbox.Text);
+                        input.Add(movieRating_textbox.Text);
+                        input.Add(movieGenre_textbox.Text);
+                        output = O.MovieSearch(SEARCHVALUE, input, numUpDwn, sortBy);
+                    }
+                    else MessageBox.Show("Movie Release Date is invalid. This must be an integer");
+                }
+                else MessageBox.Show("Movie Rating is invalid. This must be an double");
             }
             DATA = output;
             output_listbox.DataSource = DATA;
