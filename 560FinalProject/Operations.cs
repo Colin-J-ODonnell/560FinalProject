@@ -20,10 +20,7 @@ namespace _560FinalProject
         /// </summary>
         private readonly string cs;
 
-        public Operations(string connectionString) 
-        { 
-            cs = connectionString;
-        }
+        public Operations(string connectionString) { cs = connectionString; }
 
         public List<string> MovieSearch(int ind, List<string> userInput, int NumUpDown)
         {
@@ -103,7 +100,6 @@ namespace _560FinalProject
             return startCommand;
         }
 
-        
         private string UserTDRSearch(List<string> userInput, int NumUpDown)
         {
             string startCommand = $"SELECT TOP {NumUpDown} T.TheaterID, T.TheaterName, T.TheaterAddress, R.RoomID, R.RoomNumber, R.Capacity, M.Title, ST.Showtime FROM MovieOperations.Theater T INNER JOIN MovieOperations.Room R ON R.TheaterID = T.TheaterID " +
@@ -141,12 +137,12 @@ namespace _560FinalProject
                             startCommand += $"ST.Showtime < '{userInput[i]}'";
                             break;
                     }
-
                 }
             }
             startCommand += " ORDER BY ST.Showtime ASC ";
             return startCommand;
         }
+
         private string UserGenreSearch(List<string> userInput, int NumUpDown)
         {
             string startCommand = $"SELECT TOP {NumUpDown} G.GenreType, MG.MovieGenreID, M.Title, M.Rating, M.ReleaseYear FROM MovieOperations.MovieGenres MG INNER JOIN MovieOperations.Movie M ON M.MovieID = MG.MovieID INNER JOIN MovieOperations.Genre G ON G.GenreID = MG.GenreID WHERE ";
@@ -252,129 +248,6 @@ namespace _560FinalProject
             }
         }
 
-        public Theater UpdateTheater(string name, string address, int theaterID)
-        {
-            using (var transaction = new TransactionScope())
-            {
-                using (var connection = new SqlConnection(cs))
-                {
-                    using (var command = new SqlCommand("MovieOperations.UpdateTheater", connection))
-                    {
-                        command.CommandType = CommandType.StoredProcedure;
-                        command.Parameters.AddWithValue("TheaterName", name);
-                        command.Parameters.AddWithValue("TheaterAddress", address);
-                        command.Parameters.AddWithValue("TheaterID", theaterID);
-
-                        connection.Open();
-
-                        command.ExecuteNonQuery();
-
-                        transaction.Complete();
-
-                        return new Theater(theaterID, name, address);
-                    }
-                }
-            }
-        }
-        public Movie UpdateMovie(string title, int duration, int releaseYear, string gross, double rating, int id)
-        {
-            // Verify parameters.
-            if (string.IsNullOrWhiteSpace(title)) throw new ArgumentException("The parameter cannot be null or empty.");
-            if (string.IsNullOrWhiteSpace(gross)) throw new ArgumentException("The parameter cannot be null or empty.");
-
-            // Save to database.
-            using (var transaction = new TransactionScope())
-            {
-                using (var connection = new SqlConnection(cs))
-                {
-                    using (var command = new SqlCommand("MovieOperations.UpdateMovie", connection))
-                    {
-                        command.CommandType = CommandType.StoredProcedure;
-
-                        command.Parameters.AddWithValue("Title", title);
-                        command.Parameters.AddWithValue("Duration", duration);
-                        command.Parameters.AddWithValue("ReleaseYear", releaseYear);
-                        command.Parameters.AddWithValue("Gross", gross);
-                        command.Parameters.AddWithValue("Rating", rating);
-                        command.Parameters.AddWithValue("MovieID", id);
-
-                        connection.Open();
-
-                        command.ExecuteNonQuery();
-
-                        transaction.Complete();
-
-                        var movieid = (int)command.Parameters["MovieID"].Value;
-
-                        return new Movie(movieid, title, duration, releaseYear, gross, rating);
-                    }
-                }
-            }
-        }
-
-        public void UpdateRoom(string roomNum, string capacity, int roomID)
-        {
-            using (var transaction = new TransactionScope())
-            {
-                using (var connection = new SqlConnection(cs))
-                {
-                    using (var command = new SqlCommand("MovieOperations.UpdateRoom", connection))
-                    {
-                        command.CommandType = CommandType.StoredProcedure;
-                        command.Parameters.AddWithValue("RoomNumber", roomNum);
-                        command.Parameters.AddWithValue("Capacity", capacity);
-                        command.Parameters.AddWithValue("RoomID", roomID);
-
-                        connection.Open();
-
-                        command.ExecuteNonQuery();
-
-                        transaction.Complete();
-
-                    }
-                }
-            }
-        }
-
-        public void UpdateActor()
-        /// <summary>
-        /// Creates an Room with the given parameters.
-        /// </summary>
-        public Room CreateRoom(int roomnumber, int capacity, int theaterid)
-        {
-            // Verify parameters.
-            // None Needed Here.
-
-            // Save to database.
-            using (var transaction = new TransactionScope())
-            {
-                using (var connection = new SqlConnection(cs))
-                {
-                    using (var command = new SqlCommand("MovieOperations.CreateRoom", connection))
-                    {
-                        command.CommandType = CommandType.StoredProcedure;
-
-                        command.Parameters.AddWithValue("RoomNumber", roomnumber);
-                        command.Parameters.AddWithValue("Capacity", capacity);
-                        command.Parameters.AddWithValue("TheaterID", theaterid);
-
-                        var a = command.Parameters.Add("RoomID", SqlDbType.Int);
-                        a.Direction = ParameterDirection.Output;
-
-                        connection.Open();
-
-                        command.ExecuteNonQuery();
-
-                        transaction.Complete();
-
-                        var roomid = (int)command.Parameters["RoomID"].Value;
-
-                        return new Room(roomid, theaterid, roomnumber, capacity);
-                    }
-                }
-            }
-        }
-
         /// <summary>
         /// Creates an Theater with the given parameters.
         /// </summary>
@@ -413,6 +286,139 @@ namespace _560FinalProject
             }
         }
 
+        /// <summary>
+        /// Creates an Room with the given parameters.
+        /// </summary>
+        public Room CreateRoom(int roomnumber, int capacity, int theaterid)
+        {
+            // Verify parameters.
+            // None Needed Here.
+
+            // Save to database.
+            using (var transaction = new TransactionScope())
+            {
+                using (var connection = new SqlConnection(cs))
+                {
+                    using (var command = new SqlCommand("MovieOperations.CreateRoom", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        command.Parameters.AddWithValue("RoomNumber", roomnumber);
+                        command.Parameters.AddWithValue("Capacity", capacity);
+                        command.Parameters.AddWithValue("TheaterID", theaterid);
+
+                        var a = command.Parameters.Add("RoomID", SqlDbType.Int);
+                        a.Direction = ParameterDirection.Output;
+
+                        connection.Open();
+
+                        command.ExecuteNonQuery();
+
+                        transaction.Complete();
+
+                        var roomid = (int)command.Parameters["RoomID"].Value;
+
+                        return new Room(roomid, theaterid, roomnumber, capacity);
+                    }
+                }
+            }
+        }
+
+        // UPDATE //
+
+        /// <summary>
+        /// Update an Actor with the given parameters.
+        /// </summary>
+        public Movie UpdateMovie(string title, int duration, int releaseYear, string gross, double rating, int id)
+        {
+            // Verify parameters.
+            if (string.IsNullOrWhiteSpace(title)) throw new ArgumentException("The parameter cannot be null or empty.");
+            if (string.IsNullOrWhiteSpace(gross)) throw new ArgumentException("The parameter cannot be null or empty.");
+
+            // Save to database.
+            using (var transaction = new TransactionScope())
+            {
+                using (var connection = new SqlConnection(cs))
+                {
+                    using (var command = new SqlCommand("MovieOperations.UpdateMovie", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        command.Parameters.AddWithValue("Title", title);
+                        command.Parameters.AddWithValue("Duration", duration);
+                        command.Parameters.AddWithValue("ReleaseYear", releaseYear);
+                        command.Parameters.AddWithValue("Gross", gross);
+                        command.Parameters.AddWithValue("Rating", rating);
+                        command.Parameters.AddWithValue("MovieID", id);
+
+                        connection.Open();
+
+                        command.ExecuteNonQuery();
+
+                        transaction.Complete();
+
+                        var movieid = (int)command.Parameters["MovieID"].Value;
+
+                        return new Movie(movieid, title, duration, releaseYear, gross, rating);
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Update an Theater with the given parameters.
+        /// </summary>
+        public Theater UpdateTheater(string name, string address, int theaterID)
+        {
+            using (var transaction = new TransactionScope())
+            {
+                using (var connection = new SqlConnection(cs))
+                {
+                    using (var command = new SqlCommand("MovieOperations.UpdateTheater", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.AddWithValue("TheaterName", name);
+                        command.Parameters.AddWithValue("TheaterAddress", address);
+                        command.Parameters.AddWithValue("TheaterID", theaterID);
+
+                        connection.Open();
+
+                        command.ExecuteNonQuery();
+
+                        transaction.Complete();
+
+                        return new Theater(theaterID, name, address);
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Update an Room with the given parameters.
+        /// </summary>
+        public void UpdateRoom(string roomNum, string capacity, int roomID)
+        {
+            using (var transaction = new TransactionScope())
+            {
+                using (var connection = new SqlConnection(cs))
+                {
+                    using (var command = new SqlCommand("MovieOperations.UpdateRoom", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.AddWithValue("RoomNumber", roomNum);
+                        command.Parameters.AddWithValue("Capacity", capacity);
+                        command.Parameters.AddWithValue("RoomID", roomID);
+
+                        connection.Open();
+
+                        command.ExecuteNonQuery();
+
+                        transaction.Complete();
+                    }
+                }
+            }
+        }
+
         // REMOVE //
 
         /// <summary>
@@ -434,20 +440,11 @@ namespace _560FinalProject
 
                         command.Parameters.AddWithValue("@ActorID", id);
 
-                        // Find a way to retrieve the correct actorID. Maybe through an sql program?
-
-                        // var p = command.Parameters.Add("ActorID", SqlDbType.Int);
-                        // p.Direction = ParameterDirection.Output;
-
                         connection.Open();
 
                         command.ExecuteNonQuery();
 
                         transaction.Complete();
-
-                        // var actorid = (int)command.Parameters["ActorID"].Value;
-
-                        // return new Actor(actorid, firstName, lastName);
                     }
                 }
             }
@@ -458,9 +455,6 @@ namespace _560FinalProject
         /// </summary>
         public void RemoveMovie(int id)
         {
-            // Verify parameters.
-            // None Needed Here.
-
             // Save to database.
             using (var transaction = new TransactionScope())
             {
@@ -472,26 +466,11 @@ namespace _560FinalProject
 
                         command.Parameters.AddWithValue("@MovieID", id);
 
-                        // Find a way to retrieve the correct actorID. Maybe through an sql program?
-
-                        // var a = command.Parameters.Add("ShowtimeID", SqlDbType.Int);
-                        // a.Direction = ParameterDirection.Output;
-                        // var b = command.Parameters.Add("MovieID", SqlDbType.Int);
-                        // b.Direction = ParameterDirection.Output;
-                        // var c = command.Parameters.Add("RoomID", SqlDbType.Int);
-                        // c.Direction = ParameterDirection.Output;
-
                         connection.Open();
 
                         command.ExecuteNonQuery();
 
                         transaction.Complete();
-
-                        // var showtimeid = (int)command.Parameters["ShowtimeID"].Value;
-                        // var movieid = (int)command.Parameters["MovieID"].Value;
-                        // var roomid = (int)command.Parameters["RoomID"].Value;
-
-                        // return new MovieShowtime(showtimeid, movieid, roomid, movieTime);
                     }
                 }
             }
@@ -502,9 +481,6 @@ namespace _560FinalProject
         /// </summary>
         public void RemoveRoom(int id)
         {
-            // Verify parameters.
-            // None Needed Here.
-
             // Save to database.
             using (var transaction = new TransactionScope())
             {
@@ -516,23 +492,11 @@ namespace _560FinalProject
 
                         command.Parameters.AddWithValue("@RoomID", id);
 
-                        // Find a way to retrieve the correct actorID. Maybe through an sql program?
-
-                        // var a = command.Parameters.Add("RoomID", SqlDbType.Int);
-                        // a.Direction = ParameterDirection.Output;
-                        // var b = command.Parameters.Add("TheaterID", SqlDbType.Int);
-                        // b.Direction = ParameterDirection.Output;
-
                         connection.Open();
 
                         command.ExecuteNonQuery();
 
                         transaction.Complete();
-
-                        // var roomid = (int)command.Parameters["RoomID"].Value;
-                        // var theaterid = (int)command.Parameters["TheaterID"].Value;
-
-                        // return new Room(roomid, theaterid, roomnumber, capacity);
                     }
                 }
             }
@@ -543,8 +507,6 @@ namespace _560FinalProject
         /// </summary>
         public void RemoveTheater(int id)
         {
-            // Verify parameters.
-
             // Save to database.
             using (var transaction = new TransactionScope())
             {
@@ -561,52 +523,6 @@ namespace _560FinalProject
                         command.ExecuteNonQuery();
 
                         transaction.Complete();
-                    }
-                }
-            }
-        }
-
-        public void GenerateRooms()
-        {
-            using (var transaction = new TransactionScope())
-            {
-                using (var connection = new SqlConnection(cs))
-                {
-                    using (var command = new SqlCommand("SELECT * FROM MovieOperations.Theater", connection))
-                    {
-                        int[] roomNumbers = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25 };
-                        int[] holder = roomNumbers;
-                        connection.Open();
-                        List<Room> rooms = new List<Room>();
-                        using (SqlDataReader reader = command.ExecuteReader())
-                        {
-                            while (reader.Read())
-                            {
-                                Random rand = new Random();
-                                int totalCount = 1;
-                                for (int i = 0; i < reader.FieldCount; i+=4)
-                                {
-                                    roomNumbers = roomNumbers.OrderBy(x => rand.Next()).ToArray();
-                                    int count = (int)reader.GetValue(i+3);
-                                    for(int j = 1; j <= count; j++)
-                                    {
-                                        rooms.Add(new Room(totalCount++, i + 1, roomNumbers[j], rand.Next(4, 15) * 5));
-                                    }
-                                    roomNumbers = holder;
-                                }
-                            }
-                        }
-
-                        transaction.Complete();
-
-                        using (StreamWriter sw = new StreamWriter("ryoutput.txt"))
-                        {
-                            for (int i = 0; i < rooms.Count; i++)
-                            {
-                                string s = Convert.ToString(rooms[i].RoomID) + "," + Convert.ToString(rooms[i].TheaterID) + "," + Convert.ToString(rooms[i].RoomNumber) + "," + Convert.ToString(rooms[i].Capacity);
-                                sw.WriteLine(s);
-                            }
-                        }
                     }
                 }
             }
