@@ -56,7 +56,7 @@ namespace _560FinalProject.Forms.Other_Forms
                         break;
                     case 3:
                         id = Convert.ToInt32(strs[0]);
-                        O.RemoveTheater(Convert.ToInt32(strs[3]), id);
+                        O.RemoveTheater(id);
                         break;
                     case 4:
                         id = Convert.ToInt32(strs[0]);
