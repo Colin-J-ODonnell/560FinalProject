@@ -116,6 +116,11 @@ namespace _560FinalProject
                 $"MovieOperations.MovieGenres MG ON MG.MovieID = M.MovieID INNER JOIN MovieOperations.Genre G ON G.GenreID = MG.GenreID WHERE ";
             int catcher = 0;
             int count = 0;
+            if (string.IsNullOrEmpty(userInput[2]))
+            {
+                startCommand = $"SELECT TOP ({NumUpDown}) A.ActorID, A.FirstName, A.LastName, COUNT(MC.ActorID) FROM MovieOperations.Actor A INNER JOIN " +
+                $"MovieOperations.MovieCast MC ON MC.ActorID = A.ActorID ";
+            }
             for (int i = 0; i < userInput.Count; i++)
             {
                 if (!string.IsNullOrEmpty(userInput[i]))
@@ -126,7 +131,6 @@ namespace _560FinalProject
                     if (i == 1) startCommand += $"A.LastName LIKE N'%{userInput[i]}%'"; catcher = 1;
                     if (i == 2) startCommand += $"G.GenreType LIKE N'%{userInput[i]}%'"; catcher = 1;
                 }
-                else count++;
             }
             if (count == 3)
             {
@@ -138,7 +142,7 @@ namespace _560FinalProject
                     startCommand += " GROUP BY A.ActorID, A.FirstName, A.LastName ORDER BY A.ActorID ASC";
                     break;
                 case SortByEnum.ID_DESC:
-                    startCommand += " GROUP BY A.ActorID, A.FirstName, A.LastName ORDER BT A.ActorID DESC";
+                    startCommand += " GROUP BY A.ActorID, A.FirstName, A.LastName ORDER BY A.ActorID DESC";
                     break;
                 case SortByEnum.NUM_MOVIES_ASC:
                     startCommand += " GROUP BY A.ActorID, A.FirstName, A.LastName ORDER BY COUNT(MC.ActorID) ASC";
@@ -238,10 +242,16 @@ namespace _560FinalProject
             switch (sort)
             {
                 case SortByEnum.ID_ASC:
-                    startCommand += " GROUP BY G.GenreType, MG.MovieGenreID, M.Title, M.Rating, M.ReleaseYear ORDER BY G.GenreID ASC";
+                    startCommand += " GROUP BY G.GenreID, G.GenreType, MG.MovieGenreID, M.Title, M.Rating, M.ReleaseYear ORDER BY G.GenreID ASC";
                     break;
                 case SortByEnum.ID_DESC:
-                    startCommand += " GROUP BY G.GenreType, MG.MovieGenreID, M.Title, M.Rating, M.ReleaseYear ORDER BY G.GenreID DESC";
+                    startCommand += " GROUP BY G.GenreID, G.GenreType, MG.MovieGenreID, M.Title, M.Rating, M.ReleaseYear ORDER BY G.GenreID DESC";
+                    break;
+                case SortByEnum.RATING_ASC:
+                    startCommand += " GROUP BY G.GenreID, G.GenreType, MG.MovieGenreID, M.Title, M.Rating, M.ReleaseYear ORDER BY M.Rating ASC";
+                    break;
+                case SortByEnum.RATING_DESC:
+                    startCommand += " GROUP BY G.GenreID, G.GenreType, MG.MovieGenreID, M.Title, M.Rating, M.ReleaseYear ORDER BY M.Rating DESC";
                     break;
             }
             return startCommand;
