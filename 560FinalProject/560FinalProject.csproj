@@ -195,6 +195,8 @@
     <Content Include="SQL\Data\PopulateTablesSebi.sql" />
     <Content Include="SQL\Data\PopulateTablesZach.sql" />
     <Content Include="SQL\Operations\MovieOperations.CreateActor.sql" />
+    <Content Include="SQL\Operations\MovieOperations.CreateMovieCast.sql" />
+    <Content Include="SQL\Operations\MovieOperations.RemoveFromMovieCast.sql" />
     <Content Include="SQL\Operations\MovieOperations.UpdateActor.sql" />
     <Content Include="SQL\Operations\MovieOperations.UpdateRoom.sql" />
     <Content Include="SQL\Operations\MovieOperations.UpdateShowtime.sql" />
