@@ -2,7 +2,7 @@
    @TheaterID INT
 AS
 DELETE R FROM MovieOperations.Theater T
-	INNER JOIN MovieOperations.Room R ON R.TheaterID = T.TheaterID
+	INNER JOIN MovieOperations.Room R ON R.TheaterID = @TheaterID
 	INNER JOIN MovieOperations.MovieShowtime ST ON ST.RoomID = R.RoomID
 WHERE T.TheaterID = @TheaterID
 
