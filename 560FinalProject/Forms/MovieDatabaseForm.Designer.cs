@@ -73,6 +73,8 @@
             this.output_listbox = new System.Windows.Forms.ListBox();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.label15 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.sorting_dropdown = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -488,7 +490,7 @@
             // 
             // numericUpDown1
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(2239, 1176);
+            this.numericUpDown1.Location = new System.Drawing.Point(2258, 1176);
             this.numericUpDown1.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.numericUpDown1.Minimum = new decimal(new int[] {
             1,
@@ -514,12 +516,33 @@
             this.label15.TabIndex = 127;
             this.label15.Text = "Showing";
             // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Segoe UI Symbol", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(1315, 1168);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(133, 46);
+            this.label17.TabIndex = 128;
+            this.label17.Text = "Sort By";
+            // 
+            // sorting_dropdown
+            // 
+            this.sorting_dropdown.FormattingEnabled = true;
+            this.sorting_dropdown.Location = new System.Drawing.Point(1483, 1176);
+            this.sorting_dropdown.Name = "sorting_dropdown";
+            this.sorting_dropdown.Size = new System.Drawing.Size(302, 39);
+            this.sorting_dropdown.TabIndex = 129;
+            this.sorting_dropdown.SelectedIndexChanged += new System.EventHandler(this.sorting_dropdown_SelectedIndexChanged);
+            // 
             // MovieDatabaseForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(2613, 1230);
+            this.Controls.Add(this.sorting_dropdown);
+            this.Controls.Add(this.label17);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.numericUpDown1);
             this.Controls.Add(this.output_listbox);
@@ -568,6 +591,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "MovieDatabaseForm";
             this.Text = "MovieDatabaseForm";
+            this.Load += new System.EventHandler(this.MovieDatabaseForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -621,5 +645,7 @@
         private System.Windows.Forms.ListBox output_listbox;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.ComboBox sorting_dropdown;
     }
 }

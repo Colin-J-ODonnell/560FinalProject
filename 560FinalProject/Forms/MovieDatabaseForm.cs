@@ -29,6 +29,8 @@ namespace _560FinalProject
 
         public List<string> DATA;
 
+        public SortByEnum SORT;
+
         public MovieDatabaseForm(Operations o)
         {
             InitializeComponent();
@@ -269,5 +271,40 @@ namespace _560FinalProject
         private void dateStart_textbox_TextChanged(object sender, EventArgs e) { TRDSearch(); }
 
         private void dateEnd_textbox_TextChanged(object sender, EventArgs e) { TRDSearch(); }
+
+        private void sorting_dropdown_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (sorting_dropdown.Text)
+            {
+                case "ID_ASC":
+                    SORT = SortByEnum.ID_ASC;
+                    break;
+                case "ID_DESC":
+                    SORT = SortByEnum.ID_DESC;
+                    break;
+                case "DATE_ASC":
+                    SORT = SortByEnum.DATE_ASC;
+                    break;
+                case "DATE_DESC":
+                    SORT = SortByEnum.DATE_DESC;
+                    break;
+                case "NUM_MOVIES":
+                    SORT = SortByEnum.NUM_MOVIES;
+                    break;
+                case "YEAR_ASC":
+                    SORT = SortByEnum.YEAR_ASC;
+                    break;
+                case "YEAR_DESC":
+                    SORT = SortByEnum.YEAR_DESC;
+                    break;
+                default: break;
+            }
+        }
+
+        private void MovieDatabaseForm_Load(object sender, EventArgs e)
+        {
+            sorting_dropdown.DataSource = Enum.GetNames(typeof(SortByEnum));
+            sorting_dropdown.Text = "";
+        }
     }
 }
