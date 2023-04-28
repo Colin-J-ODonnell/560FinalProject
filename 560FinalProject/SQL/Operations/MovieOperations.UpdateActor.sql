@@ -1,7 +1,7 @@
 ﻿CREATE OR ALTER PROCEDURE MovieOperations.UpdateActor
-   @FirstName NVARCHAR(128) NOT NULL,
-   @LastName NVARCHAR(256) NULL,
-   @MovieList NVARCHAR(512) NOT NULL,
+   @FirstName NVARCHAR(128),
+   @LastName NVARCHAR(256),
+   @MovieList NVARCHAR(512),
    @ActorID INT
 AS
 

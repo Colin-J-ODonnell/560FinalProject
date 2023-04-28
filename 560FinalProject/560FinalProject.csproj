@@ -197,6 +197,7 @@
     <Content Include="SQL\Operations\MovieOperations.CreateActor.sql" />
     <Content Include="SQL\Operations\MovieOperations.UpdateActor.sql" />
     <Content Include="SQL\Operations\MovieOperations.UpdateRoom.sql" />
+    <Content Include="SQL\Operations\MovieOperations.UpdateShowtime.sql" />
     <Content Include="SQL\Operations\MovieOperations.UpdateTheater.sql" />
     <Content Include="SQL\Operations\MovieOperations.UpdateMovie.sql" />
     <Content Include="SQL\Operations\MovieOperations.CreateMovie.sql" />

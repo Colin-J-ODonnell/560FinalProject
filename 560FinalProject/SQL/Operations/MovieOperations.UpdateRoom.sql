@@ -1,6 +1,6 @@
 ﻿CREATE OR ALTER PROCEDURE MovieOperations.UpdateRoom
-   @RoomNumber INT NOT NULL,
-   @Capacity INT NOT NULL,
+   @RoomNumber INT,
+   @Capacity INT,
    @RoomID INT
 AS
 

@@ -102,7 +102,7 @@ namespace _560FinalProject
 
         private string UserTDRSearch(List<string> userInput, int NumUpDown)
         {
-            string startCommand = $"SELECT TOP {NumUpDown} T.TheaterID, T.TheaterName, T.TheaterAddress, R.RoomID, R.RoomNumber, R.Capacity, M.Title, ST.Showtime FROM MovieOperations.Theater T INNER JOIN MovieOperations.Room R ON R.TheaterID = T.TheaterID " +
+            string startCommand = $"SELECT TOP {NumUpDown} T.TheaterID, T.TheaterName, T.TheaterAddress, R.RoomID, R.RoomNumber, R.Capacity, M.MovieID, M.Title, ST.ShowtimeID, ST.Showtime FROM MovieOperations.Theater T INNER JOIN MovieOperations.Room R ON R.TheaterID = T.TheaterID " +
                 "INNER JOIN MovieOperations.MovieShowtime ST ON ST.RoomID = R.RoomID INNER JOIN MovieOperations.Movie M ON M.MovieID = ST.MovieID WHERE ";
             int catcher = 0;
             for (int i = 0; i < userInput.Count; i++)
@@ -365,7 +365,32 @@ namespace _560FinalProject
             }
         }
 
-        public void UpdateActor()
+        public void UpdateShowtime(int showtimeID, int roomID, int movieID, DateTime dt)
+        {
+            using (var transaction = new TransactionScope())
+            {
+                using (var connection = new SqlConnection(cs))
+                {
+                    using (var command = new SqlCommand("MovieOperations.UpdateShowtime", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        command.Parameters.AddWithValue("ShowtimeID", showtimeID);
+                        command.Parameters.AddWithValue("RoomID", roomID);
+                        command.Parameters.AddWithValue("MovieID", movieID);
+                        command.Parameters.AddWithValue("StartDateTime", dt);
+                        connection.Open();
+
+                        command.ExecuteNonQuery();
+
+                        transaction.Complete();
+
+
+                    }
+                }
+            }
+        }
+
         /// <summary>
         /// Update an Theater with the given parameters.
         /// </summary>

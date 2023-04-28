@@ -21,7 +21,6 @@ namespace _560FinalProject.Forms.Other_Forms
         /// <summary>
         /// Value assigned when user pics the edit to complete 
         /// 1 = Movie Edit
-        /// 2 = Actor Edit
         /// 3 = Theater
         /// 4 = Showtime
         /// 5 = Room
@@ -56,14 +55,6 @@ namespace _560FinalProject.Forms.Other_Forms
                     }
                     else MessageBox.Show("Please input all required Data.");
                     break;
-                case 2:
-                    // A.ActorID A.FirstName, A.LastName, M.Title
-                    if (!string.IsNullOrEmpty(actorFirstName_textbox.Text) && !string.IsNullOrEmpty(actorLastName_textbox.Text) && !string.IsNullOrEmpty(movieTitle_textbox.Text))
-                    {
-                        // Edit code from Operations here.
-                    }
-                    else MessageBox.Show("Please input all required Data.");
-                    break;
                 case 3:
                     // T.TheaterID, R.RoomID, T.[Name], M.Title, ST.Showtime
                     if (!string.IsNullOrEmpty(theaterName_textbox.Text) && !string.IsNullOrEmpty(theaterAddress_textbox.Text))
@@ -78,7 +69,8 @@ namespace _560FinalProject.Forms.Other_Forms
                     if (!string.IsNullOrEmpty(dateStart_textbox.Text) && !string.IsNullOrEmpty(theaterName_textbox.Text) && !string.IsNullOrEmpty(theaterAddress_textbox.Text) && !string.IsNullOrEmpty(movieTitle_textbox.Text) && !string.IsNullOrEmpty(roomNumber_textbox.Text))
                     {
                         string[] split = Data.Split(',');
-                        //O.UpdateShowtime();
+                        O.UpdateShowtime(Convert.ToInt32(split[8]), Convert.ToInt32(split[3]), Convert.ToInt32(split[6]), Convert.ToDateTime(dateStart_textbox.Text));
+                        this.Close();
                     }
                     else MessageBox.Show("Please input all required Data.");
                     break;
@@ -126,9 +118,11 @@ namespace _560FinalProject.Forms.Other_Forms
                     GenreOptionsOFF();
                     ActorOptionsOFF();
                     MovieOptionsOFF();
-                    movieTitle_textbox.Enabled = true;
                     dateEnd_textbox.Enabled = false;
                     roomCapacity_textbox.Enabled = false;
+                    roomNumber_textbox.Enabled = false;
+                    theaterName_textbox.Enabled = false;
+                    theaterAddress_textbox.Enabled = false;
                     break;
                 default:
                     break;
@@ -162,8 +156,8 @@ namespace _560FinalProject.Forms.Other_Forms
                     movieTitle_textbox.Text = input[6];
                     break;
                 case 4:
-                    dateStart_textbox.Text = input[7];
-                    movieTitle_textbox.Text = input[6];
+                    dateStart_textbox.Text = input[9];
+                    movieTitle_textbox.Text = input[7];
                     theaterName_textbox.Text = input[1];
                     theaterAddress_textbox.Text = input[2];
                     roomNumber_textbox.Text = input[4];
