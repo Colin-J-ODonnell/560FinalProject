@@ -21,10 +21,12 @@ namespace _560FinalProject.Forms.Other_Forms
         /// <summary>
         /// Value assigned when user pics the edit to complete 
         /// 1 = Movie Edit
-        /// 2 = Actor Edit
-        /// 3 = TRD Edit
+        /// 3 = Theater
+        /// 4 = Showtime
+        /// 5 = Room
         /// </summary>
         public int EDITVALUE;
+
 
         public EditForm(MovieDatabaseForm mdf, Operations o, int value, string input)
         {
@@ -49,15 +51,8 @@ namespace _560FinalProject.Forms.Other_Forms
                     {
                         string[] split = Data.Split(',');
                         O.UpdateMovie(movieTitle_textbox.Text, Convert.ToInt32(movieDuration_textbox.Text), Convert.ToInt32(movieReleaseDate_textbox.Text), movieRevenue_textbox.Text, Convert.ToDouble(movieRating_textbox.Text),Convert.ToInt32(split[0]));
+                        MDF.Search(MDF.SORT);
                         this.Close();
-                    }
-                    else MessageBox.Show("Please input all required Data.");
-                    break;
-                case 2:
-                    // A.ActorID A.FirstName, A.LastName, M.Title
-                    if (!string.IsNullOrEmpty(actorFirstName_textbox.Text) && !string.IsNullOrEmpty(actorLastName_textbox.Text) && !string.IsNullOrEmpty(movieTitle_textbox.Text))
-                    {
-                        // Edit code from Operations here.
                     }
                     else MessageBox.Show("Please input all required Data.");
                     break;
@@ -66,7 +61,29 @@ namespace _560FinalProject.Forms.Other_Forms
                     if (!string.IsNullOrEmpty(theaterName_textbox.Text) && !string.IsNullOrEmpty(theaterAddress_textbox.Text))
                     {
                         string[] split = Data.Split(',');
-                        O.UpdateTheater(theaterName_textbox.Text, theaterAddress_textbox.Text);
+                        Theater newTheater = O.UpdateTheater(theaterName_textbox.Text, theaterAddress_textbox.Text, Convert.ToInt32(split[0]));
+                        MDF.Search(MDF.SORT);
+                        this.Close();
+                    }
+                    else MessageBox.Show("Please input all required Data.");
+                    break;
+                case 4:
+                    if (!string.IsNullOrEmpty(dateStart_textbox.Text) && !string.IsNullOrEmpty(theaterName_textbox.Text) && !string.IsNullOrEmpty(theaterAddress_textbox.Text) && !string.IsNullOrEmpty(movieTitle_textbox.Text) && !string.IsNullOrEmpty(roomNumber_textbox.Text))
+                    {
+                        string[] split = Data.Split(',');
+                        O.UpdateShowtime(Convert.ToInt32(split[8]), Convert.ToInt32(split[3]), Convert.ToInt32(split[6]), Convert.ToDateTime(dateStart_textbox.Text));
+                        MDF.Search(MDF.SORT);
+                        this.Close();
+                    }
+                    else MessageBox.Show("Please input all required Data.");
+                    break;
+                case 5:
+                    if(!string.IsNullOrEmpty(roomNumber_textbox.Text) && !string.IsNullOrEmpty(roomCapacity_textbox.Text))
+                    {
+                        string[] split = Data.Split(',');
+                        O.UpdateRoom(Convert.ToInt32(split[4]), Convert.ToInt32(split[5]), Convert.ToInt32(split[3]));
+                        MDF.Search(MDF.SORT);
+                        this.Close();
                     }
                     else MessageBox.Show("Please input all required Data.");
                     break;
@@ -101,6 +118,16 @@ namespace _560FinalProject.Forms.Other_Forms
                     ActorOptionsOFF();
                     GenreOptionsOFF();
                     break;
+                case 4:
+                    GenreOptionsOFF();
+                    ActorOptionsOFF();
+                    MovieOptionsOFF();
+                    dateEnd_textbox.Enabled = false;
+                    roomCapacity_textbox.Enabled = false;
+                    roomNumber_textbox.Enabled = false;
+                    theaterName_textbox.Enabled = false;
+                    theaterAddress_textbox.Enabled = false;
+                    break;
                 default:
                     break;
             }
@@ -128,8 +155,20 @@ namespace _560FinalProject.Forms.Other_Forms
                     break;
                 case 3:
                     // T.TheaterID, R.RoomID, T.[Name], M.Title, ST.Showtime
-                    theaterName_textbox.Text = input[2];
-                    movieTitle_textbox.Text = input[3];
+                    theaterName_textbox.Text = input[1];
+                    theaterAddress_textbox.Text = input[2];
+                    movieTitle_textbox.Text = input[6];
+                    break;
+                case 4:
+                    dateStart_textbox.Text = input[9];
+                    movieTitle_textbox.Text = input[7];
+                    theaterName_textbox.Text = input[1];
+                    theaterAddress_textbox.Text = input[2];
+                    roomNumber_textbox.Text = input[4];
+                    break;
+                case 5:
+                    roomNumber_textbox.Text = input[4];
+                    roomCapacity_textbox.Text = input[5];
                     break;
                 default:
                     break;
@@ -166,11 +205,6 @@ namespace _560FinalProject.Forms.Other_Forms
 
             dateEnd_textbox.Enabled = false;
             dateStart_textbox.Enabled = false; 
-        }
-
-        private void EditForm_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

@@ -21,7 +21,7 @@ namespace _560FinalProject
             Application.SetCompatibleTextRenderingDefault(false);
 
             Operations OP = new Operations(connectionString);
-            Application.Run(new OpeningForm(OP));
+            Application.Run(new MovieDatabaseForm(OP));
         }
     }
 }

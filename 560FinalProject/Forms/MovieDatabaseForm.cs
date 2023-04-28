@@ -15,8 +15,6 @@ namespace _560FinalProject
 {
     public partial class MovieDatabaseForm : Form
     {
-        OpeningForm OF { get; set; }
-
         Operations O { get; set; }
 
         /// <summary>
@@ -29,56 +27,17 @@ namespace _560FinalProject
         /// </summary>
         public int SEARCHVALUE = 0;
 
-        public MovieDatabaseForm(OpeningForm of, Operations o)
+        public List<string> DATA;
+
+        public SortByEnum SORT;
+
+        public MovieDatabaseForm(Operations o)
         {
             InitializeComponent();
-            OF = of;
             O = o;
         }
 
-        private void search_button_Click(object sender, EventArgs e)
-        {
-            List<string> output = new List<string>();
-            int numUpDwn = Convert.ToInt32(numericUpDown1.Value);
-            if (SEARCHVALUE == 1)
-            {
-                List<string> input = new List<string>();
-                input.Add(movieTitle_textbox.Text);
-                input.Add(movieReleaseDate_textbox.Text);
-                input.Add(movieDuration_textbox.Text);
-                input.Add(movieRevenue_textbox.Text);
-                input.Add(movieRating_textbox.Text);
-                output = O.MovieSearch(SEARCHVALUE, input, numUpDwn);
-            }
-            if (SEARCHVALUE == 2)
-            {
-                List<string> input = new List<string>();
-                input.Add(actorFirstName_textbox.Text);
-                input.Add(actorLastName_textbox.Text);
-                output = O.MovieSearch(SEARCHVALUE, input, numUpDwn);
-            }
-            if (SEARCHVALUE == 3)
-            {
-                List<string> input = new List<string>();
-                input.Add(theaterName_textbox.Text);
-                input.Add(theaterAddress_textbox.Text);
-                input.Add(roomNumber_textbox.Text);
-                input.Add(roomCapacity_textbox.Text);
-                input.Add(dateStart_textbox.Text);
-                input.Add(dateEnd_textbox.Text);
-                output = O.MovieSearch(SEARCHVALUE, input, numUpDwn);
-            }
-            if (SEARCHVALUE == 4)
-            {
-                List<string> input = new List<string>();
-                input.Add(movieReleaseDate_textbox.Text);
-                input.Add(movieRating_textbox.Text);
-                input.Add(movieGenre_textbox.Text);
-                output = O.MovieSearch(SEARCHVALUE, input, numUpDwn);
-            }
-
-            output_listbox.DataSource = output;
-        }
+        private void search_button_Click(object sender, EventArgs e) { Search(SORT); }
 
         private void reset_button_Click(object sender, EventArgs e)
         {
@@ -96,8 +55,8 @@ namespace _560FinalProject
         {
             if (output_listbox.SelectedItem != null)
             {
-                EditForm ef = new EditForm(this, O, SEARCHVALUE, output_listbox.SelectedItem.ToString());
-                ef.Show();
+                ChoiceForm cf = new ChoiceForm(this, O, output_listbox.SelectedItem.ToString());
+                cf.Show();
             }
             else MessageBox.Show("No selected item!");
         }
@@ -112,10 +71,49 @@ namespace _560FinalProject
             else MessageBox.Show("No selected item!");
         }
 
-        private void back_button_Click(object sender, EventArgs e)
+        public void Search(SortByEnum sortBy)
         {
-            this.Close();
-            OF.Show();
+            List<string> output = new List<string>();
+            int numUpDwn = Convert.ToInt32(numericUpDown1.Value);
+            if (SEARCHVALUE == 1)
+            {
+                List<string> input = new List<string>();
+                input.Add(movieTitle_textbox.Text);
+                input.Add(movieReleaseDate_textbox.Text);
+                input.Add(movieDuration_textbox.Text);
+                input.Add(movieRevenue_textbox.Text);
+                input.Add(movieRating_textbox.Text);
+                output = O.MovieSearch(SEARCHVALUE, input, numUpDwn, sortBy);
+            }
+            if (SEARCHVALUE == 2)
+            {
+                List<string> input = new List<string>();
+                input.Add(actorFirstName_textbox.Text);
+                input.Add(actorLastName_textbox.Text);
+                input.Add(movieGenre_textbox.Text);
+                output = O.MovieSearch(SEARCHVALUE, input, numUpDwn, sortBy);
+            }
+            if (SEARCHVALUE == 3)
+            {
+                List<string> input = new List<string>();
+                input.Add(theaterName_textbox.Text);
+                input.Add(theaterAddress_textbox.Text);
+                input.Add(roomNumber_textbox.Text);
+                input.Add(roomCapacity_textbox.Text);
+                input.Add(dateStart_textbox.Text);
+                input.Add(dateEnd_textbox.Text);
+                output = O.MovieSearch(SEARCHVALUE, input, numUpDwn, sortBy);
+            }
+            if (SEARCHVALUE == 4)
+            {
+                List<string> input = new List<string>();
+                input.Add(movieReleaseDate_textbox.Text);
+                input.Add(movieRating_textbox.Text);
+                input.Add(movieGenre_textbox.Text);
+                output = O.MovieSearch(SEARCHVALUE, input, numUpDwn, sortBy);
+            }
+            DATA = output;
+            output_listbox.DataSource = DATA;
         }
 
         private void MovieSearchDiabled()
@@ -153,8 +151,6 @@ namespace _560FinalProject
             movieDuration_textbox.Enabled = false;
             movieRevenue_textbox.Enabled = false;
             movieRating_textbox.Enabled = false;
-
-            movieGenre_textbox.Enabled = false;
         }
 
         private void TRDSearch()
@@ -231,10 +227,7 @@ namespace _560FinalProject
             dateEnd_textbox.Text = null;
         } 
 
-        private void movieTitle_textbox_TextChanged(object sender, EventArgs e)
-        {
-            MovieSearchDiabled();
-        }
+        private void movieTitle_textbox_TextChanged(object sender, EventArgs e) { MovieSearchDiabled(); }
 
         private void movieReleaseDate_textbox_TextChanged(object sender, EventArgs e)
         {
@@ -245,24 +238,15 @@ namespace _560FinalProject
             else GenreSearchDisabled();
         }
 
-        private void movieDuration_textbox_TextChanged(object sender, EventArgs e)
-        {
-            MovieSearchDiabled();
-        }
+        private void movieDuration_textbox_TextChanged(object sender, EventArgs e) { MovieSearchDiabled(); }
 
-        private void movieBudget_textbox_TextChanged(object sender, EventArgs e)
-        {
-            MovieSearchDiabled();
-        }
+        private void movieBudget_textbox_TextChanged(object sender, EventArgs e) { MovieSearchDiabled(); }
 
-        private void movieRevenue_textbox_TextChanged(object sender, EventArgs e)
-        {
-            MovieSearchDiabled();
-        }
+        private void movieRevenue_textbox_TextChanged(object sender, EventArgs e) { MovieSearchDiabled(); }
 
-        private void movieGenre_textbox_TextChanged(object sender, EventArgs e)
+        private void movieGenre_textbox_TextChanged(object sender, EventArgs e) 
         {
-            GenreSearchDisabled();
+            if(SEARCHVALUE != 2) GenreSearchDisabled();
         }
 
         private void movieRating_textbox_TextChanged(object sender, EventArgs e)
@@ -274,49 +258,74 @@ namespace _560FinalProject
             else GenreSearchDisabled();
         }
 
-        private void actorFirstName_textbox_TextChanged(object sender, EventArgs e)
+        private void actorFirstName_textbox_TextChanged(object sender, EventArgs e) { ActorSearchDisabled(); }
+
+        private void actorLastName_textbox_TextChanged(object sender, EventArgs e) { ActorSearchDisabled(); }
+
+        private void theaterName_textbox_TextChanged(object sender, EventArgs e) { TRDSearch(); }
+
+        private void theaterAddress_textbox_TextChanged(object sender, EventArgs e) { TRDSearch(); }
+
+        private void roomNumber_textbox_TextChanged(object sender, EventArgs e) { TRDSearch(); }
+
+        private void roomCapacity_textbox_TextChanged(object sender, EventArgs e) { TRDSearch(); }
+
+        private void dateStart_textbox_TextChanged(object sender, EventArgs e) { TRDSearch(); }
+
+        private void dateEnd_textbox_TextChanged(object sender, EventArgs e) { TRDSearch(); }
+
+        private void sorting_dropdown_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ActorSearchDisabled();        
+            switch (sorting_dropdown.Text)
+            {
+                case "ID_ASC":
+                    SORT = SortByEnum.ID_ASC;
+                    break;
+                case "ID_DESC":
+                    SORT = SortByEnum.ID_DESC;
+                    break;
+                case "DATE_ASC":
+                    if (SEARCHVALUE == 3) SORT = SortByEnum.DATE_ASC;
+                    else MessageBox.Show("Sorting value does not work for this input.");
+                    break;
+                case "DATE_DESC":
+                    if (SEARCHVALUE == 3) SORT = SortByEnum.DATE_DESC;
+                    else MessageBox.Show("Sorting value does not work for this input.");
+                    break;
+                case "NUM_MOVIES_ASC":
+                    if(SEARCHVALUE == 2) SORT = SortByEnum.NUM_MOVIES_ASC;
+                    else MessageBox.Show("Sorting value does not work for this input.");
+                    break;
+                case "NUM_MOVIES_DESC":
+                    if (SEARCHVALUE == 2) SORT = SortByEnum.NUM_MOVIES_DESC;
+                    else MessageBox.Show("Sorting value does not work for this input.");
+                    break;
+                case "YEAR_ASC":
+                    if (SEARCHVALUE == 1) SORT = SortByEnum.YEAR_ASC;
+                    else MessageBox.Show("Sorting value does not work for this input.");
+                    break;
+                case "YEAR_DESC":
+                    if (SEARCHVALUE == 1) SORT = SortByEnum.YEAR_DESC;
+                    else MessageBox.Show("Sorting value does not work for this input.");
+                    break;
+                case "RATING_ASC":
+                    if (SEARCHVALUE == 1) SORT = SortByEnum.RATING_ASC;
+                    else MessageBox.Show("Sorting value does not work for this input.");
+                    break;
+                case "RATING_DESC":
+                    if (SEARCHVALUE == 1) SORT = SortByEnum.RATING_DESC;
+                    else MessageBox.Show("Sorting value does not work for this input.");
+                    break;
+                default:
+                    SORT = SortByEnum.ID_ASC;
+                    break;
+            }
         }
 
-        private void actorLastName_textbox_TextChanged(object sender, EventArgs e)
+        private void MovieDatabaseForm_Load(object sender, EventArgs e)
         {
-            ActorSearchDisabled();
-        }
-
-        private void theaterName_textbox_TextChanged(object sender, EventArgs e)
-        {
-            TRDSearch();
-        }
-
-        private void theaterAddress_textbox_TextChanged(object sender, EventArgs e)
-        {
-            TRDSearch();
-        }
-
-        private void roomNumber_textbox_TextChanged(object sender, EventArgs e)
-        {
-            TRDSearch();
-        }
-
-        private void roomCapacity_textbox_TextChanged(object sender, EventArgs e)
-        {
-            TRDSearch();
-        }
-
-        private void dateStart_textbox_TextChanged(object sender, EventArgs e)
-        {
-            TRDSearch();
-        }
-
-        private void dateEnd_textbox_TextChanged(object sender, EventArgs e)
-        {
-            TRDSearch();
-        }
-
-        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
-        {
-
+            sorting_dropdown.DataSource = Enum.GetNames(typeof(SortByEnum));
+            sorting_dropdown.Text = "";
         }
     }
 }
