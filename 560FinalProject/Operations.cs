@@ -119,7 +119,7 @@ namespace _560FinalProject
             if (string.IsNullOrEmpty(userInput[2]))
             {
                 startCommand = $"SELECT TOP ({NumUpDown}) A.ActorID, A.FirstName, A.LastName, COUNT(MC.ActorID) FROM MovieOperations.Actor A INNER JOIN " +
-                $"MovieOperations.MovieCast MC ON MC.ActorID = A.ActorID ";
+                $"MovieOperations.MovieCast MC ON MC.ActorID = A.ActorID WHERE ";
             }
             for (int i = 0; i < userInput.Count; i++)
             {
@@ -127,9 +127,13 @@ namespace _560FinalProject
                 {
                     if (i == userInput.Count) catcher = 0;
                     if (catcher == 1) startCommand += " AND ";
-                    if (i == 0) startCommand += $"A.FirstName LIKE N'%{userInput[i]}%'"; catcher = 1;
-                    if (i == 1) startCommand += $"A.LastName LIKE N'%{userInput[i]}%'"; catcher = 1;
-                    if (i == 2) startCommand += $"G.GenreType LIKE N'%{userInput[i]}%'"; catcher = 1;
+                    if (i == 0) startCommand += $"A.FirstName LIKE N'%{userInput[i]}%' "; catcher = 1;
+                    if (i == 1) startCommand += $"A.LastName LIKE N'%{userInput[i]}%' "; catcher = 1;
+                    if (i == 2) startCommand += $"G.GenreType LIKE N'%{userInput[i]}%' "; catcher = 1;
+                }
+                else
+                {
+                    count++;
                 }
             }
             if (count == 3)
@@ -139,16 +143,16 @@ namespace _560FinalProject
             switch (sort)
             {
                 case SortByEnum.ID_ASC:
-                    startCommand += " GROUP BY A.ActorID, A.FirstName, A.LastName ORDER BY A.ActorID ASC";
+                    startCommand += "GROUP BY A.ActorID, A.FirstName, A.LastName ORDER BY A.ActorID ASC";
                     break;
                 case SortByEnum.ID_DESC:
-                    startCommand += " GROUP BY A.ActorID, A.FirstName, A.LastName ORDER BY A.ActorID DESC";
+                    startCommand += "GROUP BY A.ActorID, A.FirstName, A.LastName ORDER BY A.ActorID DESC";
                     break;
                 case SortByEnum.NUM_MOVIES_ASC:
-                    startCommand += " GROUP BY A.ActorID, A.FirstName, A.LastName ORDER BY COUNT(MC.ActorID) ASC";
+                    startCommand += "GROUP BY A.ActorID, A.FirstName, A.LastName ORDER BY COUNT(MC.ActorID) ASC";
                     break;
                 case SortByEnum.NUM_MOVIES_DESC:
-                    startCommand += " GROUP BY A.ActorID, A.FirstName, A.LastName ORDER BY COUNT(MC.ActorID) DESC";
+                    startCommand += "GROUP BY A.ActorID, A.FirstName, A.LastName ORDER BY COUNT(MC.ActorID) DESC";
                     break;
             }
             return startCommand;
