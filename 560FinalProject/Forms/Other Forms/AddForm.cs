@@ -13,7 +13,7 @@ namespace _560FinalProject.Forms.Other_Forms
 {
     public partial class AddForm : Form
     {
-        MovieDatabaseForm MDF;
+        public MovieDatabaseForm MDF;
 
         Operations O;
 

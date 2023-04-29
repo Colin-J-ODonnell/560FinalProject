@@ -28,6 +28,7 @@ namespace _560FinalProject.Forms.Other_Forms.Add_Forms
             if(!string.IsNullOrEmpty(actorFirstName_textbox.Text) && !string.IsNullOrEmpty(actorLastName_textbox.Text) && !string.IsNullOrEmpty(actorMovieList_textbox.Text))
             {
                 O.CreateActor(actorFirstName_textbox.Text, actorLastName_textbox.Text, actorMovieList_textbox.Text);
+                AF.MDF.Search(AF.MDF.SORT);
                 this.Close();
             }
         }

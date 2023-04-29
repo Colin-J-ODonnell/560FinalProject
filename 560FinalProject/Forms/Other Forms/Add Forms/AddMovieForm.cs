@@ -29,7 +29,8 @@ namespace _560FinalProject.Forms.Other_Forms.Add_Forms
                     !string.IsNullOrEmpty(movieTitle_textbox.Text) && !string.IsNullOrEmpty(movieRating_textbox.Text))
             {
                 O.CreateMovie(movieTitle_textbox.Text, Convert.ToInt32(movieDuration_textbox.Text), Convert.ToInt32(movieReleaseDate_textbox.Text),
-                movieRevenue_textbox.Text, Convert.ToDouble(movieRating_textbox.Text));
+                    movieRevenue_textbox.Text, Convert.ToDouble(movieRating_textbox.Text));
+                AF.MDF.Search(AF.MDF.SORT);
                 this.Close();
             }
         }

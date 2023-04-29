@@ -28,6 +28,7 @@ namespace _560FinalProject.Forms.Other_Forms.Add_Forms
             if(!string.IsNullOrEmpty(roomNumber_textbox.Text) && !string.IsNullOrEmpty(roomCapacity_textbox.Text) && !string.IsNullOrEmpty(roomTheaterID_texbox.Text))
             {
                 O.CreateRoom(Convert.ToInt32(roomNumber_textbox.Text), Convert.ToInt32(roomCapacity_textbox.Text), Convert.ToInt32(roomTheaterID_texbox.Text));
+                AF.MDF.Search(AF.MDF.SORT);
                 this.Close();
             }
         }
