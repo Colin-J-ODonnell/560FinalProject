@@ -160,7 +160,7 @@ namespace _560FinalProject
 
         private string UserTDRSearch(List<string> userInput, int NumUpDown, SortByEnum sort)
         {
-            string startCommand = $"SELECT TOP {NumUpDown} T.TheaterID, T.TheaterName, T.TheaterAddress, R.RoomID, R.RoomNumber, R.Capacity, M.MovieID, M.Title, ST.ShowtimeID, ST.Showtime FROM MovieOperations.Theater T INNER JOIN MovieOperations.Room R ON R.TheaterID = T.TheaterID " +
+            string startCommand = $"SELECT TOP {NumUpDown} T.TheaterID, T.TheaterName, T.TheaterAddress, R.RoomID, R.RoomNumber, R.Capacity, M.MovieID, M.Title, M.Rating, ST.ShowtimeID, ST.Showtime FROM MovieOperations.Theater T INNER JOIN MovieOperations.Room R ON R.TheaterID = T.TheaterID " +
                 "INNER JOIN MovieOperations.MovieShowtime ST ON ST.RoomID = R.RoomID INNER JOIN MovieOperations.Movie M ON M.MovieID = ST.MovieID WHERE ";
             int catcher = 0;
             int count = 0;
@@ -206,16 +206,22 @@ namespace _560FinalProject
             switch (sort)
             {
                 case SortByEnum.ID_ASC:
-                    startCommand += " GROUP BY T.TheaterID, T.TheaterName, T.TheaterAddress, R.RoomID, R.RoomNumber, R.Capacity, M.MovieID, M.Title, ST.ShowtimeID, ST.Showtime ORDER BY T.TheaterID ASC";
+                    startCommand += " GROUP BY T.TheaterID, T.TheaterName, T.TheaterAddress, R.RoomID, R.RoomNumber, R.Capacity, M.MovieID, M.Title, M.Rating, ST.ShowtimeID, ST.Showtime ORDER BY T.TheaterID ASC";
                     break;
                 case SortByEnum.ID_DESC:
-                    startCommand += " GROUP BY T.TheaterID, T.TheaterName, T.TheaterAddress, R.RoomID, R.RoomNumber, R.Capacity, M.MovieID, M.Title, ST.ShowtimeID, ST.Showtime ORDER BY T.TheaterID DESC";
+                    startCommand += " GROUP BY T.TheaterID, T.TheaterName, T.TheaterAddress, R.RoomID, R.RoomNumber, R.Capacity, M.MovieID, M.Title, M.Rating, ST.ShowtimeID, ST.Showtime ORDER BY T.TheaterID DESC";
                     break;
                 case SortByEnum.DATE_ASC:
-                    startCommand += " GROUP BY T.TheaterID, T.TheaterName, T.TheaterAddress, R.RoomID, R.RoomNumber, R.Capacity, M.MovieID, M.Title, ST.ShowtimeID, ST.Showtime ORDER BY ST.Showtime ASC";
+                    startCommand += " GROUP BY T.TheaterID, T.TheaterName, T.TheaterAddress, R.RoomID, R.RoomNumber, R.Capacity, M.MovieID, M.Title, M.Rating, ST.ShowtimeID, ST.Showtime ORDER BY ST.Showtime ASC";
                     break;
                 case SortByEnum.DATE_DESC:
-                    startCommand += " GROUP BY T.TheaterID, T.TheaterName, T.TheaterAddress, R.RoomID, R.RoomNumber, R.Capacity, M.MovieID, M.Title, ST.ShowtimeID, ST.Showtime ORDER BY ST.Showtime DESC";
+                    startCommand += " GROUP BY T.TheaterID, T.TheaterName, T.TheaterAddress, R.RoomID, R.RoomNumber, R.Capacity, M.MovieID, M.Title, M.Rating, ST.ShowtimeID, ST.Showtime ORDER BY ST.Showtime DESC";
+                    break;
+                case SortByEnum.RATING_ASC:
+                    startCommand += " GROUP BY T.TheaterID, T.TheaterName, T.TheaterAddress, R.RoomID, R.RoomNumber, R.Capacity, M.MovieID, M.Title, M.Rating, ST.ShowtimeID, ST.Showtime ORDER BY M.Rating ASC";
+                    break;
+                case SortByEnum.RATING_DESC:
+                    startCommand += " GROUP BY T.TheaterID, T.TheaterName, T.TheaterAddress, R.RoomID, R.RoomNumber, R.Capacity, M.MovieID, M.Title, M.Rating, ST.ShowtimeID, ST.Showtime ORDER BY M.Rating DESC";
                     break;
             }
             return startCommand;

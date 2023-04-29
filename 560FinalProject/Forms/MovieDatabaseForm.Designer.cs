@@ -485,12 +485,12 @@
             this.output_listbox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.output_listbox.Name = "output_listbox";
             this.output_listbox.ScrollAlwaysVisible = true;
-            this.output_listbox.Size = new System.Drawing.Size(1255, 1120);
+            this.output_listbox.Size = new System.Drawing.Size(1441, 1120);
             this.output_listbox.TabIndex = 125;
             // 
             // numericUpDown1
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(2258, 1176);
+            this.numericUpDown1.Location = new System.Drawing.Point(2101, 1176);
             this.numericUpDown1.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.numericUpDown1.Minimum = new decimal(new int[] {
             1,
@@ -498,7 +498,7 @@
             0,
             0});
             this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(320, 38);
+            this.numericUpDown1.Size = new System.Drawing.Size(212, 38);
             this.numericUpDown1.TabIndex = 126;
             this.numericUpDown1.Value = new decimal(new int[] {
             10,
@@ -510,11 +510,11 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Segoe UI Symbol", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(2072, 1168);
+            this.label15.Location = new System.Drawing.Point(1906, 1168);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(156, 46);
+            this.label15.Size = new System.Drawing.Size(164, 46);
             this.label15.TabIndex = 127;
-            this.label15.Text = "Showing";
+            this.label15.Text = "Showing:";
             // 
             // label17
             // 
@@ -522,16 +522,16 @@
             this.label17.Font = new System.Drawing.Font("Segoe UI Symbol", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label17.Location = new System.Drawing.Point(1315, 1168);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(133, 46);
+            this.label17.Size = new System.Drawing.Size(141, 46);
             this.label17.TabIndex = 128;
-            this.label17.Text = "Sort By";
+            this.label17.Text = "Sort By:";
             // 
             // sorting_dropdown
             // 
             this.sorting_dropdown.FormattingEnabled = true;
-            this.sorting_dropdown.Location = new System.Drawing.Point(1483, 1176);
+            this.sorting_dropdown.Location = new System.Drawing.Point(1487, 1175);
             this.sorting_dropdown.Name = "sorting_dropdown";
-            this.sorting_dropdown.Size = new System.Drawing.Size(302, 39);
+            this.sorting_dropdown.Size = new System.Drawing.Size(360, 39);
             this.sorting_dropdown.TabIndex = 129;
             this.sorting_dropdown.SelectedIndexChanged += new System.EventHandler(this.sorting_dropdown_SelectedIndexChanged);
             // 
@@ -540,7 +540,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(2613, 1230);
+            this.ClientSize = new System.Drawing.Size(2799, 1230);
             this.Controls.Add(this.sorting_dropdown);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.label15);

@@ -55,7 +55,10 @@ namespace _560FinalProject
         {
             if (output_listbox.SelectedItem != null)
             {
-                ChoiceForm cf = new ChoiceForm(this, O, output_listbox.SelectedItem.ToString());
+                int index = output_listbox.SelectedIndex;
+                string input = DATA[index];
+
+                ChoiceForm cf = new ChoiceForm(this, O, input);
                 cf.Show();
             }
             else MessageBox.Show("No selected item!");
@@ -65,7 +68,10 @@ namespace _560FinalProject
         {
             if (output_listbox.SelectedItem != null)
             {
-                DeleteForm df = new DeleteForm(this, O, output_listbox.SelectedItem.ToString());
+                int index = output_listbox.SelectedIndex;
+                string input = DATA[index];
+
+                DeleteForm df = new DeleteForm(this, O, input);
                 df.Show();
             }
             else MessageBox.Show("No selected item!");
@@ -146,7 +152,65 @@ namespace _560FinalProject
                 else MessageBox.Show("Movie Rating is invalid. This must be an double");
             }
             DATA = output;
-            output_listbox.DataSource = DATA;
+            output_listbox.DataSource = OrganizeData(DATA);
+        }
+
+        private List<string> OrganizeData(List<string> data)
+        {
+            List<string> newstring = new List<string>();
+
+            switch (SEARCHVALUE)
+            {
+                case 1:
+                    // M.MovieID, M.Title, M.ReleaseYear, M.Duration, M.Gross, M.Rating
+                    foreach(string s in data)
+                    {
+                        string[] strs = s.Split(',');
+                        string newstr = "";
+
+                        // Title:  ReleaseYear,  Duration,  Gross,  Rating
+                        newstr += strs[1] + ":  " + strs[2] + ",  " + strs[3] + ",  " + strs[4] + ",  " + strs[5];
+                        newstring.Add(newstr);
+                    }
+                    return newstring;
+                case 2:
+                    // A.ActorID, A.FirstName, A.LastName, COUNT(MC.ActorID)
+                    foreach(string s in data)
+                    {
+                        string[] strs = s.Split(',');
+                        string newstr = "";
+
+                        // FirstName LastName:  MovieCount
+                        newstr += strs[1] + " " + strs[2] + ":  " + strs[3];
+                        newstring.Add(newstr);
+                    }
+                    return newstring;
+                case 3:
+                    // T.TheaterID, T.TheaterName, T.TheaterAddress, R.RoomID, R.RoomNumber, R.Capacity, M.MovieID, M.Title, M.Rating, ST.ShowtimeID, ST.Showtime
+                    foreach(string s in data)
+                    {
+                        string[] strs = s.Split(',');
+                        string newstr = "";
+
+                        // TheaterName:  TheaterAddress,  MovieTitle:  Showtime
+                        newstr += strs[1] + ":  " + strs[2] + ",  " + strs[7] + ":  " + strs[10];
+                        newstring.Add(newstr);
+                    }
+                    return newstring;
+                case 4:
+                    // G.GenreType, MG.MovieGenreID, M.Title, M.Rating, M.ReleaseYear
+                    foreach(string s in data)
+                    {
+                        string[] strs = s.Split(',');
+                        string newstr = "";
+
+                        // MovieTitle:  Rating,  ReleaseYear
+                        newstr += strs[2] + ":  " + strs[3] + ",  " + strs[4];
+                        newstring.Add(newstr);
+                    }
+                    return newstring;
+                default: return newstring;
+            }
         }
 
         private void MovieSearchDiabled()
@@ -277,10 +341,7 @@ namespace _560FinalProject
 
         private void movieRevenue_textbox_TextChanged(object sender, EventArgs e) { MovieSearchDiabled(); }
 
-        private void movieGenre_textbox_TextChanged(object sender, EventArgs e) 
-        {
-            if(SEARCHVALUE != 2) GenreSearchDisabled();
-        }
+        private void movieGenre_textbox_TextChanged(object sender, EventArgs e) { if(SEARCHVALUE != 2) GenreSearchDisabled(); }
 
         private void movieRating_textbox_TextChanged(object sender, EventArgs e)
         {
@@ -309,83 +370,83 @@ namespace _560FinalProject
 
         private void sorting_dropdown_SelectedIndexChanged(object sender, EventArgs e)
         {
-            switch (sorting_dropdown.Text)
-            {
-                case "ID_ASC":
-                    SORT = SortByEnum.ID_ASC;
+            switch(sorting_dropdown.Text)
+                {
+                    case "ID_ASC":
+                        SORT = SortByEnum.ID_ASC;
+                Search(SORT);
+                break;
+                    case "ID_DESC":
+                        SORT = SortByEnum.ID_DESC;
+                Search(SORT);
+                break;
+                    case "DATE_ASC":
+                        if (SEARCHVALUE == 3)
+                {
+                    SORT = SortByEnum.DATE_ASC;
                     Search(SORT);
-                    break;
-                case "ID_DESC":
-                    SORT = SortByEnum.ID_DESC;
+                }
+                else MessageBox.Show("Sorting value does not work for this input.");
+                break;
+                    case "DATE_DESC":
+                        if (SEARCHVALUE == 3)
+                {
+                    SORT = SortByEnum.DATE_DESC;
                     Search(SORT);
-                    break;
-                case "DATE_ASC":
-                    if (SEARCHVALUE == 3)
-                    {
-                        SORT = SortByEnum.DATE_ASC;
-                        Search(SORT);
-                    }
-                    else MessageBox.Show("Sorting value does not work for this input.");
-                    break;
-                case "DATE_DESC":
-                    if (SEARCHVALUE == 3)
-                    {
-                        SORT = SortByEnum.DATE_DESC;
-                        Search(SORT);
-                    }
-                    else MessageBox.Show("Sorting value does not work for this input.");
-                    break;
-                case "NUM_MOVIES_ASC":
-                    if (SEARCHVALUE == 2)
-                    {
-                        SORT = SortByEnum.NUM_MOVIES_ASC;
-                        Search(SORT);
-                    }
-                    else MessageBox.Show("Sorting value does not work for this input.");
-                    break;
-                case "NUM_MOVIES_DESC":
-                    if (SEARCHVALUE == 2) 
-                    {
-                        SORT = SortByEnum.NUM_MOVIES_DESC;
-                        Search(SORT);
-                    }
-                    else MessageBox.Show("Sorting value does not work for this input.");
-                    break;
-                case "YEAR_ASC":
-                    if (SEARCHVALUE == 1)
-                    {
-                        SORT = SortByEnum.YEAR_ASC;
-                        Search(SORT);
-                    }
-                    else MessageBox.Show("Sorting value does not work for this input.");
-                    break;
-                case "YEAR_DESC":
-                    if (SEARCHVALUE == 1)
-                    {
-                        SORT = SortByEnum.YEAR_DESC;
-                        Search(SORT);
-                    }
-                    else MessageBox.Show("Sorting value does not work for this input.");
-                    break;
-                case "RATING_ASC":
-                    if (SEARCHVALUE == 1 || SEARCHVALUE == 4)
-                    {
-                        SORT = SortByEnum.RATING_ASC;
-                        Search(SORT);
-                    }
-                    else MessageBox.Show("Sorting value does not work for this input.");
-                    break;
-                case "RATING_DESC":
-                    if (SEARCHVALUE == 1 || SEARCHVALUE == 4)
-                    {
-                        SORT = SortByEnum.RATING_DESC;
-                        Search(SORT);
-                    }
-                    else MessageBox.Show("Sorting value does not work for this input.");
-                    break;
+                }
+                else MessageBox.Show("Sorting value does not work for this input.");
+                break;
+                    case "NUM_MOVIES_ASC":
+                        if (SEARCHVALUE == 2)
+                {
+                    SORT = SortByEnum.NUM_MOVIES_ASC;
+                    Search(SORT);
+                }
+                else MessageBox.Show("Sorting value does not work for this input.");
+                break;
+                    case "NUM_MOVIES_DESC":
+                        if (SEARCHVALUE == 2)
+                {
+                    SORT = SortByEnum.NUM_MOVIES_DESC;
+                    Search(SORT);
+                }
+                else MessageBox.Show("Sorting value does not work for this input.");
+                break;
+                    case "YEAR_ASC":
+                        if (SEARCHVALUE == 1)
+                {
+                    SORT = SortByEnum.YEAR_ASC;
+                    Search(SORT);
+                }
+                else MessageBox.Show("Sorting value does not work for this input.");
+                break;
+                    case "YEAR_DESC":
+                        if (SEARCHVALUE == 1)
+                {
+                    SORT = SortByEnum.YEAR_DESC;
+                    Search(SORT);
+                }
+                else MessageBox.Show("Sorting value does not work for this input.");
+                break;
+                    case "RATING_ASC":
+                        if (SEARCHVALUE == 1 || SEARCHVALUE == 3 || SEARCHVALUE == 4)
+                {
+                    SORT = SortByEnum.RATING_ASC;
+                    Search(SORT);
+                }
+                else MessageBox.Show("Sorting value does not work for this input.");
+                break;
+                    case "RATING_DESC":
+                        if (SEARCHVALUE == 1 || SEARCHVALUE == 3 || SEARCHVALUE == 4)
+                {
+                    SORT = SortByEnum.RATING_DESC;
+                    Search(SORT);
+                }
+                else MessageBox.Show("Sorting value does not work for this input.");
+                break;
                 default:
-                    SORT = SortByEnum.ID_ASC;
-                    break;
+                        SORT = SortByEnum.ID_ASC;
+                break;
             }
         }
 
