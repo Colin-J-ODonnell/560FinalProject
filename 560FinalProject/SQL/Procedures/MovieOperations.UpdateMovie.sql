@@ -8,6 +8,6 @@
 AS
 
 UPDATE MovieOperations.Movie
-SET Title = @Title, ReleaseYear = @ReleaseYear, Duration = @Duration, Gross = @Gross
+SET Title = @Title, ReleaseYear = @ReleaseYear, Duration = @Duration, Gross = @Gross, Rating = @Rating
 WHERE MovieID = @MovieId;
 GO

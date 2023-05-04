@@ -37,7 +37,30 @@ namespace _560FinalProject
             O = o;
         }
 
-        private void search_button_Click(object sender, EventArgs e) { Search(SORT); }
+        private void search_button_Click(object sender, EventArgs e) 
+        {
+            if((SORT == SortByEnum.DATE_ASC && SEARCHVALUE != 3) || (SORT == SortByEnum.DATE_DESC && SEARCHVALUE != 3))
+            {
+                SORT = SortByEnum.ID_ASC;
+                sorting_dropdown.SelectedIndex = 0;
+            }
+            else if((SORT == SortByEnum.NUM_MOVIES_ASC || SORT == SortByEnum.NUM_MOVIES_DESC ) && SEARCHVALUE != 2)
+            {
+                SORT = SortByEnum.ID_ASC;
+                sorting_dropdown.SelectedIndex = 0;
+            }
+            else if ((SORT == SortByEnum.YEAR_ASC || SORT == SortByEnum.YEAR_DESC) && SEARCHVALUE != 1)
+            {
+                SORT = SortByEnum.ID_ASC;
+                sorting_dropdown.SelectedIndex = 0;
+            }
+            else if ((SORT == SortByEnum.RATING_ASC || SORT == SortByEnum.RATING_DESC) && SEARCHVALUE == 2)
+            {
+                SORT = SortByEnum.ID_ASC;
+                sorting_dropdown.SelectedIndex = 0;
+            }
+            else Search(SORT);
+        }
 
         private void reset_button_Click(object sender, EventArgs e)
         {
